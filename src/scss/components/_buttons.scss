@@ -1,0 +1,113 @@
+@import '../base/variables';
+
+@mixin button-style($font-size, $button-background){
+    padding: 10px 40px;
+    background: $button-background;
+    @include texts($semantic-weight, $paragraph-color, $font-size);
+    cursor: pointer;
+    border-radius: 10px;
+    text-decoration: none;
+}
+
+// Default styles primary button
+
+.primary-button-xl {
+    @include button-style($button-text-xl, $semantic-gradient);
+}
+
+.primary-button-l {
+    @include button-style($button-text-l, $semantic-gradient);
+}
+
+.primary-button-sm {
+    @include button-style($button-text-sm, $semantic-gradient);
+}
+
+.primary-button-xsm {
+    @include button-style($button-text-xsm, $semantic-gradient);
+}
+
+
+// Hover animation primary button
+
+
+.primary-button-xl, .primary-button-l, .primary-button-sm, .primary-button-xsm{
+    transition: all .3s ease-in;
+    &:hover{
+        background: $secondary-gradient;
+        color: $bg-color
+    }
+}
+
+
+// Default styles secondary button
+
+
+.secondary-button-xl{
+    @include button-style($button-text-xl, $secondary-color);
+    color: $semantic-text-color;
+}
+
+.secondary-button-l{
+    @include button-style($button-text-l, $secondary-color);
+    color: $semantic-text-color;
+}
+
+.secondary-button-sm{
+    @include button-style($button-text-sm, $secondary-color);
+    color: $semantic-text-color;
+    
+}
+
+.secondary-button-xsm{
+    @include button-style($button-text-xsm, $secondary-color);
+    color: $semantic-text-color;
+}
+
+// Hover animation secondary button 
+
+.secondary-button-xl, .secondary-button-l, .secondary-button-sm, .secondary-button-xsm{
+    transition: all .3s ease-in;
+    &:hover{
+        background: $semantic-text-color;
+        color: $dark-complementary-color;
+    }
+}
+
+// Default styles tertiary button
+
+
+.tertiary-button-xl{
+    @include button-style($button-text-xl, $bg-color);
+    color: $semantic-text-color;
+    border: 1px solid $semantic-text-color;
+}
+
+.tertiary-button-l{
+    @include button-style($button-text-l, $bg-color);
+    color: $semantic-text-color;
+    border: 1px solid $semantic-text-color;
+}
+
+.tertiary-button-sm{
+    @include button-style($button-text-sm, $bg-color);
+    color: $semantic-text-color;
+    border: 1px solid $semantic-text-color;
+}
+
+.tertiary-button-xsm{
+    @include button-style($button-text-xsm, $bg-color);
+    color: $semantic-text-color;
+    border: 1px solid $semantic-text-color;
+}
+
+// Hover animation secondary button 
+
+.tertiary-button-xl, .tertiary-button-l, .tertiary-button-sm, .tertiary-button-xsm{
+    transition: all .3s ease-in;
+    &:hover{
+        background: rgba(136, 109, 36, .3);
+        color: rgba(136, 109, 36, 1);
+        border: 1px solid rgba(136, 109, 36, 1);
+    }
+}
