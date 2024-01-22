@@ -1,0 +1,57 @@
+.form{
+    display: flex;
+    justify-content: space-between;
+    &_side, .col{
+        width: 45% !important;
+        flex: none;
+    }
+    &_info{
+        background-color: $base-color;
+        color: $white;
+        position: relative;
+        &_list{
+            display: flex;
+            justify-content: flex-start;
+            height: 100%;
+            align-items: stretch;
+            padding: 20px 15px;
+            &_item{
+                display: flex;
+                align-items: center;
+                flex: 1;
+                background: none;
+                border: none;
+                border-radius: 0;
+                color: $white;
+                font-size: 20px;
+                .bi{
+                    display: inline-block;
+                    margin-right: 20px;
+                }
+            }
+        }
+        &::after{
+            content: '';
+            width: 20px;
+            height: 100%;
+            background: $semantic-gradient;
+            position: absolute;
+            top: 0;
+            right: 70px;
+        }
+        
+    }
+    &_group{
+        &_input{
+            border: none;
+            border-radius: 0;
+            border-bottom: 1px solid $gray1;
+            padding: 15px 0;
+            font-size: 20px !important;
+        }
+        textarea{
+            min-height: 100px;
+        }
+    }
+    
+}

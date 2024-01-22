@@ -1,0 +1,54 @@
+//Buttons
+
+@mixin button-style($font-size, $button-background){
+    padding: 10px 40px;
+    background: $button-background;
+    @include texts($semantic-weight, $paragraph-color, $font-size);
+    cursor: pointer;
+    border-radius: 10px;
+    text-decoration: none;
+}
+
+
+//texts
+
+@mixin texts($font-weight, $color, $font-size){
+    font-weight: $font-weight;
+    color: $color;
+    line-height: $line-height;
+    font-size: $font-size;
+    
+}
+
+//animations
+
+@mixin transition-all-3{
+    transition: all .3s ease-in;
+}
+@mixin transition-all-2{
+    transition: all .2s ease-in;
+}
+@mixin transition-all-1{
+    transition: all .1s ease-in;
+}
+
+//gradients
+@mixin gradient-background-primary($condition, $firstColor: $yellow1, $color: $white, $secondColor: $yellow2, $direction: 114deg) {
+    @if $condition == 1{
+        background: linear-gradient($direction, $firstColor 0%, $secondColor 32%,  $firstColor 68%, $secondColor 100%);
+        color: $color;
+    }@else if $condition == 2{
+        background-color: $firstColor;
+        color: $color;
+    }
+
+}
+@mixin gradient-background-secondary($condition, $firstColor: $yellow3, $color: $white, $secondColor: $yellow4, $direction: 114deg) {
+    @if $condition == 1{
+        background: linear-gradient($direction, $firstColor 0%, $secondColor 32%,  $firstColor 68%, $secondColor 100%);
+        color: $color;
+    }@else if $condition == 2{
+        background-color: $firstColor;
+        color: $color;
+    }
+}

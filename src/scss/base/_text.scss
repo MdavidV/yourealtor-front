@@ -1,0 +1,22 @@
+// NAV TEXTS
+
+.nav-fixed-text{
+    @include texts($semantic-weight, $bg-color, $paragraph-size-20);
+}
+
+.nav-scrolled-text{
+    @include texts($semantic-weight, $semantic-text-color, $paragraph-size-20);
+}
+
+
+// BANNER TEXTS
+
+.banner-tittle{
+    @include texts($tittle-weight , $bg-color, $tittle-size);
+}
+
+.banner-text{
+    @include texts($paragraph-weight,  $bg-color, $paragraph-size-20);
+}
+
+//Tiles
