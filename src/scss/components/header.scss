@@ -1,0 +1,27 @@
+.nav{
+    position: absolute;
+    z-index: 10;
+}
+
+.default-navbar {
+    @include transition-nav;
+    background-color: transparent;
+    border: none;
+  }
+  
+  .scrolled {
+    width: 100%;
+    background-color: $base-color;
+    position: fixed;
+    top: 0;
+
+    border-bottom: 1px solid $yellow1;
+    
+    .img-container {
+      margin: 10px;
+      img {
+        width: 60%;
+      }
+    }
+  }
+  

@@ -1,4 +1,8 @@
 // Default styles primary button
+.btn{
+    border: none;
+    font-family: $paragraph-font;
+}
 
 .primary-button-xl {
     @include button-style($button-text-xl, $semantic-gradient);
