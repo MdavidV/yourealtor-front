@@ -1,5 +1,6 @@
 //Buttons
 
+
 @mixin button-style($font-size, $button-background){
     padding: 10px 40px;
     background: $button-background;
@@ -30,6 +31,10 @@
 }
 @mixin transition-all-1{
     transition: all .1s ease-in;
+}
+
+@mixin transition-nav{
+    transition: background-color 0.3s ease, border-bottom 0.3s ease;
 }
 
 //gradients

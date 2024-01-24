@@ -1,6 +1,7 @@
 .form{
     display: flex;
     justify-content: space-between;
+    font-family: $paragraph-font;
     &_side, .col{
         width: 45% !important;
         flex: none;

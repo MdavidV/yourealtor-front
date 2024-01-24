@@ -13,10 +13,12 @@
 
 .banner-tittle{
     @include texts($tittle-weight , $bg-color, $tittle-size);
+    text-align: center;
 }
 
 .banner-text{
     @include texts($paragraph-weight,  $bg-color, $paragraph-size-20);
+    text-align: center;
 }
 
 //Tiles
