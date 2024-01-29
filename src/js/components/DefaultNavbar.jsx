@@ -1,6 +1,6 @@
 import React from 'react';
 import logo from "../../assets/logo_unScrolled.png";
-import { Nav, NavItem, NavLink } from "reactstrap";
+import { Nav, NavItem } from "reactstrap";
 import { Link } from "react-router-dom";
 
 const DefaultNavbar = () => {
@@ -44,7 +44,7 @@ const DefaultNavbar = () => {
           </Link>
         </NavItem>
         <NavItem className="mx-3">
-          <Link to={"/"}>
+          <Link to={"/Login"}>
             <p>Ingresa</p>
           </Link>
         </NavItem>

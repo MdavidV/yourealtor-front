@@ -4,12 +4,12 @@
 }
 
 .default-navbar {
-    @include transition-nav;
-    background-color: transparent;
-    border: none;
-  }
-  
-  .scrolled {
+  background-color: transparent;
+  border: none;
+  @include transition-nav;
+}
+
+.scrolled {
     width: 100%;
     background-color: $base-color;
     position: fixed;

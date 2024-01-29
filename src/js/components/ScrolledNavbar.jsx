@@ -44,7 +44,7 @@ const ScrolledNavbar = () => {
         </Link>
       </NavItem>
       <NavItem className="mx-3">
-        <Link to={"/"}>
+        <Link to={"/Login"}>
           <p>Ingresa</p>
         </Link>
       </NavItem>
