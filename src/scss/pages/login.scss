@@ -1,0 +1,30 @@
+.login-view{
+    .login-bg{
+        width: 100vw;
+        height: 100vh;
+        object-fit: cover;
+        z-index: -1;
+        position: absolute;
+    }
+    .form-login-cont{
+        position: relative;
+        height: 767px;
+        border-radius: 20px;
+        background-color: $secondary-color;
+        form{
+            color: $white;
+            .form-input{
+                background-color: $primary-light-color;
+                border-radius: 12px;
+                color: $black;
+                padding: 15px 10px;
+                border: none;
+
+            }
+
+            .anchor-sm-login{
+                color: $semantic-text-color;
+            }
+        }
+    }
+}

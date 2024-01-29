@@ -22,3 +22,20 @@
 }
 
 //Tiles
+
+
+// FORM TEXTS
+
+.form-title-login{
+    @include texts($tittle-weight, $semantic-text-color, $tittle-size);
+    margin: 70px 0 48px 0 ;
+}
+
+.form-title-sign{
+    @include texts($tittle-weight, $semantic-text-color, $tittle-size);
+    margin: 40px 0 ;
+}
+
+.form-paragraph{
+    @include texts($semantic-weight, $white, $semantic-size)
+}

@@ -14,8 +14,6 @@ function App() {
       <Banner></Banner>
       <Container>
         <ContactUs></ContactUs>
-        <ContactUs></ContactUs>
-        <ContactUs></ContactUs>
 
       </Container>
     </>
