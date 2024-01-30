@@ -1,20 +1,16 @@
 import jwt from 'jsonwebtoken';
-import config from '../config';
+import {TOKEN_SECRET} from '../config';
 
-const verifyToken = (req, res, next) => {
-    const token = req.header('Authorization');
-    
-    if(!token){
-        return res.status(401).json({message: 'token no proporcionado'});
-    }
+export const verifyToken = (req, res, next) => {
+    const {token} = req.cookies;
+    if(!token) return res.status(401).json({message: "No token, authorization denied"});
 
-    try{
-        const decoded = jwt.verify(token, config.JWT_SECRET);
-        req.user = decoded.user;
+    jwt.verify(token, TOKEN_SECRET, (err, user) => {
+        if(err) return res.status(403).json({message: "Invalid Token"});
+
+        req.user = user
         next();
-    } catch (error) {
-        return res.status(401).json({message: 'Token no valido'})
-    }
+    });
+
 }
 
-export default verifyToken;

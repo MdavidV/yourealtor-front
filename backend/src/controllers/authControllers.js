@@ -1,82 +1,82 @@
-// import bcrypt from 'bcryptjs';
-// import jwt, { decode } from 'jsonwebtoken';
-// import User from '../models/User';
-// import sendEmail from '../libs/sendEmail';
-// import config from '../config';
-
-// export const signup = async (req, res) => {
-//     try{
-//         const {firstName, secondName, email, password } = req.body;
-
-//         const hashedPassword = await bcrypt.hash(password, 10);
-//         const verificationToken = jwt.sign({email}, config.JWT_SECRET);
-
-//         await User.create({ firstName, secondName, email, password: hashedPassword, verificationToken });
-
-//         const verificationLink = `https://localhost:5173/auth/verify/${verificationToken}`;
-
-//         const mailOptions = {
-//             from: process.env.GMAIL_USER,
-//             to: email,
-//             subject: 'Verificacion por correo electronico',
-//             text: `Por favor, haz clic en el siguiente enlace para verificar tu correo electronico: ${verificationLink}`,
-//         };
-
-//         await sendEmail(mailOptions);
-//         res.status(200).send('Usuario registrado. Por favor verifica tu correo electronico');
-//     } catch (error){
-//         console.error('error en el registro: ', error);
-//         res.status(500).send('error en el registro.')
-//     }
-// };
-
-// export const verifyEmail = async(req, res) => {
-//     try{
-//         const { token } = req.params;
-//         const decodedToken = jwt.verify(token, config.JWT_SECRET);
-
-//         await User.findOneAndUpdate({ email: decodedToken.email }, { isVerified: true });
-
-
-        
-//         res.status(200).send('Correo electronico verificado correctamente');
-//     } catch (error) {
-//         console.error('Error en la verificacion', error);
-//         res.status(500).send('Error en la verificacion');
-//     }
-// }
-
-// export const login = async (req, res) => {
-
-// }
-
 import User from "../models/user";
+import bcrypt from "bcryptjs";
+import { createAccesToken } from "../libs/jwt.js";
 
-export const signup  =  async (req, res) => {
-    const {firstName, secondName, email, password } = req.body;
 
-    console.log(firstName, secondName, email, password);
+export const signup = async (req, res) => {
+  const { firstName, secondName, email, password } = req.body;
 
-    try{
-        
+  console.log(firstName, secondName, email, password);
+
+  try {
+    const hashedPassword = await bcrypt.hash(password, 10);
+
     const newUser = new User({
-        firstName,
-        secondName,
-        email,
-        password
-    })
+      firstName,
+      secondName,
+      email,
+      password: hashedPassword,
+    });
 
     console.log(newUser);
 
     const userSaved = await newUser.save();
+    const token = await createAccesToken({id: userSaved._id});
+    res.cookie("token", token);
+    res.json({
+       id: userSaved._id,
+       username: userSaved.firstName,
+       email: userSaved.email,
+    })
+    
 
 
-res.json(userSaved);
-    res.send('registrando');
+  } catch (error) {
+    res.status(550).json({message: error.message});
+  }
+};
+export const login = async (req, res) => {
+  const { email, password } = req.body;
 
-    } catch (error){
-        console.error('Error al registrar un usuario', error);
-    }
 
+  try {
+    const userFound = await User.findOne({email});
+
+    if (!userFound) return res.status(400).json({messaage: 'User Not found'});
+
+     const isMatch = await bcrypt.compare(password, userFound.password);
+     if(!isMatch) 
+      return res.status(400).json({message: 'Incorrect Password'});
+
+
+    const token = await createAccesToken({id: userFound._id});
+    res.cookie("token", token);
+    res.json({
+       id: userFound._id,
+       username: userFound.firstName,
+       email: userFound.email,
+    })
+    
+
+
+  } catch (error) {
+    res.status(550).json({message: error.message});
+  }
 }
-export const login = async (req, res) => res.send("login");
+
+export const logout = (req, res) => {
+  res.cookie('token', "", {expires: new Date(0)})
+  return res.sendStatus(200)
+}
+
+
+export const profile = async (req, res) => { 
+   const userFound = await User.findById(req.user.id)
+  if (!userFound) return res.status(400).json({message: "User not found"});
+
+  res.json({
+    id: userFound._id,
+    username: userFound.firstName,
+    email: userFound.email,
+ })
+}

@@ -1,3 +1,4 @@
-export default {
-    JWT_SECRET: process.env.JWT_SECRET
-}
+
+
+export const TOKEN_SECRET = '00936255dde6ec50318774408417bd839f59ca16c1b353d70be95967b023277e';
+
