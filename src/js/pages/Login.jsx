@@ -74,7 +74,7 @@ const Login = () => {
                   </button>
                   <p className="sm-text-login form-paragraph">
                     No tienes cuenta?{" "}
-                    <Link className="anchor-sm-login" to={'/Register'}>Registrate.</Link>
+                    <Link className="anchor-sm-login" to={'/Signup'}>Registrate.</Link>
                   </p>
                 </FormGroup>
               </Col>

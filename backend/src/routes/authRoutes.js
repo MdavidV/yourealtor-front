@@ -17,11 +17,19 @@
 // export default router;
 
 import Router from 'express';
-import { signup, login } from '../controllers/authControllers';
+import { signup, login, logout, profile } from '../controllers/authControllers';
+import { verifyToken } from '../middlewares/verifyToken.js';
+import { validateSchema } from '../middlewares/validatorMiddleware.js';
+import { registerSchema, loginSchema } from '../models/authSchema.js';
 
 const router = Router();
 
-router.post('/signup', signup);
-router.post('/login', login);
+router.post('/signup', validateSchema(registerSchema), signup);
+
+router.post('/login', validateSchema(loginSchema), login);
+
+router.post('/logout', logout);
+
+router.get('/profile', verifyToken, profile)
 
 export default router;
