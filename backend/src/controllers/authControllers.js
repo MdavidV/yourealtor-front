@@ -2,13 +2,14 @@ import User from "../models/user";
 import bcrypt from "bcryptjs";
 import { createAccesToken } from "../libs/jwt.js";
 
-
 export const signup = async (req, res) => {
   const { firstName, secondName, email, password } = req.body;
 
   console.log(firstName, secondName, email, password);
 
   try {
+   const userFound = await User.findOne({ email });
+    if (userFound) return res.status(400).json({message: ['The email is already in Use'] });
     const hashedPassword = await bcrypt.hash(password, 10);
 
     const newUser = new User({
@@ -21,62 +22,53 @@ export const signup = async (req, res) => {
     console.log(newUser);
 
     const userSaved = await newUser.save();
-    const token = await createAccesToken({id: userSaved._id});
+    const token = await createAccesToken({ id: userSaved._id });
     res.cookie("token", token);
     res.json({
-       id: userSaved._id,
-       username: userSaved.firstName,
-       email: userSaved.email,
-    })
-    
-
-
+      id: userSaved._id,
+      username: userSaved.firstName,
+      email: userSaved.email,
+    });
   } catch (error) {
-    res.status(550).json({message: error.message});
+    res.status(550).json({ message: error.message });
   }
 };
 export const login = async (req, res) => {
   const { email, password } = req.body;
 
-
   try {
-    const userFound = await User.findOne({email});
+    const userFound = await User.findOne({ email });
 
-    if (!userFound) return res.status(400).json({messaage: 'User Not found'});
+    if (!userFound) return res.status(400).json({ messaage: "User Not found" });
 
-     const isMatch = await bcrypt.compare(password, userFound.password);
-     if(!isMatch) 
-      return res.status(400).json({message: 'Incorrect Password'});
+    const isMatch = await bcrypt.compare(password, userFound.password);
+    if (!isMatch)
+      return res.status(400).json({ message: "Incorrect Password" });
 
-
-    const token = await createAccesToken({id: userFound._id});
+    const token = await createAccesToken({ id: userFound._id });
     res.cookie("token", token);
     res.json({
-       id: userFound._id,
-       username: userFound.firstName,
-       email: userFound.email,
-    })
-    
-
-
+      id: userFound._id,
+      username: userFound.firstName,
+      email: userFound.email,
+    });
   } catch (error) {
-    res.status(550).json({message: error.message});
+    res.status(550).json({ message: error.message });
   }
-}
+};
 
 export const logout = (req, res) => {
-  res.cookie('token', "", {expires: new Date(0)})
-  return res.sendStatus(200)
-}
+  res.cookie("token", "", { expires: new Date(0) });
+  return res.sendStatus(200);
+};
 
-
-export const profile = async (req, res) => { 
-   const userFound = await User.findById(req.user.id)
-  if (!userFound) return res.status(400).json({message: "User not found"});
+export const profile = async (req, res) => {
+  const userFound = await User.findById(req.user.id);
+  if (!userFound) return res.status(400).json({ message: "User not found" });
 
   res.json({
     id: userFound._id,
     username: userFound.firstName,
     email: userFound.email,
- })
-}
+  });
+};

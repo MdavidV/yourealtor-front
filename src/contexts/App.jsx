@@ -1,22 +1,22 @@
-import { Col, Container, Row } from "reactstrap";
-import ContactUs from "../js/components/contactUs";
-import NavHeader from "../js/components/NavHeader";
-import Banner from "../js/components/Banner";
-
+import Home from "../js/pages/Home.jsx";
+import Login from "../js/pages/Login.jsx";
+import Signup from "../js/pages/Signup.jsx";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { AuthProvider } from "./AuthContext.jsx";
 
 function App() {
-
-  
-
   return (
-    <>
-      <NavHeader></NavHeader>
-      <Banner></Banner>
-      <Container>
-        <ContactUs></ContactUs>
+    <AuthProvider>
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/signup" element={<Signup />} />
+        </Routes>
+      </BrowserRouter>
 
-      </Container>
-    </>
+
+    </AuthProvider>
   );
 }
 

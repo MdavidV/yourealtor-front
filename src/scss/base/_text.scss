@@ -28,7 +28,7 @@
 
 .form-title-login{
     @include texts($tittle-weight, $semantic-text-color, $tittle-size);
-    margin: 70px 0 48px 0 ;
+    margin: 70px 0 48px 0;
 }
 
 .form-title-sign{
@@ -38,4 +38,8 @@
 
 .form-paragraph{
     @include texts($semantic-weight, $white, $semantic-size)
+}
+
+.error-message{
+    @include texts($semantic-weight, $semantic-text-color, $semantic-size);
 }

@@ -1,12 +1,14 @@
 import { useForm } from "react-hook-form";
-import React from "react";
+import React, { useEffect } from "react";
 import Logo from "../../assets/logo_unScrolled.png";
 import Bg from "../../assets/Bg_Form_View.jpg";
 import { Col, Container, Row } from "reactstrap";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { registerRequest } from "../../api/auth";
+import { useAuth } from "../../contexts/AuthContext";
 
 const Signup = () => {
+  const navigate = useNavigate();
   const {
     register,
     handleSubmit,
@@ -14,6 +16,14 @@ const Signup = () => {
     setError,
     formState: { errors, isDirty },
   } = useForm();
+  const { signup, isAuthenticated, errors: registerErrors } = useAuth();
+
+  useEffect(() => {
+    if (isAuthenticated) navigate("/");
+  }, [isAuthenticated]);
+
+
+
 
   const onSubmit = handleSubmit(async (values) => {
     if (values.password !== values.confirmPassword) {
@@ -22,8 +32,7 @@ const Signup = () => {
         message: "Passwords doesnt match",
       });
     } else {
-      const res = await registerRequest(values);
-      console.log(res);
+      signup(values);
     }
   });
 
@@ -40,140 +49,83 @@ const Signup = () => {
 
       <Container className="d-flex justify-content-center align-items-center ">
         <div className="col-6 p-3  form-login-cont">
-          <Row>
-            <Col className="my-3 text-center">
-              <h1 className="form-title-sign">Registrate</h1>
-            </Col>
-          </Row>
-
-          {/* <form
-            className=""
-            onSubmit={handleSubmit((values) => {
-              if (values.password !== values.confirmPassword) {
-                setError("confirmPassword", {
-                  type: "manual",
-                  message: "Passwords doesnt match",
-                });
-              } else {
-                console.log(values);
-              }
-            })}
-          >
-            <div className="input-text-container">
-              <div className="">
-
-              <label htmlFor="name" className="form-paragraph">Name</label>
-              <input
-                type="text"
-                id="name"
-                className="form-input"
-                {...register("firstName", { required: true })}
-              />
-              </div>
-              <label htmlFor="secondName" className="form-paragraph">Second Name</label>
-              <input
-                type="text"
-                className="form-input  "
-                {...register("secondName", { required: true })}
-              />
-            </div>
-
-            <input
-              type="email"
-              placeholder="email"
-              className="form-input d-block col-10 m-3"
-              {...register("email", { required: true })}
-            />
-
-            <input
-              type="password"
-              placeholder="password"
-              className="form-input"
-              {...register("password", { required: true })}
-            />
-            {errors.password && <p>Password is required</p>}
-
-            <input
-              type="password"
-              placeholder="Confirm password"
-              className="form-input"
-              {...register("confirmPassword", {
-                required: true,
-                validate: (value) =>
-                  value === password || console.log("Passwords doesnt match"),
-              })}
-            />
-
-            <Row className="d-flex justify-content-center">
-              <Col sm="4" md="10">
-                <FormGroup className="d-flex flex-column">
-                  <button
-                    type="submit"
-                    className=" primary-button-xl button-login my-3"
-                    disabled={!isDirty || Object.keys(errors).length > 0}
-                  >
-                    Registrate
-                  </button>
-                  <p className="sm-text-login form-paragraph">
-                    Ya posees una cuenta?{" "}
-                    <Link className="anchor-sm-login" to={"/Login"}>
-                      Ingresa.
-                    </Link>
-                  </p>
-                </FormGroup>
-              </Col>
-            </Row>
-          </form> */}
+        
 
           <div className="form-container">
+            <div>
+              <Col className="my-3 text-center">
+                <h1 className="form-title-sign">Registrate</h1>
+              </Col>
+            </div>
+            <Col className="m-3">
+            {
+              registerErrors.map((error, i) => ( 
+                <p className="error-message" key={i}>{error}</p>
+               ))
+            }
+            </Col>
+          
             <form className="my-form" id="myForm" onSubmit={onSubmit}>
               <div className="form-group">
-                <div className="name-container">
+                <div className="name-container ">
                   <div className="form-group">
-                    <label htmlFor="firstName">Nombre</label>
+                    <label className="form-paragraph" htmlFor="firstName">
+                      Nombre
+                    </label>
                     <input
                       type="text"
                       id="firstName"
                       className="form-input"
                       {...register("firstName", { required: true })}
                     />
+                    {errors.firstName && <p className="error-message">First Name is required</p>}
                   </div>
 
-                  <div className="form-group">
-                    <label htmlFor="secondName">Apellido</label>
+                  <div className="form-group second-name">
+                    <label className="form-paragraph" htmlFor="secondName">
+                      Apellido
+                    </label>
                     <input
                       type="text"
                       id="secondName"
                       className="form-input"
                       {...register("secondName", { required: true })}
                     />
+                    {errors.secondName && <p className="error-message">Second Name is required</p>}
                   </div>
                 </div>
               </div>
 
               <div className="form-group">
-                <label htmlFor="email">Correo Electrónico</label>
+                <label className="form-paragraph" htmlFor="email">
+                  Correo Electrónico
+                </label>
                 <input
                   type="email"
                   id="email"
                   className="form-input"
                   {...register("email", { required: true })}
                 />
+                {errors.email && <p className="error-message">Email is required</p>}
               </div>
 
               <div className="form-group">
-                <label htmlFor="password">Contraseña</label>
+                <label className="form-paragraph" htmlFor="password">
+                  Contraseña
+                </label>
                 <input
                   type="password"
                   id="password"
                   className="form-input"
                   {...register("password", { required: true })}
                 />
-                {errors.password && <p>Password is required</p>}
+                {errors.password && <p className="error-message">Password is required</p>}
               </div>
 
               <div className="form-group">
-                <label htmlFor="confirmPassword">Confirmar Contraseña</label>
+                <label className="form-paragraph" htmlFor="confirmPassword">
+                  Confirmar Contraseña
+                </label>
                 <input
                   type="password"
                   id="confirmPassword"
@@ -182,13 +134,19 @@ const Signup = () => {
                     required: true,
                     validate: (value) =>
                       value === password ||
-                      console.log("Passwords doesnt match"),
+                      errors.confirmPassword && "passwords doesnt match"
                   })}
                 />
+                {errors.confirmPassword && (
+              <p className="error-message">{errors.confirmPassword.message}</p>
+            )}
               </div>
 
               <div className="form-group">
-                <button type="submit" className="submit-button">
+                <button
+                  type="submit"
+                  className="button-login primary-button-xl "
+                >
                   Registrarse
                 </button>
               </div>
