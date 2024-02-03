@@ -1,85 +1,103 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Logo from "../../assets/logo_unScrolled.png";
 import Bg from "../../assets/Bg_Form_View.jpg";
 import { Col, Container, Form, FormGroup, Input, Label, Row } from "reactstrap";
-import { Link } from "react-router-dom";
-
+import { Link, useNavigate } from "react-router-dom";
+import { useForm } from "react-hook-form";
+import { useAuth } from "../../contexts/AuthContext";
 
 const Login = () => {
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm();
+
+  const { login, errors: loginErrors, isAuthenticated } = useAuth();
+  const navigate = useNavigate()
+
+  const onSubmit = handleSubmit((data) => {
+    login(data);
+  });
+
+  useEffect( () => {
+    if(isAuthenticated) navigate('/');
+  }, [isAuthenticated])
+
   return (
     <div className="login-view">
-      <img src={Bg} className="login-bg"/>
+      <img src={Bg} className="login-bg" />
       <div className="logo-container">
-        <Link to={'/'}>
-            <img src={Logo} />
-        
+        <Link to={"/"}>
+          <img src={Logo} />
         </Link>
       </div>
 
-      <Container  className="d-flex justify-content-center align-items-center ">
+      <Container className="d-flex justify-content-center align-items-center ">
         <div className="col-6 p-3  form-login-cont">
-          <Row>
-            <Col  className="my-3 text-center">
-              <h1 className="form-title-login">Inicia Sesion</h1>
+          <div className="form-container">
+            <div>
+              <Col className="my-3 text-center">
+                <h1 className="form-title-sign">Inicia Sesion</h1>
+              </Col>
+            </div>
+            <Col className="m-3">
+              {loginErrors.map((error, i) => (
+                <p className="error-message text-center" key={i}>
+                  {error}
+                </p>
+              ))}
             </Col>
-          </Row>
 
-          <Form>
-            <Row className="d-flex justify-content-center">
-              <Col sm="4" md="9">
-                <FormGroup>
-                  <Label for="emailLogin" className="form-paragraph">Correo electrónico</Label>
-                  <Input
-                    className="form-input form-paragraph"
-                    type="email"
-                    name="emailLogin"
-                    id="emailLogin"
-                  ></Input>
-                </FormGroup>
-              </Col>
-            </Row>
+            <form className="my-form" id="myForm" onSubmit={onSubmit}>
+              <div className="form-group">
+                <label className="form-paragraph" htmlFor="email">
+                  Correo Electrónico
+                </label>
+                <input
+                  type="email"
+                  id="email"
+                  className="form-input"
+                  {...register("email", { required: true })}
+                />
+                {errors.email && (
+                  <p className="error-message">Email is required</p>
+                )}
+              </div>
 
-            <Row className="d-flex justify-content-center">
-              <Col sm="4" md="9">
-                <FormGroup>
-                  <Label for="emailLogin" className="form-paragraph">Contrasena</Label>
-                  <Input
-                    className="form-input form-paragraph"
-                    type="password"
-                    name="passwordLogin"
-                    id="passwordLogin"
-                  ></Input>
-                </FormGroup>
-              </Col>
-            </Row>
+              <div className="form-group">
+                <label className="form-paragraph" htmlFor="password">
+                  Contraseña
+                </label>
+                <input
+                  type="password"
+                  id="password"
+                  className="form-input"
+                  {...register("password", { required: true })}
+                />
+                {errors.password && (
+                  <p className="error-message">Password is required</p>
+                )}
+              </div>
 
-            <Row className="d-flex justify-content-center">
-              <Col sm="4" md="9">
-                <FormGroup className="checkbox-container">
-                  <input
-                    type="checkbox"
-                    name="checkLogin"
-                    id="checkLogin"
-                    className=" form-paragraph"
-                  />
-                  <Label for="checkLogin" className="form-paragraph mx-3">Permanecer Conectado</Label>
-                </FormGroup>
+              <div className="form-group">
+                <button
+                  type="submit"
+                  className="button-login primary-button-xl "
+                >
+                  Inicia sesion
+                </button>
+              </div>
 
-                <FormGroup className="d-flex flex-column">
-                  <button
-                    type="submit"
-                    className="primary-button-xl button-login my-3"
-                  >
-                    Inicia Sesion
-                  </button>
-                  <p className="sm-text-login form-paragraph">
-                    No tienes cuenta?{" "}
-                    <Link className="anchor-sm-login" to={'/Signup'}>Registrate.</Link>
-                  </p>
-                </FormGroup>
-              </Col>
-            </Row>
-          </Form>
+              <p className="form-paragraph">
+                ¿Aun no posees una cuenta?{" "}
+                <Link to={"/signup"} className="login-link">
+                  Registrate
+                </Link>
+                .
+              </p>
+            </form>
+          </div>
         </div>
       </Container>
     </div>

@@ -7,7 +7,7 @@ export function createAccesToken(payload) {
       payload,
       TOKEN_SECRET,
       {
-        expiresIn: "1d",
+        expiresIn: "1h",
       },
       (err, token) => {
         if (err) reject(err);
@@ -15,4 +15,20 @@ export function createAccesToken(payload) {
       }
     );
   });
+}
+
+export const createVerificationToken = (userId) => {
+  const token = jwt.sign({userId}, TOKEN_SECRET,{  expiresIn: '1h'});
+  return token;
+  
+}
+
+export const verifyVerificationToken = (token) => {
+  try {
+    const decoded = jwt.verify(token, TOKEN_SECRET);
+    return decoded.userId
+  } catch (error) {
+    console.error('Error verifying verification token:', error);
+    return null;
+  }
 }

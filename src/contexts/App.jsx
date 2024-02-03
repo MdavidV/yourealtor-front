@@ -1,22 +1,29 @@
-import { Col, Container, Row } from "reactstrap";
-import ContactUs from "../js/components/contactUs";
-import NavHeader from "../js/components/NavHeader";
-import Banner from "../js/components/Banner";
+import Home from "../js/pages/Home.jsx";
+import Login from "../js/pages/Login.jsx";
+import Signup from "../js/pages/Signup.jsx";
+import Profile from "../js/pages/Profile.jsx";
+import ConfirmView from "../js/pages/confirmView.jsx";
 
+
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { AuthProvider } from "./AuthContext.jsx";
+import ProtectedRoute from "../ProtectedRoute.jsx";
 
 function App() {
-
-  
-
   return (
-    <>
-      <NavHeader></NavHeader>
-      <Banner></Banner>
-      <Container>
-        <ContactUs></ContactUs>
-
-      </Container>
-    </>
+    <AuthProvider>
+      <BrowserRouter>
+        <Routes>
+          <Route path="/confirm/:token" element={<ConfirmView/>}/>
+          <Route path="/login" element={<Login />} />
+          <Route path="/signup" element={<Signup />} />
+          <Route path="/" element={<Home />} />
+          <Route element={<ProtectedRoute />}>
+            <Route path="/profile" element={<Profile />} />
+          </Route>
+        </Routes>
+      </BrowserRouter>
+    </AuthProvider>
   );
 }
 

@@ -24,7 +24,7 @@ $paragraph-size-20: 20px;
 
 $semantic-weight: 300;
 $semantic-size: 16px;
-$semanitic-small-size: 10px;
+$semantic-small-size: 10px;
 
 $button-text-xl: 24px;
 $button-text-l: 16px;
@@ -40,6 +40,7 @@ $white: #fff;
 
 $yellow1: #f9ef90;
 $yellow2: #cda434;
+$yellow2-rgba-opacity-low: rgba(205, 164, 52, 0.1);
 $yellow3: #aea764;
 $yellow4: #886d24;
 $yellow4-light: #886d244d;
@@ -47,6 +48,7 @@ $yellow4-light: #886d244d;
 $gray1: #cacaca;
 $gray2: #f3f6fc;
 $gray3: #1f1f1f;
+$gray4: rgba(84, 84, 84, 0.6);
 
 $gray3-opacity33: rgba(31, 31, 31, 0.33);
 
@@ -64,5 +66,6 @@ $paragraph-color: $black;
 /*---- semantic colors ----*/
 $semantic-gradient: linear-gradient(114deg, $yellow1 0%, $yellow2 32%, $yellow1 68%, $yellow2 100%);
 $secondary-gradient: linear-gradient(114deg, $yellow3 0%, $yellow4 32%, $yellow3 68%, $yellow4 100%);
+$dark-gradient: linear-gradient(0deg, $black 0%, $gray4 100%);
 
-
+// linear-gradient(0deg, rgba(0, 0, 0, 1) 0%, rgba(84, 84, 84, 0.6) 100%)

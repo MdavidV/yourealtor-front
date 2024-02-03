@@ -1,41 +1,62 @@
 // NAV TEXTS
 
-.nav-fixed-text{
-    @include texts($semantic-weight, $bg-color, $paragraph-size-20);
+.nav-fixed-text {
+  @include texts($semantic-weight, $bg-color, $paragraph-size-20);
 }
 
-.nav-scrolled-text{
-    @include texts($semantic-weight, $semantic-text-color, $paragraph-size-20);
+.nav-scrolled-text {
+  @include texts($semantic-weight, $semantic-text-color, $paragraph-size-20);
 }
-
 
 // BANNER TEXTS
 
-.banner-tittle{
-    @include texts($tittle-weight , $bg-color, $tittle-size);
-    text-align: center;
+.banner-tittle {
+  @include texts($tittle-weight, $bg-color, $tittle-size);
+  text-align: center;
 }
 
-.banner-text{
-    @include texts($paragraph-weight,  $bg-color, $paragraph-size-20);
-    text-align: center;
+.banner-text {
+  @include texts($paragraph-weight, $bg-color, $paragraph-size-20);
+  text-align: center;
 }
 
 //Tiles
-
+.section-title {
+  @include texts($section-heading-weight, $black, $tittle-size);
+}
 
 // FORM TEXTS
 
-.form-title-login{
-    @include texts($tittle-weight, $semantic-text-color, $tittle-size);
-    margin: 70px 0 48px 0 ;
+.form-title-login {
+  @include texts($tittle-weight, $semantic-text-color, $tittle-size);
+  margin: 70px 0 48px 0;
 }
 
-.form-title-sign{
-    @include texts($tittle-weight, $semantic-text-color, $tittle-size);
-    margin: 40px 0 ;
+.form-title-sign {
+  @include texts($tittle-weight, $semantic-text-color, $tittle-size);
+  margin: 40px 0;
 }
 
-.form-paragraph{
-    @include texts($semantic-weight, $white, $semantic-size)
+.form-paragraph {
+  @include texts($semantic-weight, $white, $semantic-size);
+}
+
+.error-message {
+  @include texts($semantic-weight, $semantic-text-color, $semantic-size);
+}
+
+
+// SECTIONS TEXTS
+
+.about-us-text{
+    @include texts($semantic-weight, $black, $paragraph-size);
+}
+
+.assesor-card-text{
+    @include texts($semantic-weight, $white, $button-text-sm);
+}
+
+.assesor-card-title{
+    @include texts($subheading-weight, $white, $paragraph-size-20);
+    font-family: $paragraph-font;
 }
