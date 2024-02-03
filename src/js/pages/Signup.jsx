@@ -3,9 +3,10 @@ import React, { useEffect } from "react";
 import Logo from "../../assets/logo_unScrolled.png";
 import Bg from "../../assets/Bg_Form_View.jpg";
 import { Col, Container, Row } from "reactstrap";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate,  } from "react-router-dom";
 import { registerRequest } from "../../api/auth";
 import { useAuth } from "../../contexts/AuthContext";
+import Swal from "sweetalert2";
 
 const Signup = () => {
   const navigate = useNavigate();
@@ -19,7 +20,19 @@ const Signup = () => {
   const { signup, isAuthenticated, errors: registerErrors } = useAuth();
 
   useEffect(() => {
-    if (isAuthenticated) navigate("/");
+    if (isAuthenticated) {
+      Swal.fire({
+        title: "Confirma tu correo",
+        text:'Recuerda revisar tu correo para confirmar tu cuenta!',
+        icon: 'question', 
+      })
+      const timeoutId = setTimeout( () => {
+        navigate('/');
+      }, 3000)
+
+      return () => clearTimeout(timeoutId);
+      
+    };
   }, [isAuthenticated]);
 
 

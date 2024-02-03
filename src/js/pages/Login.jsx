@@ -1,8 +1,8 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Logo from "../../assets/logo_unScrolled.png";
 import Bg from "../../assets/Bg_Form_View.jpg";
 import { Col, Container, Form, FormGroup, Input, Label, Row } from "reactstrap";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { useAuth } from "../../contexts/AuthContext";
 
@@ -13,11 +13,16 @@ const Login = () => {
     formState: { errors },
   } = useForm();
 
-  const { login, errors: loginErrors } = useAuth();
+  const { login, errors: loginErrors, isAuthenticated } = useAuth();
+  const navigate = useNavigate()
 
   const onSubmit = handleSubmit((data) => {
     login(data);
   });
+
+  useEffect( () => {
+    if(isAuthenticated) navigate('/');
+  }, [isAuthenticated])
 
   return (
     <div className="login-view">
@@ -33,7 +38,7 @@ const Login = () => {
           <div className="form-container">
             <div>
               <Col className="my-3 text-center">
-                <h1 className="form-title-sign">Registrate</h1>
+                <h1 className="form-title-sign">Inicia Sesion</h1>
               </Col>
             </div>
             <Col className="m-3">

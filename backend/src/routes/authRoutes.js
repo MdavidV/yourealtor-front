@@ -17,12 +17,17 @@
 // export default router;
 
 import Router from 'express';
-import { signup, login, logout, profile } from '../controllers/authControllers';
-import { verifyToken } from '../middlewares/verifyToken.js';
+import { signup, login, logout, profile, verifyToken, confirm } from '../controllers/authControllers';
+import { authRequired } from '../middlewares/verifyToken.js';
 import { validateSchema } from '../middlewares/validatorMiddleware.js';
 import { registerSchema, loginSchema } from '../models/authSchema.js';
 
 const router = Router();
+
+router.get('/confirm/:token', confirm);
+router.get('/profile', authRequired, profile);
+router.get('/verify', verifyToken);
+
 
 router.post('/signup', validateSchema(registerSchema), signup);
 
@@ -30,6 +35,9 @@ router.post('/login', validateSchema(loginSchema), login);
 
 router.post('/logout', logout);
 
-router.get('/profile', verifyToken, profile)
+
+
+
+
 
 export default router;
