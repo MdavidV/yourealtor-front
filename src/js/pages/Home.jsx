@@ -6,19 +6,24 @@ import ContactUs from "../components/ContactUs";
 import AboutUs from "../components/AboutUs";
 import OurAllys from "../components/OurAllys";
 import OurTeam from "../components/OurTeam";
+import MapSection from "../components/MapSection";
+import Footer from "../components/Footer";
 
 const Home = () => {
   return (
     <>
-      <NavHeader></NavHeader>
-      <Banner></Banner>
-      <Container>
-        <AboutUs />
-      </Container>
+      <NavHeader />
+      <Banner />
+
+      <AboutUs />
+
       <OurAllys />
       <OurTeam />
       <ContactUs />
+      <MapSection />
+      <Footer />
     </>
+
   );
 };
 

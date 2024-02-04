@@ -14,7 +14,10 @@ import {
 const ContactUs = () => {
   return (
     <div>
-      <Container>
+      <Container className="my-5">
+        <Row>
+          <h1 className="section-title text-center my-3"> Contactenos </h1>
+        </Row>
         <Row className="form mt-3">
           <Col className="form_side">
             <Form className="form_group">
