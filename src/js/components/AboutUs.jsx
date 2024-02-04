@@ -1,10 +1,11 @@
 import React from "react";
 import Asset1 from "../../assets/About_Us1.jpg";
 import Asset2 from "../../assets/About_Us2.jpg";
+import { Container } from "reactstrap";
 
 const AboutUs = () => {
   return (
-    <div className="my-5">
+    <Container className="my-5">
       <h1 className="section-title my-2 text-center">Quienes Somos?</h1>
       <div className="grid-container">
         <img src={Asset1} className="grid-item imagen1" />
@@ -40,7 +41,7 @@ const AboutUs = () => {
         </div>
    
       </div>
-    </div>
+    </Container>
   );
 };
 
