@@ -23,11 +23,11 @@ const Footer = () => {
               <h3 className="footer-title">Contacto</h3>
               <a href="#" className="mt-2">
                 {" "}
-                <i class="bi bi-geo-alt-fill"></i> Av. 26 # 12 - 01
+                <i className="bi bi-geo-alt-fill"></i> Av. 26 # 12 - 01
               </a>
               <a href="#" className="mt-2">
                 {" "}
-                <i class="bi bi-envelope-fill"></i> info@yourealtor.co
+                <i className="bi bi-envelope-fill"></i> info@yourealtor.co
               </a>
             </div>
           </Col>
@@ -38,19 +38,19 @@ const Footer = () => {
               <div className="links-cont">
                 <div className="links-cont1 mt-2">
                   <a href="#">
-                    <i class="bi bi-arrow-right-circle-fill me-2"></i>FAQ
+                    <i className="bi bi-arrow-right-circle-fill me-2"></i>FAQ
                   </a>
                   <a href="#" className="mx-4">
-                    <i class="bi bi-arrow-right-circle-fill me-2"></i>Acerca de
+                    <i className="bi bi-arrow-right-circle-fill me-2"></i>Acerca de
                   </a>
                 </div>
                 <div className="links-cont2 mt-2">
                   <a href="#">
-                    <i class="bi bi-arrow-right-circle-fill me-2"></i>Buscar
+                    <i className="bi bi-arrow-right-circle-fill me-2"></i>Buscar
                     apartamento
                   </a>
                   <a href="#" className="mx-4">
-                    <i class="bi bi-arrow-right-circle-fill me-2"></i>Contactanos
+                    <i className="bi bi-arrow-right-circle-fill me-2"></i>Contactanos
                   </a>
                 </div>
               </div>
