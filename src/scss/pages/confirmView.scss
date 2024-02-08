@@ -1,0 +1,28 @@
+.bg-cont {
+  width: 100vw;
+  height: 100vh;
+  object-fit: cover;
+  position: absolute;
+}
+.verify-cont {
+  padding: 140px 0;
+
+  .cont {
+    width: 600px;
+    height: 600px;
+    margin: auto;
+    background-color: $primary-light-color;
+    position: relative;
+    border-radius: 15px;
+    p{
+        margin: 35px 0;
+        
+    }
+    .check-video{
+        width: 300px;
+        height: auto;
+        
+        
+    }
+  }
+}

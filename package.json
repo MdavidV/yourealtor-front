@@ -10,7 +10,9 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@lordicon/react": "^1.4.1",
     "@sweetalert2/theme-borderless": "^5.0.16",
+    "animate.css": "^4.1.1",
     "axios": "^1.6.7",
     "boostrap": "^2.0.0",
     "bootstrap": "^5.3.2",

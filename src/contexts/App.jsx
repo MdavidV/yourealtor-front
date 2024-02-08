@@ -21,6 +21,7 @@ function App() {
           <Route element={<ProtectedRoute />}>
             <Route path="/profile" element={<Profile />} />
           </Route>
+          <Route path='/confirmView' element={<ConfirmView/>}></Route>
         </Routes>
       </BrowserRouter>
     </AuthProvider>
