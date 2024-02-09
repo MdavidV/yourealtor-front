@@ -2,9 +2,13 @@ import User from "../models/user";
 import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
 import { TOKEN_SECRET } from "../config.js";
-import { createAccesToken, createVerificationToken, verifyVerificationToken } from "../libs/jwt.js";
+import {
+  createAccesToken,
+  createVerificationToken,
+  verifyVerificationToken,
+} from "../libs/jwt.js";
 import { getTemplate, sendEmail } from "../libs/sendEmail.js";
-import user from "../models/user";
+// import User from "../models/user";
 
 export const signup = async (req, res) => {
   const { firstName, secondName, email, password } = req.body;
@@ -25,27 +29,23 @@ export const signup = async (req, res) => {
     });
 
     console.log(newUser);
-    
-    
+
     const userSaved = await newUser.save();
     const token = await createAccesToken({ id: userSaved._id });
 
-     const verificationToken = await createVerificationToken(userSaved._id);
+    const verificationToken = await createVerificationToken(userSaved._id);
     const template = getTemplate(firstName, verificationToken);
-    await sendEmail(email, 'Este es un email de prueba', template);
+    await sendEmail(email, "Confirma Tu email", template);
     res.cookie("token", token);
     res.json({
       id: userSaved._id,
       username: userSaved.firstName,
       email: userSaved.email,
     });
-
-    
   } catch (error) {
     res.status(550).json({ message: error.message });
   }
 };
-
 
 export const login = async (req, res) => {
   const { email, password } = req.body;
@@ -59,62 +59,21 @@ export const login = async (req, res) => {
     if (!isMatch)
       return res.status(400).json({ message: "Incorrect Password" });
 
+    if (userFound.status !== "VERIFIED")
+      return res.status(400).json({ message: "El usuario no está verificado" });
+
     const token = await createAccesToken({ id: userFound._id });
     res.cookie("token", token);
     res.json({
       id: userFound._id,
       username: userFound.firstName,
       email: userFound.email,
+      role: userFound.role,
     });
   } catch (error) {
     res.status(550).json({ message: error.message });
   }
 };
-
-export const logout = (req, res) => {
-  res.cookie("token", "", { expires: new Date(0) });
-  return res.sendStatus(200);
-};
-
-export const profile = async (req, res) => {
-  const userFound = await User.findById(req.user.id);
-  if (!userFound) return res.status(400).json({ message: "User not found" });
-
-  res.json({
-    id: userFound._id,
-    username: userFound.firstName,
-    email: userFound.email,
-  });
-};
-
-export const confirm = async (req, res) => {
-  try {
-  const {token} = req.params;
-  console.log(token)
-
-   const userId = await verifyVerificationToken(token);
-
-   if(!userId) {
-    return res.json({message: 'Token no proporcionado'})
-   }
-
-   const userFound = await User.findById(userId);
-
-   if(!userFound) {
-    return res.status(404).json({ message: 'Usuario no encontrado' });
-   }
-
-   userFound.status = 'VERIFIED',
-   await userFound.save();
-   console.log('User status changed to VERIFIED')
-   res.json({ redirectUrl: `http://localhost:5173/` });
-   
-  } catch (error) {
-    console.log('error al confirmar usuario', error)
-  }
-}
-
-
 
 export const verifyToken = async (req, res) => {
   const { token } = req.cookies;
@@ -130,7 +89,49 @@ export const verifyToken = async (req, res) => {
       id: userFound._id,
       username: userFound.firstName,
       email: userFound.email,
-    })
+      role: userFound.role,
+    });
   });
 };
 
+export const logout = (req, res) => {
+  res.cookie("token", "", { expires: new Date(0) });
+  return res.sendStatus(200);
+};
+
+export const profile = async (req, res) => {
+  const userFound = await User.findById(req.user.id);
+  if (!userFound) return res.status(400).json({ message: "User not found" });
+
+  res.json({
+    id: userFound._id,
+    username: userFound.firstName,
+    email: userFound.email,
+    role: userFound.role,
+  });
+};
+
+export const confirm = async (req, res) => {
+  try {
+    const { token } = req.params;
+    console.log(token);
+
+    const userId = await verifyVerificationToken(token);
+
+    if (!userId) {
+      return res.json({ message: "Token no proporcionado" });
+    }
+
+    const userFound = await User.findById(userId);
+
+    if (!userFound) {
+      return res.status(404).json({ message: "Usuario no encontrado" });
+    }
+
+    (userFound.status = "VERIFIED"), await userFound.save();
+    console.log("User status changed to VERIFIED");
+    res.json({ redirectUrl: `http://localhost:5173/` });
+  } catch (error) {
+    console.log("error al confirmar usuario", error);
+  }
+};

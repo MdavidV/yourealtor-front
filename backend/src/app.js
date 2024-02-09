@@ -3,8 +3,9 @@ import "dotenv/config";
 import express from "express";
 import bodyParser from "body-parser";
 import morgan from "morgan";
-import authRoutes from "./routes/authRoutes";
 import cookieParser from "cookie-parser";
+
+import authRoutes from "./routes/authRoutes";
 
 import cors from 'cors';
 const app = express();
