@@ -1,4 +1,7 @@
 .aboutUs{  
+  &__section{
+    align-items: center;
+  }
   &__content{
     &--images{
       display: flex;
@@ -69,9 +72,11 @@
         padding: 0px 30px 200px 30px;
         margin-top: 0px;
       }
+      &--text {
+        max-width: 60%;
+      }
     }
-  }
-  
+  }  
 }
 
 
