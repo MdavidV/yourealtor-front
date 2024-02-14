@@ -1,17 +1,19 @@
 [
     {
-        "title": "Apartamento en venta",
-        "sale": true,
-        "isNew": true,
-        "rooms": 2,
-        "baths": 1,
-        "mts": 53,
-        "price": "150'000.000$ COP",
-        "location": "Medellin",
-        "images": [
+        "Nombre": "Apartamento en venta",
+        "Ubicacion": "Medellin",
+        "Area": 53,
+        "precio": "150'000.000$ COP",
+        "imagenes": [
             "https://imagenesmuestra1.s3.amazonaws.com/douglas-sheppard-9rYfG8sWRVo-unsplash.jpg",
             "https://imagenesmuestra1.s3.amazonaws.com/naomi-hebert-MP0bgaS_d1c-unsplash.jpg"
-        ]
+        ],
+        "Arriendo": false,
+        "Venta": true,
+        "ArriendoCorto": false,
+        "Habitaciones": 2,
+        "Baños": 1,
+        "Nuevo": false
     },
     {
         "title": "Apartamento en venta",

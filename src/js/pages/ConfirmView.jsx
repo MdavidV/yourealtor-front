@@ -52,7 +52,7 @@ const ConfirmView = () => {
 
 
   return (
-    ----
+   
     <>
       <img src={Bg} alt="" className="bg-cont" />
       <div className="verify-cont ">
