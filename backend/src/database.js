@@ -1,9 +1,10 @@
 import mongoose from 'mongoose';
+import { MONGO_URI, DB_NAME } from './config';
 
 export const connectToDatabase = async () => {
     try{
-        await mongoose.connect("mongodb+srv://dbTech:Ozzy63%2423@yourealtor-try.h5ah1xy.mongodb.net/?retryWrites=true&w=majority", {
-            dbName: 'Users'
+        await mongoose.connect(MONGO_URI, {
+            dbName: DB_NAME
         })
 
         console.log('Conexion a la base de datos exitosa');

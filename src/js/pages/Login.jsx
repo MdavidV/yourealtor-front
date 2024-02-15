@@ -13,7 +13,7 @@ const Login = () => {
     formState: { errors },
   } = useForm();
 
-  const { login, errors: loginErrors, isAuthenticated } = useAuth();
+  const { login, errors: loginErrors, isAuthenticated, getActivos } = useAuth();
   const navigate = useNavigate()
 
   const onSubmit = handleSubmit((data) => {
@@ -23,6 +23,10 @@ const Login = () => {
   useEffect( () => {
     if(isAuthenticated) navigate('/');
   }, [isAuthenticated])
+
+  useEffect( () => {
+    getActivos();
+  })
 
   return (
     <div className="login-view">
