@@ -14,9 +14,7 @@ const Home = () => {
     <>
       <NavHeader />
       <Banner />
-
       <AboutUs />
-
       <OurAllys />
       <OurTeam />
       <ContactUs />

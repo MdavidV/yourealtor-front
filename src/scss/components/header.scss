@@ -1,32 +1,104 @@
-.nav{
-    position: absolute;
-    z-index: 10;
-    a{
-      &:hover{
-        text-decoration: underline;
-      }
-    }
-}
-
-.default-navbar {
-  background-color: transparent;
-  border: none;
-  @include transition-nav;
-}
-
-.scrolled {
-    width: 100%;
-    background-color: $base-color;
-    position: fixed;
-    top: 0;
-
-    border-bottom: 1px solid $yellow1;
-    
-    .img-container {
-      margin: 10px;
-      img {
-        width: 60%;
-      }
+nav.mynavbar{
+  .navbar-brand{
+    img {
+      width: 60%;
     }
   }
-  
+  a.nav-link{
+    color: $white;
+    &:hover{
+      text-decoration: underline;
+    }
+  }
+  .collapse.navbar-collapse{
+    align-items: baseline;
+  }
+  ul.ml-auto.myLogin.navbar-nav {
+      width: 10%;
+      justify-content: flex-end;
+  }
+  > div{
+    width: 90%;
+    max-width: 1440px;
+  }
+  .myLogin{
+    width: fit-content;
+  }
+  .navbar-brand{
+    margin-right: 0;
+  }
+}
+.navbar__fixed{
+  transition: background-color 0.3s, box-shadow 0.3s;
+  background-color: $base-color;
+  border-bottom: 1px solid $yellow1;
+  box-shadow: 0 2px 4px rgba(0,0,0,.1);
+  button.navbar-toggler{
+    &:focus{
+      box-shadow: 0 0 3px 1px #f9ef90;
+    }
+    background-color: $yellow2;
+  }
+  .collapse.navbar-collapse{
+    justify-content: space-between;
+      ul.ml-auto.mynavbarItems.navbar-nav {
+        margin: auto;
+    }
+  }
+}
+.navbar__collapse{
+  .navbar-toggler{
+    border: 1px solid $white;
+    .navbar-toggler-icon{
+      filter: invert(100%);
+    }
+  }
+  .collapse.navbar-collapse {
+    justify-content: flex-end;
+  }
+  ul.ml-auto.mynavbarItems.navbar-nav {
+    width: 100%;
+    justify-content: flex-end;
+  }
+}
+
+
+@media screen and (min-width: $Large){
+  .navbar__collapse{
+    ul.ml-auto.mynavbarItems.navbar-nav {
+      width: 80%;
+      justify-content: space-between;
+    }
+  }
+  .navbar__fixed{
+    .collapse.navbar-collapse ul.ml-auto.mynavbarItems.navbar-nav {
+      width: 70%;
+      justify-content: space-between;
+    }
+  }
+}
+@media screen and (min-width: $X-Large){
+  .navbar__collapse{
+    ul.ml-auto.mynavbarItems.navbar-nav {
+      width: 70%;
+    }
+  }
+  .navbar__fixed{
+    .collapse.navbar-collapse ul.ml-auto.mynavbarItems.navbar-nav {
+      width: 60%;
+    }
+  }
+}
+@media screen and (min-width: $XX-Large){
+  .navbar__collapse{
+    ul.ml-auto.mynavbarItems.navbar-nav {
+      width: 60%;
+    }
+  }
+  .navbar__fixed{
+    .collapse.navbar-collapse ul.ml-auto.mynavbarItems.navbar-nav {
+      width: 50%;
+    }
+  }
+}
+
