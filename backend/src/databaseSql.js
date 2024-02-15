@@ -1,4 +1,4 @@
-import { SQL_HOST, SQL_USER, SQL_PASSWORD, SQL_DB } from './config';
+import { SQL_HOST, SQL_USER, SQL_PASSWORD, SQL_DB } from './config.js';
 import dotenv from 'dotenv';
 import mysql from 'mysql2';
 

@@ -7,7 +7,7 @@ Object.defineProperty(exports, "__esModule", {
 exports.verifyEmail = exports.signup = void 0;
 var _bcryptjs = _interopRequireDefault(require("bcryptjs"));
 var _jsonwebtoken = _interopRequireWildcard(require("jsonwebtoken"));
-var _User = _interopRequireDefault(require("../models/User"));
+var _User = _interopRequireDefault(require("../models/User.js"));
 var _sendEmail = _interopRequireDefault(require("../libs/sendEmail"));
 var _config = _interopRequireDefault(require("../config"));
 function _getRequireWildcardCache(e) { if ("function" != typeof WeakMap) return null; var r = new WeakMap(), t = new WeakMap(); return (_getRequireWildcardCache = function _getRequireWildcardCache(e) { return e ? t : r; })(e); }

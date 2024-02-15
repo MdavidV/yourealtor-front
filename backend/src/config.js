@@ -1,7 +1,6 @@
 import dotenv from 'dotenv';
 
-dotenv.config()
-
+dotenv.config();
 
 export const TOKEN_SECRET = process.env.TOKEN_SECRET
 export const VERIFICATION_TOKEN_SECRET = process.env.VERIFICATION_TOKEN_SECRET

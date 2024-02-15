@@ -1,5 +1,5 @@
 import mysql from "mysql2";
-import { getPool } from "../databaseSql";
+import { getPool } from "../databaseSql.js";
 const pool = getPool();
 
 export const getActivos = async (req, res) => {

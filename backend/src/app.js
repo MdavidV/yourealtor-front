@@ -3,11 +3,11 @@ import bodyParser from "body-parser";
 import morgan from "morgan";
 import cookieParser from "cookie-parser";
 
-import authRoutes from "./routes/authRoutes";
+import authRoutes from "./routes/authRoutes.js";
 
 import cors from 'cors';
 const app = express();
-const path = require("path");
+
 app.use(cors({
     origin: 'http://localhost:5173',
     credentials: true

@@ -6,7 +6,7 @@ import {
   profile,
   verifyToken,
   confirm,
-} from "../controllers/authControllers";
+} from "../controllers/authControllers.js";
 import { authRequired } from "../middlewares/verifyToken.js";
 import { validateSchema } from "../middlewares/validatorMiddleware.js";
 import { registerSchema, loginSchema } from "../models/authSchema.js";
