@@ -12,29 +12,45 @@ const Footer = () => {
     <div className="footer-cont form-paragraph">
       <Container className="d-flex flex-column justify-content-center align-items-center">
         <Row className="mt-5">
-          <Col xs="4">
-            <Link to={"/"}>
+          <Col xs="4" className="logo-footer">
+            <Link to={"/"} >
               <img src={Logo} />
             </Link>
           </Col>
         </Row>
         <Row>
           <Col>
-            <ul>
-              <li>Compra</li>
-              <li>Venta</li>
-              <li>Renta</li>
-              <li>Conocenos</li>
-              <li>Nuestra Historia</li>
+            <ul className="footer-links-list">
+              <li className="footer-link">
+                <Link>Compra</Link>
+              </li>
+              <li className="footer-link">
+                <Link>Venta</Link>
+              </li>
+              <li className="footer-link">
+                <Link>Renta</Link>
+              </li>
+              <li className="footer-link">
+                <Link>Conocenos</Link>
+              </li>
+              <li className="footer-link">
+                <Link>Nuestra Historia</Link>
+              </li>
             </ul>
           </Col>
         </Row>
         <Row>
           <Col>
-            <ul>
-              <li>Testimonios</li>
-              <li>Comienza tu carrera</li>
-              <li>FAQS</li>
+            <ul className="footer-links-list">
+              <li className="footer-link">
+                <Link>Testimonios</Link>
+              </li>
+              <li className="footer-link">
+                <Link>Comienza tu carrera</Link>
+              </li>
+              <li className="footer-link">
+                <Link>FAQS</Link>
+              </li>
             </ul>
           </Col>
         </Row>
