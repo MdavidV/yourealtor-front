@@ -1,10 +1,12 @@
 // const nodemailer = require('nodemailer');
 
+import { GMAIL_USER, GMAIL_PASSWORD } from "../config.js";
+
 import nodemailer from "nodemailer";
 
 const mail = {
-  user: "tech@yourealtor.co",
-  pass: "You2024*",
+  user: GMAIL_USER,
+  pass: GMAIL_PASSWORD,
 };
 
 let transporter = nodemailer.createTransport({
