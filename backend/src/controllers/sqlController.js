@@ -6,7 +6,7 @@ export const getActivos = async (req, res) => {
   try {
     const [rows] = await pool.query(`
     
-    SELECT * FROM Activos
+    SELECT * FROM Detalle_Activos
     
         `);
     res.send(rows);

@@ -73,3 +73,7 @@
   @include texts($section-heading-weight, $semantic-text-color, $paragraph-size-20);
   font-family: $paragraph-font;
 }
+
+.footer-copy-text{
+  @include texts($semantic-weight, $white, $semantic-small-size);
+}

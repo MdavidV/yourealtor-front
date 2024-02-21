@@ -2,10 +2,7 @@
     background-color: $base-color;
     border-top: 2px solid $semantic-text-color;
     
-    .copy-rigth{
-        
-        border-top: 2px solid $semantic-text-color;
-    }
+   
     a{
         &:hover{
             text-decoration: underline;
