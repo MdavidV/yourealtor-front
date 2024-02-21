@@ -8,7 +8,7 @@ const Banner = () => {
     <div className="banner">
       <img src={bg} alt="" className="img-banner" />
       <div className="banner-dark">
-        <Container>
+        <Container className="banner_content" fluid>
           <Row className="fixed-position-banner ">
             <Col className="d-flex flex-column justify-content-center align-items-center ">
               <div className="title-container m-3">

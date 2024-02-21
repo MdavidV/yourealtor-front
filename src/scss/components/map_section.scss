@@ -1,4 +1,36 @@
 .map-cont{
     background-color: $primary-light-color;
-    padding: 40px 0 50px 0;
+    &_inner{        
+        width: 100%;
+        flex-wrap: wrap;
+        max-width: $max-large;
+        margin: auto;
+    }
+    &_info{
+        &--map{
+            width: 100vw;
+            padding: 0;
+            position: relative;
+            min-width: 100vw;
+            left: 50%;
+            transform: translateX(-50%);
+            margin-bottom: 50px;
+        }
+        &--text{
+            width: 90%;
+            min-width: initial;
+            margin: auto;
+        }
+    }
+    @media screen and (min-width: $X-Large){
+        padding: 50px 0;
+        &_info{
+            min-width: auto;
+            &--map{
+                margin: inherit;
+                left: auto;
+                transform: none;
+            }
+        }
+    }
 }

@@ -15,7 +15,7 @@ const Home = () => {
       <NavHeader />
       <Banner />
       <AboutUs />
-      <OurAllys />
+      {/* <OurAllys /> */}
       <OurTeam />
       <ContactUs />
       <MapSection />

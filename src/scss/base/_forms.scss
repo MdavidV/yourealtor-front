@@ -2,14 +2,18 @@
     display: flex;
     justify-content: space-between;
     font-family: $paragraph-font;
+    flex-wrap: wrap;
     &_side, .col{
-        width: 45% !important;
+        width: 100% !important;
         flex: none;
     }
     &_info{
+        order: 1;
         background-color: $base-color;
         color: $white;
         position: relative;
+        min-height: 350px;
+        margin-bottom: 50px;
         &_list{
             display: flex;
             justify-content: flex-start;
@@ -42,6 +46,9 @@
         }
         
     }
+    &_content{
+        order: 2;
+    }
     &_group{
         &_input{
             border: none;
@@ -54,5 +61,22 @@
             min-height: 100px;
         }
     }
-    
+    .form-control:focus {
+        border-color: #16263B;
+        outline: 0;
+        box-shadow: 0px 2px 0px 0px #16263B;
+    }
+    @media screen and (min-width: $Medium){
+        &_side, .col{
+            width: 45% !important;
+            flex: none;
+        }
+        &_info{
+            order: 2;
+            margin-bottom: inherit;
+        }
+        &_content{
+            order: 1;
+        }
+    }
 }

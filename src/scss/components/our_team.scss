@@ -7,8 +7,12 @@
 
   .assesors-cont {
     width: 100%;
+    flex-wrap: wrap;
+    & >:nth-last-child(-n+3){
+      display: none;
+    }
     .assesor {
-      width: 430px;
+      width: 100%;
       position: relative;
       img {
         width: 100%;
@@ -16,7 +20,7 @@
         display: block;
         cursor: pointer;
       }
-
+      
       &:hover {
         .overlay {
           opacity: 1;
@@ -58,5 +62,31 @@
     border: none;
     background: $semantic-gradient;
     box-shadow: 0px 6px 5px 0px rgba(0,0,0,0.5);
+  }
+  @media screen and (min-width: $Small){
+    .assesors-cont {
+      flex-wrap: wrap;
+      & >:nth-last-child(-n+3){
+        display: block;
+      }
+      .assesor {
+        width: 49%;
+        &:last-child{
+          display: none;
+        }
+      }
+    }
+  }
+  @media screen and (min-width: $Medium){
+    .assesors-cont {
+      flex-wrap: nowrap;
+      .assesor {
+        width: 430px;
+        position: relative;
+        &:last-child{
+          display: block;
+        }
+      }
+    }
   }
 }

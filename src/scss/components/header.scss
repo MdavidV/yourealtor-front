@@ -19,7 +19,7 @@ nav.mynavbar{
   }
   > div{
     width: 90%;
-    max-width: 1440px;
+    max-width: $max-large;
   }
   .myLogin{
     width: fit-content;
@@ -61,7 +61,6 @@ nav.mynavbar{
     justify-content: flex-end;
   }
 }
-
 
 @media screen and (min-width: $Large){
   .navbar__collapse{
