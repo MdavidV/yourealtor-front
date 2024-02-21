@@ -77,3 +77,7 @@
 .footer-copy-text{
   @include texts($semantic-weight, $white, $semantic-small-size);
 }
+
+.footer-link{
+  @include texts ($semantic-weight, $gray1, $paragraph-size-20);
+}

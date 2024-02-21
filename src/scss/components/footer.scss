@@ -3,12 +3,29 @@
     border-top: 2px solid $semantic-text-color;
     
    
-    a{
-        &:hover{
-            text-decoration: underline;
+    .footer-links-list{
+        list-style: none;
+        display: flex;
+        .footer-link{
+            margin: 15px;
+            &:hover{
+                color: $yellow2;
+            }
         }
-        i{
-            color: $semantic-text-color;
+    }
+}
+
+
+@media screen and (max-width: $Small){
+    .footer-links-list{
+        width: 200px;
+        flex-direction: column;
+    }
+
+    .logo-footer{
+        width: 350px;
+        img{
+            width: 100%;
         }
     }
 }
