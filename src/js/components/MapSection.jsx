@@ -18,9 +18,9 @@ const MapSection = () => {
           </Col>
 
           <Col className="map-cont_info map-cont_info--text">
-            <div className="map-text-cont">
+            <div>
               <h2 className="section-title">Lorem Ipsum</h2>
-              <p className="map-text">
+              <p>
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit.
                 Praesent a lorem tempor, commodo ante sed, condimentum metus.
                 Aliquam vel volutpat sapien. Fusce nec varius lorem. Phasellus
@@ -34,25 +34,25 @@ const MapSection = () => {
               </p>
             </div>
 
-            <div className="map-text-cont mt-5">
+            <div className=" mt-5">
               <h2 className="map-subheading">Lorem Ipsum</h2>
-              <p className="map-text">
+              <p>
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit.
                 Praesent a lorem tempor, commodo ante sed, condimentum metus.
               </p>
             </div>
 
-            <div className="map-text-cont mt-5">
+            <div className=" mt-5">
               <h2 className="map-subheading">Lorem Ipsum</h2>
-              <p className="map-text">
+              <p>
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit.
                 Praesent a lorem tempor, commodo ante sed, condimentum metus.
               </p>
             </div>
 
-            <div className="map-text-cont mt-5">
+            <div className=" mt-5">
               <h2 className="map-subheading">Lorem Ipsum</h2>
-              <p className="map-text">
+              <p>
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit.
                 Praesent a lorem tempor, commodo ante sed, condimentum metus.
               </p>

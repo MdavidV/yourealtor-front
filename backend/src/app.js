@@ -4,6 +4,7 @@ import morgan from "morgan";
 import cookieParser from "cookie-parser";
 
 import authRoutes from "./routes/authRoutes.js";
+import sqlRoutes from "./routes/sqlRoutes.js";
 
 import cors from 'cors';
 const app = express();
@@ -17,6 +18,7 @@ app.use(morgan("dev"));
 app.use(cookieParser());
 
 app.use("/api", authRoutes);
+app.use(sqlRoutes);
 
 
 export default app;
