@@ -67,8 +67,10 @@ export const login = async (req, res) => {
     res.json({
       id: userFound._id,
       username: userFound.firstName,
+      secondname: userFound.secondName,
       email: userFound.email,
       role: userFound.role,
+      created: userFound.createdAt,
     });
   } catch (error) {
     res.status(550).json({ message: error.message });
@@ -106,8 +108,10 @@ export const profile = async (req, res) => {
   res.json({
     id: userFound._id,
     username: userFound.firstName,
+    secondname: userFound.secondName,
     email: userFound.email,
     role: userFound.role,
+    created: userFound.createdAt,
   });
 };
 
@@ -133,5 +137,43 @@ export const confirm = async (req, res) => {
     res.json({ redirectUrl: `http://localhost:5173/` });
   } catch (error) {
     console.log("error al confirmar usuario", error);
+  }
+};
+
+export const changePassword = async (req, res) => {
+  try {
+    const { id, currentPassword, newPassword } = req.body;
+    const userFound = await User.findById(id);
+    
+    const oldIsMatch = await bcrypt.compare(newPassword, userFound.password);
+
+    if (oldIsMatch) {
+      return res
+        .status(401)
+        .json({
+          message: "La nueva contrasena NO puede ser igual a la anterior",
+        });
+    }
+
+    
+
+    if (userFound) {
+      const isMatch = await bcrypt.compare(currentPassword, userFound.password);
+
+      if (isMatch) {
+        const hashedPassword = await bcrypt.hash(newPassword, 10);
+        userFound.password = hashedPassword;
+        await userFound.save();
+        res.json({ messaage: "Contrasena Actualizada con exito" });
+      } else {
+        return res
+          .status(400)
+          .json({ message: "Actual Contrasena Incorrecta" });
+      }
+    } else {
+      return res.status(404).json({ message: "Usuario No encontrado" });
+    }
+  } catch (error) {
+    return res.status(500).json({ message: "internal server error" });
   }
 };

@@ -1,0 +1,28 @@
+.profile-bg{
+    width: 100vw;
+    height: 100vh;
+    z-index: -999;
+    position: absolute;
+
+    overflow-y: hidden;
+    img{
+        width: 100%;
+        height: auto;
+        filter: blur(4px);
+        
+      
+        
+    }
+}
+
+.profile-content{
+    position: relative;
+}
+
+.content{
+    width: 60%;
+    margin: 45px auto;
+    background-color: $white;
+    border-radius: 22px;
+    padding: 30px 0;
+}

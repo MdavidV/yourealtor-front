@@ -31,3 +31,11 @@ export const loginSchema = z.object({
         message: 'Password must be at least 8 characters'
     })
 });
+
+export const newPasswordSchema = z.object({
+    newPassword: z.string({
+        required_error: "Password is required"
+    }).min(8, {
+        message: 'Password must be at least 8 characters'
+    })
+})

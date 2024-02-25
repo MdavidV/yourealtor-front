@@ -12,4 +12,6 @@ export const confirmRequest = (token) => axios.get(`/confirm/${token}`);
 
 export const profileRequest = () => axios.get('/profile');
 
+export const changePasswordRequest = (user) => axios.post('/change-password', user);
+
 export const activosRequest = () => axios.get('/activos')

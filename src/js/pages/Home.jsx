@@ -9,6 +9,7 @@ import OurTeam from "../components/OurTeam";
 import MapSection from "../components/MapSection";
 import Footer from "../components/Footer";
 
+
 const Home = () => {
   return (
     <>

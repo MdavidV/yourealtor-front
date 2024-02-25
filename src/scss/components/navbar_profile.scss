@@ -1,0 +1,13 @@
+.nav-profile{
+    background-color: $base-color;
+    .logo{
+        width: 300px;
+        .logo-img{
+            width: 100%;
+        }
+    }
+
+    .user{
+        color: $white;
+    }
+}

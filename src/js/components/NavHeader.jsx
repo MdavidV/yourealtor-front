@@ -43,7 +43,11 @@ const NavHeader = () => {
       expand="md"
       fixed="top"
       light
-      className={`mynavbar ${isTop ? "navbar__collapse nav-fixed-text" : "navbar__fixed nav-scrolled-text" }`}
+      className={`mynavbar ${
+        isTop
+          ? "navbar__collapse nav-fixed-text"
+          : "navbar__fixed nav-scrolled-text"
+      }`}
     >
       <NavbarBrand href="/">
         <img src={isTop ? MainLogo : Logo} alt="" />
@@ -85,15 +89,13 @@ const NavHeader = () => {
                 onMouseEnter={toggleDropDown}
                 onMouseLeave={toggleDropDown}
               >
-                <NavLink>
-                  <Link to={"/profile"}>
-                    <i className="bi bi-person-fill mx-1"></i>{" "}
-                    <p>
-                      {user.username.charAt(0).toUpperCase() +
-                        user.username.slice(1)}
-                    </p>
-                  </Link>
-                </NavLink>
+                <Link to={"/profile"}>
+                  <p>
+                    <i className="bi bi-person-fill mx-1"></i>
+                    {user.username.charAt(0).toUpperCase() +
+                      user.username.slice(1)}
+                  </p>
+                </Link>
 
                 <Dropdown isOpen={dropDownOpen} toggle={toggleDropDown}>
                   <DropdownMenu>
@@ -117,11 +119,9 @@ const NavHeader = () => {
           ) : (
             <>
               <NavItem className="mx-3">
-                <NavLink>
-                  <Link to={"/Login"}>
-                    <p>Ingresa</p>
-                  </Link>
-                </NavLink>
+                <Link to={"/Login"}>
+                  <p>Ingresa</p>
+                </Link>
               </NavItem>
             </>
           )}
