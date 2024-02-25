@@ -1,13 +1,12 @@
-import React, { useEffect } from "react";
 import NavHeader from "../components/NavHeader";
 import Banner from "../components/Banner";
-import { Container } from "reactstrap";
 import ContactUs from "../components/ContactUs";
 import AboutUs from "../components/AboutUs";
-import OurAllys from "../components/OurAllys";
+// import OurAllys from "../components/OurAllys";
 import OurTeam from "../components/OurTeam";
 import MapSection from "../components/MapSection";
 import Footer from "../components/Footer";
+import CardsActivo from "../components/CardsActivos";
 
 
 const Home = () => {
@@ -15,6 +14,7 @@ const Home = () => {
     <>
       <NavHeader />
       <Banner />
+      <CardsActivo/>
       <AboutUs />
       {/* <OurAllys /> */}
       <OurTeam />

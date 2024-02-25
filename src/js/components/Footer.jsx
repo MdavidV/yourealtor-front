@@ -1,4 +1,3 @@
-import React from "react";
 import { Col, Container, Row } from "reactstrap";
 import Logo from "../../assets/Logo_Fixed.jpg";
 import SocialMedia1 from "../../assets/Facebook_logo.png";

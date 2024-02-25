@@ -1,3 +1,15 @@
+//new tag
+.new_tag{
+    background: linear-gradient(114deg, $yellow1 0%, $yellow2 32%, $yellow1 68%, $yellow2 100%);
+    padding: 10px 40px;
+    text-align: center;
+    max-width: fit-content;
+    border-radius: 10px;
+    font-weight: $section-heading-weight;
+    font-family: $paragraph-font;
+    user-select: none;
+}
+
 // Default styles primary button
 .btn{
     border: none;

@@ -4,7 +4,8 @@
         width: 100%;
         flex-wrap: wrap;
         max-width: $max-large;
-        margin: auto;
+        margin: 70px auto 0px auto;
+        padding-bottom: 50px;
     }
     &_info{
         &--map{
@@ -27,9 +28,15 @@
         &_info{
             min-width: auto;
             &--map{
-                margin: inherit;
+                margin: auto;
                 left: auto;
                 transform: none;
+            }
+            &--text{
+                margin: initial;
+                .section-title{
+                    margin-top: -10px;
+                }
             }
         }
     }

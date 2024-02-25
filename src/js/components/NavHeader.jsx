@@ -56,27 +56,27 @@ const NavHeader = () => {
       <Collapse isOpen={isOpen} navbar>
         <Nav className="ml-auto mynavbarItems" navbar>
           <NavItem>
-            <NavLink href="/componente/">
+            <NavLink href="/">
               <p>Compra</p>
             </NavLink>
           </NavItem>
           <NavItem>
-            <NavLink href="/componente/">
+            <NavLink href="/">
               <p>Renta</p>
             </NavLink>
           </NavItem>
           <NavItem>
-            <NavLink href="/componente/">
+            <NavLink href="/">
               <p>Vende</p>
             </NavLink>
           </NavItem>
           <NavItem>
-            <NavLink href="/componente/">
+            <NavLink href="/">
               <p>Arrienda</p>
             </NavLink>
           </NavItem>
           <NavItem>
-            <NavLink href="/componente/">
+            <NavLink href="/">
               <p>Contacta un agente Inmobiliario</p>
             </NavLink>
           </NavItem>
