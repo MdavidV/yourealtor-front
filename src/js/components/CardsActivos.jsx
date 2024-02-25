@@ -18,28 +18,30 @@ const CardsActivos = ()=>{
     }, []);
 
     return(
-        <Container className="my-5 py-5 populars">
-            <Row className="my-3 align-items-center">
-                <Col>
-                    <h2 className="section-title my-2">Populares</h2>
-                </Col>
-                <Col className="text-end">
-                    <a className="my-2 populars__link">Explorar<i className="d-ibline-block ms-3 bi bi-arrow-right"></i></a>
-                </Col>
-            </Row>
-            <Row className="my-3">
-                {activos.length > 0 && activos.map( (act,index) => {
-                    const items = act.Imagenes.split(', ');
-                    console.log(items);
-                    return(
-                        <Col key={index}>
-                            <CardActivo items={items} activo={act}/>
-                        </Col>
-                    )
-                })
-                }
-            </Row>
-        </Container>
+        <div className="populars">
+            <Container className="my-5 py-5">
+                <Row className="my-3 align-items-center">
+                    <Col>
+                        <h2 className="section-title my-2">Populares</h2>
+                    </Col>
+                    <Col className="text-end">
+                        <a className="my-2 populars__link">Explorar<i className="d-ibline-block ms-3 bi bi-arrow-right"></i></a>
+                    </Col>
+                </Row>
+                <Row className="my-3">
+                    {activos.length > 0 && activos.map( (act,index) => {
+                        const items = act.Imagenes.split(', ');
+                        console.log(items);
+                        return(
+                            <Col key={index}>
+                                <CardActivo items={items} activo={act}/>
+                            </Col>
+                        )
+                    })
+                    }
+                </Row>
+            </Container>
+        </div>
     )
 }
 
