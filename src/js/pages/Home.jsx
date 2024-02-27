@@ -8,6 +8,7 @@ import MapSection from "../components/MapSection";
 import Footer from "../components/Footer";
 import CardsActivo from "../components/CardsActivos";
 
+
 const Home = () => {
   return (
     <>

@@ -43,7 +43,11 @@ const NavHeader = () => {
       expand="md"
       fixed="top"
       light
-      className={`mynavbar ${isTop ? "navbar__collapse nav-fixed-text" : "navbar__fixed nav-scrolled-text" }`}
+      className={`mynavbar ${
+        isTop
+          ? "navbar__collapse nav-fixed-text"
+          : "navbar__fixed nav-scrolled-text"
+      }`}
     >
       <NavbarBrand href="/">
         <img src={isTop ? MainLogo : Logo} alt="" />
@@ -117,11 +121,9 @@ const NavHeader = () => {
           ) : (
             <>
               <NavItem className="mx-3">
-                <NavLink>
-                  <Link to={"/Login"}>
-                    <p>Ingresa</p>
-                  </Link>
-                </NavLink>
+                <Link to={"/Login"}>
+                  <p>Ingresa</p>
+                </Link>
               </NavItem>
             </>
           )}

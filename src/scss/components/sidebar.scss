@@ -1,0 +1,50 @@
+.sidebar {
+  width: 350px;
+  height: 750px;
+  margin: 45px 0 0 20px;
+  .sidebar-menu {
+    width: 350px;
+    height: 350px;
+    background-color: $base-color;
+    border-radius: 22px;
+    color: $white;
+
+    ul {
+      border-left: 3px solid $semantic-text-color;
+      margin-top: 30px;
+      li {
+        width: 100%;
+        list-style: none;
+        padding: 12px 30px;
+        cursor: pointer;
+        overflow: hidden;
+        transition: max-height 0.3s ease;
+
+        &.active {
+          max-height: 100px; // Altura máxima para mostrar los elementos desplegables
+          color: $semantic-text-color;
+        }
+        color: $white;
+        text-decoration: none;
+
+        
+
+        i {
+          float: right;
+        }
+
+        ol{
+            li{
+                &:hover{
+                    text-decoration: underline;
+                }
+            }
+        }
+      }
+
+      .active {
+        background-color: $white-opacity-low;
+      }
+    }
+  }
+}

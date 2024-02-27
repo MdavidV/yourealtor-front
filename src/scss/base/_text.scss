@@ -81,3 +81,22 @@
 .footer-link{
   @include texts ($semantic-weight, $gray1, $paragraph-size-20);
 }
+
+// SIDEBAR 
+
+.sidebar-sm-text{
+  @include texts ($semantic-weight, $white, $button-text-sm);
+  &:hover{
+    text-decoration: underline;
+  }
+}
+
+//PROFILE 
+
+.sm-profile-info{
+  @include texts($semantic-weight, $black, $button-text-sm)
+}
+
+.paragraph-info{
+  @include texts($paragraph-weight, $black, $paragraph-size-20)
+}

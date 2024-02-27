@@ -6,19 +6,24 @@ import {
   profile,
   verifyToken,
   confirm,
+  changePassword,
 } from "../controllers/authControllers.js";
 import { authRequired } from "../middlewares/verifyToken.js";
 import { validateSchema } from "../middlewares/validatorMiddleware.js";
-import { registerSchema, loginSchema } from "../models/authSchema.js";
-
+import { registerSchema, loginSchema, newPasswordSchema } from "../models/authSchema.js";
+import { getActivos } from "../controllers/sqlController.js";
 
 const router = Router();
 router.post("/signup", validateSchema(registerSchema), signup);
-router.post("/login",  login);
+router.post("/login",  validateSchema(loginSchema), login);
 router.post("/logout", logout);
+router.post("/change-password", validateSchema(newPasswordSchema), changePassword);
 router.get("/profile", authRequired, profile);
 
 router.get('/confirm/:token', confirm);
 router.get('/verify', verifyToken);
+
+router.get('/activos', getActivos);
+
 
 export default router;
