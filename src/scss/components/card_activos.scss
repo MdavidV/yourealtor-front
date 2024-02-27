@@ -51,11 +51,37 @@
                 flex: 0;
                 min-width: fit-content;
                 border-left: 2px solid $semantic-text-color;
+                margin-top: 10px;
                 &:first-child{
                     border-left: none;
                 }
                 .map-text{
                     padding-right: 5px;
+                }
+            }
+        }
+    }
+    @media (min-width: $Large) and (max-width: $X-Large){
+        .Home_cards{
+            &__items{
+                flex-direction: column;
+                &--item{
+                    border-left: none;
+                }
+            }
+        }
+    }
+    @media (min-width: $Large) and (max-width: $XX-Large){
+        .Home_cards{
+            &__items{
+                flex-direction: column;
+                &--item{
+                    border-left: none;
+                }
+            }
+            .card-body{
+                .secondary-button-l{
+                    padding: 10px 5px;
                 }
             }
         }

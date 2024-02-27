@@ -33,7 +33,7 @@ const CardsActivos = ()=>{
                         const items = act.Imagenes.split(', ');
                         console.log(items);
                         return(
-                            <Col key={index}>
+                            <Col key={index} sm="12" lg="4">
                                 <CardActivo items={items} activo={act}/>
                             </Col>
                         )

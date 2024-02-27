@@ -1,4 +1,3 @@
-import React from "react";
 import {
   Button,
   Col,
@@ -13,12 +12,11 @@ import {
 
 const ContactUs = () => {
   return (
-    <div>
       <Container className="my-5">
         <Row>
           <h1 className="section-title text-center my-3"> Contactenos </h1>
         </Row>
-        <Row className="form mt-3">
+        <Row className="form mt-3 px-5">
           <Col className="form_side form_content">
             <Form className="form_group">
               <FormGroup className="mb-3">
@@ -85,7 +83,6 @@ const ContactUs = () => {
           </Col>
         </Row>
       </Container>
-    </div>
   );
 };
 

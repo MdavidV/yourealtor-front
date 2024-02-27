@@ -6,3 +6,9 @@ $XX-Large: 1400px;
 $size-2k: 2000px;
 $size-4k: 4000px;
 $max-large: 1440px;
+
+@media (min-width: 1400px){
+    .container{
+        max-width: $max-large;
+    }
+}

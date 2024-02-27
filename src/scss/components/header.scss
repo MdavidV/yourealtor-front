@@ -1,20 +1,24 @@
 nav.mynavbar{
   .navbar-brand{
+    vertical-align: middle;
     img {
-      width: 60%;
+      width: 100%;
     }
   }
   a.nav-link{
     color: $white;
+    &.nav_user{
+      text-align: center;
+    }
     &:hover{
       text-decoration: underline;
     }
   }
   .collapse.navbar-collapse{
-    align-items: baseline;
+    align-items: center;
+    margin-left: 15px;
   }
   ul.ml-auto.myLogin.navbar-nav {
-      width: 10%;
       justify-content: flex-end;
   }
   > div{
@@ -61,7 +65,15 @@ nav.mynavbar{
     justify-content: flex-end;
   }
 }
-
+@media (min-width: $Medium) and (max-width: $X-Large){
+  .navbar__collapse{
+    .nav_user{
+      &_name{
+        display: none;
+      }
+    }
+  }
+}
 @media screen and (min-width: $Large){
   .navbar__collapse{
     ul.ml-auto.mynavbarItems.navbar-nav {

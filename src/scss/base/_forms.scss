@@ -79,4 +79,12 @@
             order: 1;
         }
     }
+    @media (min-width: $Medium) and (max-width: $Large){
+        &_info{
+            &::after{
+                right: 0px;
+            }
+            
+        }
+    }
 }

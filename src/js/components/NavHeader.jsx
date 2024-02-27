@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from "react";
-import MainLogo from "../../assets/logo_unScrolled.png";
+import { useState, useEffect } from "react";
 import Logo from "../../assets/Logo_Scrolled.png";
+import MainLogo from "../../assets/Logo_Fixed.jpg";
 import {
   Collapse,
   Navbar,
@@ -73,7 +73,7 @@ const NavHeader = () => {
           </NavItem>
           <NavItem>
             <NavLink href="/">
-              <p>Contacta un agente Inmobiliario</p>
+              <p>Contactenos</p>
             </NavLink>
           </NavItem>
         </Nav>
@@ -85,13 +85,13 @@ const NavHeader = () => {
                 onMouseEnter={toggleDropDown}
                 onMouseLeave={toggleDropDown}
               >
-                <NavLink>
+                <NavLink className="nav_user">
                   <Link to={"/profile"}>
                     <i className="bi bi-person-fill mx-1"></i>{" "}
-                    <p>
+                    <span className="nav_user_name">
                       {user.username.charAt(0).toUpperCase() +
                         user.username.slice(1)}
-                    </p>
+                    </span>
                   </Link>
                 </NavLink>
 
