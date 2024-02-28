@@ -12,7 +12,7 @@ const Footer = () => {
       <Container className="d-flex flex-column justify-content-center align-items-center">
         <Row className="mt-5">
           <Col xs="4" className="logo-footer">
-            <Link to={"/"} >
+            <Link to={"/"}>
               <img src={Logo} />
             </Link>
           </Col>
@@ -55,18 +55,24 @@ const Footer = () => {
         </Row>
         <Row>
           <Col>
-            <div className="social-media-icons mt-2 text-center">
-              <a href="#" className="">
-                <img src={SocialMedia1} alt="" />
+            <div className="social-media-icons mt-2 ">
+              <a
+                href="https://www.facebook.com/profile.php?id=61556430376948"
+                className="d-inline-block"
+              >
+                <i class="bi bi-facebook"></i>
               </a>
-              <a href="#" className="ms-3">
-                <img src={SocialMedia2} alt="" />
+              <a href="https://www.instagram.com/yourealtor2/" className=" d-inline-block">
+                <i class="bi bi-instagram"></i>
               </a>
-              <a href="#" className="ms-3">
-                <img src={SocialMedia3} alt="" />
+              <a
+                href="https://www.linkedin.com/company/yourealtor/"
+                className=" d-inline-block"
+              >
+                <i class="bi bi-linkedin"></i>
               </a>
-              <a href="#" className="ms-3">
-                <img src={SocialMedia4} alt="" />
+              <a href="#" className=" d-inline-block">
+                <i class="bi bi-whatsapp"></i>
               </a>
             </div>
           </Col>

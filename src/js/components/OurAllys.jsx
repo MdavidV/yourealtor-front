@@ -24,10 +24,8 @@ const OurAllys = () => {
         <div className="logo-cont d-flex flex-column align-items-center">
           <img src={Logo} alt="" />
 
-          <Link to={'/confirmVIew'}>
-            <a href="#" className="primary-button-l my-3">
-              Descubre Mas!
-            </a>
+          <Link to={'/confirmView'} className="primary-button-l my-3">
+                Descubre Mas!
           </Link>
         </div>
       </div>

@@ -56,7 +56,7 @@ const CardActivo = ({ items, activo }) => {
         <Row className="my-4 align-items-center Home_cards__items">
             <Col className="Home_cards__items--item"><p className="map-text"><IoBed/> {activo.Habitaciones} habitaciones</p></Col>
             <Col className="Home_cards__items--item"><p className="map-text"><FaBath />
-             {activo.Baños === 1 ? ' baño' : ' baños'} </p></Col>
+             {activo.Baños === 1 ? `1 Baño` : ` ${activo.Baños} Baños`} </p></Col>
             <Col className="Home_cards__items--item"><p className="map-text"><IoExpandOutline /> {activo.Area}m<sup>2</sup></p></Col>
         </Row>
         <Row className="py-2 align-items-center">

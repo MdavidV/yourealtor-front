@@ -82,6 +82,10 @@
   @include texts ($semantic-weight, $gray1, $paragraph-size-20);
 }
 
+.footer-sell{
+  @include texts($semantic-gradient, $white, $paragraph-size)
+}
+
 // SIDEBAR 
 
 .sidebar-sm-text{

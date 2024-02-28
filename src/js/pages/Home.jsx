@@ -7,6 +7,7 @@ import OurTeam from "../components/OurTeam";
 import MapSection from "../components/MapSection";
 import Footer from "../components/Footer";
 import CardsActivo from "../components/CardsActivos";
+import OurAllys from "../components/OurAllys";
 
 
 const Home = () => {
@@ -16,7 +17,7 @@ const Home = () => {
       <Banner />
       <CardsActivo/>
       <AboutUs />
-      {/* <OurAllys /> */}
+      <OurAllys />
       <OurTeam />
       <ContactUs />
       <MapSection />

@@ -31,7 +31,6 @@ const CardsActivos = ()=>{
                 <Row className="my-3">
                     {activos.length > 0 && activos.map( (act,index) => {
                         const items = act.Imagenes.split(', ');
-                        console.log(items);
                         return(
                             <Col key={index}>
                                 <CardActivo items={items} activo={act}/>

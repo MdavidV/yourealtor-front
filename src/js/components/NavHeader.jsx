@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
-import MainLogo from "../../assets/logo_unScrolled.png";
-import Logo from "../../assets/Logo_Scrolled.png";
+import MainLogo from "../../assets/Logo_fixed_NoBG.png";
+import Logo from "../../assets/Logo_fixed.jpg";
 import {
   Collapse,
   Navbar,
@@ -76,8 +76,8 @@ const NavHeader = () => {
             </NavLink>
           </NavItem>
           <NavItem>
-            <NavLink href="/">
-              <p>Contacta un agente Inmobiliario</p>
+            <NavLink href="#contactanos">
+              <p>Contactanos</p>
             </NavLink>
           </NavItem>
         </Nav>

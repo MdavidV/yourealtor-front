@@ -10,55 +10,18 @@ import {
   ListGroup,
   ListGroupItem,
 } from "reactstrap";
+import ContactForm from "./subcomponents/ContactForm";
 
 const ContactUs = () => {
   return (
-    <div>
-      <Container className="my-5">
+    <div id="contactanos">
+      <Container className="my-5" >
         <Row>
           <h1 className="section-title text-center my-3"> Contactenos </h1>
         </Row>
         <Row className="form mt-3">
           <Col className="form_side form_content">
-            <Form className="form_group">
-              <FormGroup className="mb-3">
-                <Input
-                  className="form_group_input"
-                  type="text"
-                  name="userName"
-                  id="userName"
-                  placeholder="Nombre Completo:"
-                />
-              </FormGroup>
-              <FormGroup>
-                <Input
-                  className="form_group_input"
-                  type="tel"
-                  name="telefono"
-                  id="telefono"
-                  placeholder="Teléfono:"
-                />
-              </FormGroup>
-              <FormGroup className="mb-3">
-                <Input
-                  className="form_group_input"
-                  type="email"
-                  name="email"
-                  id="correoElectronico"
-                  placeholder="Correo electrónico"
-                />
-              </FormGroup>
-              <FormGroup className="mb-3">
-                <Input
-                  className="form_group_input"
-                  type="textarea"
-                  name="mensaje"
-                  id="mensaje"
-                  placeholder="Mensaje"
-                />
-              </FormGroup>
-              <Button className="secondary-button-xl mt-3">Enviar</Button>
-            </Form>
+            <ContactForm />
           </Col>
           <Col className="form_side form_info">
             <ListGroup className="form_info_list">
@@ -67,15 +30,15 @@ const ContactUs = () => {
               </ListGroupItem>
               <ListGroupItem className="form_info_list_item">
                 <i className="bi bi-envelope"></i>
-                <a href="mailto:correo@info.com">correo@info.com</a>
+                <a href="mailto:coo@yourealtor.co">coo@yourealtor.co</a>
               </ListGroupItem>
               <ListGroupItem className="form_info_list_item">
                 <i className="bi bi-telephone"></i>
-                <a href="tel:+571234567899">+571234567899</a>
+                <a href="tel:+571234567899">+573178845335</a>
               </ListGroupItem>
               <ListGroupItem className="form_info_list_item">
                 <i className="bi bi-buildings"></i>
-                <p>Av. 26 #12 - 01</p>
+                <p>Cra 7 NO 32-93 Piso 7</p>
               </ListGroupItem>
               <ListGroupItem className="form_info_list_item">
                 <i className="bi bi-clock"></i>
