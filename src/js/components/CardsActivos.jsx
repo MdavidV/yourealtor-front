@@ -32,7 +32,7 @@ const CardsActivos = ()=>{
                     {activos.length > 0 && activos.map( (act,index) => {
                         const items = act.Imagenes.split(', ');
                         return(
-                            <Col key={index}>
+                            <Col key={index} sm="12" lg="4">
                                 <CardActivo items={items} activo={act}/>
                             </Col>
                         )

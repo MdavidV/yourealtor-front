@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from "react";
-import MainLogo from "../../assets/Logo_fixed_NoBG.png";
-import Logo from "../../assets/Logo_fixed.jpg";
+import { useState, useEffect } from "react";
+import Logo from "../../assets/Logo_Scrolled.png";
+import MainLogo from "../../assets/Logo_Fixed.jpg";
 import {
   Collapse,
   Navbar,
@@ -89,13 +89,15 @@ const NavHeader = () => {
                 onMouseEnter={toggleDropDown}
                 onMouseLeave={toggleDropDown}
               >
-                <Link to={"/profile"}>
-                  <p>
-                    <i className="bi bi-person-fill mx-1"></i>
-                    {user.username.charAt(0).toUpperCase() +
-                      user.username.slice(1)}
-                  </p>
-                </Link>
+                <NavLink className="nav_user">
+                  <Link to={"/profile"}>
+                    <i className="bi bi-person-fill mx-1"></i>{" "}
+                    <span className="nav_user_name">
+                      {user.username.charAt(0).toUpperCase() +
+                        user.username.slice(1)}
+                    </span>
+                  </Link>
+                </NavLink>
 
                 <Dropdown isOpen={dropDownOpen} toggle={toggleDropDown}>
                   <DropdownMenu>

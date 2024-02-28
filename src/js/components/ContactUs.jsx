@@ -1,4 +1,3 @@
-import React from "react";
 import {
   Button,
   Col,
@@ -15,11 +14,11 @@ import ContactForm from "./subcomponents/ContactForm";
 const ContactUs = () => {
   return (
     <div id="contactanos">
-      <Container className="my-5" >
+      <Container className="my-5">
         <Row>
           <h1 className="section-title text-center my-3"> Contactenos </h1>
         </Row>
-        <Row className="form mt-3">
+        <Row className="form mt-3 px-5">
           <Col className="form_side form_content">
             <ContactForm />
           </Col>
