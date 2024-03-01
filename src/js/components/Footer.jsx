@@ -1,9 +1,6 @@
 import { Col, Container, Row } from "reactstrap";
 import Logo from "../../assets/Logo_Fixed.jpg";
-import SocialMedia1 from "../../assets/Facebook_logo.png";
-import SocialMedia2 from "../../assets/Instagram_logo.png";
-import SocialMedia3 from "../../assets/Linkedin_logo.png";
-import SocialMedia4 from "../../assets/Whatsapp_logo.png";
+
 import { Link } from "react-router-dom";
 
 const Footer = () => {
@@ -21,16 +18,16 @@ const Footer = () => {
           <Col>
             <ul className="footer-links-list">
               <li className="footer-link">
-                <Link>Compra</Link>
+                <Link>Ventas</Link>
               </li>
               <li className="footer-link">
-                <Link>Venta</Link>
+                <Link>Arriendos</Link>
               </li>
               <li className="footer-link">
-                <Link>Renta</Link>
+                <Link>Permutar</Link>
               </li>
               <li className="footer-link">
-                <Link>Conocenos</Link>
+                <a href='#ourTeam'>Conocenos</a>
               </li>
               <li className="footer-link">
                 <Link>Nuestra Historia</Link>
@@ -42,10 +39,10 @@ const Footer = () => {
           <Col>
             <ul className="footer-links-list">
               <li className="footer-link">
-                <Link>Testimonios</Link>
+                <Link to='/privacy'>Politicas de Privacidad</Link>
               </li>
               <li className="footer-link">
-                <Link>Comienza tu carrera</Link>
+                <Link to='/contact'>Comienza tu carrera</Link>
               </li>
               <li className="footer-link">
                 <Link>FAQS</Link>

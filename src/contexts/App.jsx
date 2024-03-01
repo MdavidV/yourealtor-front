@@ -8,6 +8,11 @@ import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
 import { AuthProvider } from "./AuthContext.jsx";
 import ProtectedRoute from "../ProtectedRoute.jsx";
 import ProfileInfo from "../js/components/profileComponents/ProfileInfo.jsx";
+import PrivacyPolicy from "../js/pages/PrivacyPolicy.jsx";
+import ContactService from "../js/pages/ContactService.jsx";
+import AboutUsView from "../js/pages/AboutUsView.jsx";
+import ServicesView from "../js/pages/ServicesView.jsx";
+import SpacesView from "../js/pages/SpacesView.jsx";
 
 function App() {
   return (
@@ -23,6 +28,11 @@ function App() {
           </Route>
           <Route path="/confirmView" element={<ConfirmView />}></Route>
           <Route path="/profile" element={<Navigate to="/profile/informacion-personal" />} />
+          <Route path="/privacy" element={<PrivacyPolicy />}></Route>
+          <Route path="/contact" element={<ContactService />}></Route>
+          <Route path="/about-us" element={<AboutUsView />}></Route>
+          <Route path="/our-services" element={<ServicesView />}></Route>
+          <Route path="/spaces-info" element={<SpacesView />}></Route>
         </Routes>
       </BrowserRouter>
     </AuthProvider>

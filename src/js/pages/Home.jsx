@@ -2,12 +2,12 @@ import NavHeader from "../components/NavHeader";
 import Banner from "../components/Banner";
 import ContactUs from "../components/ContactUs";
 import AboutUs from "../components/AboutUs";
-// import OurAllys from "../components/OurAllys";
 import OurTeam from "../components/OurTeam";
 import MapSection from "../components/MapSection";
 import Footer from "../components/Footer";
 import CardsActivo from "../components/CardsActivos";
 import OurAllys from "../components/OurAllys";
+import OurServicesSection from "../components/OurServicesSection";
 
 
 const Home = () => {
@@ -17,10 +17,11 @@ const Home = () => {
       <Banner />
       <CardsActivo/>
       <AboutUs />
-      <OurAllys />
+      {/* <OurAllys /> */}
       <OurTeam />
       <ContactUs />
       <MapSection />
+      <OurServicesSection />
       <Footer />
     </>
 

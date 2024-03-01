@@ -6,6 +6,7 @@ import cookieParser from "cookie-parser";
 import authRoutes from "./routes/authRoutes.js";
 import sqlRoutes from "./routes/sqlRoutes.js";
 import mailRoutes from "./routes/mailRoutes.js";
+import calendlyRoutes from "./routes/calendlyRoutes.js";
 
 import cors from 'cors';
 const app = express();
@@ -23,6 +24,7 @@ app.use(cookieParser());
 app.use("/api", authRoutes);
 app.use(sqlRoutes);
 app.use(mailRoutes);
+app.use(calendlyRoutes);
 
 
 export default app;

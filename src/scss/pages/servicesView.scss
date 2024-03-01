@@ -1,0 +1,53 @@
+.services-view{
+    .services-list{
+        ul{
+            margin-left: 75px;
+            // display: flex;
+            // // flex-wrap: wrap;
+            text-align: start;
+            
+            li{
+                // width: 45%;
+                margin: 17px 15px;
+                font-size: 20px;
+            }
+        }
+    }
+    .services-text{
+        text-align: justify;
+        width: 80%;
+        margin: 0 auto;
+    }
+    
+    .services-img-container{
+        background-color: #dbe3e5;
+        overflow: hidden;
+        &:hover{
+            img{
+                transform: scale(1.1);
+            }
+        }
+        
+        .services-img{
+            transition: all ease .5s;
+            width: 80%;
+        }
+
+    }
+
+    .services-img-container-2{
+        background-color: #cddadc;
+        overflow: hidden;
+        &:hover{
+            img{
+                transform: scale(1.1);
+            }
+        }
+        
+        .services-img{
+            transition: all ease .5s;
+            width: 80%;
+        }
+    }
+}
+

@@ -2,6 +2,7 @@ import React from "react";
 import Asset1 from "../../assets/About_Us1.jpg";
 import Asset2 from "../../assets/About_Us2.jpg";
 import { Col, Container, Row } from "reactstrap";
+import { Link } from "react-router-dom";
 
 const AboutUs = () => {
   return (
@@ -45,9 +46,9 @@ const AboutUs = () => {
             </div>
 
             <div className="aboutUs__content--button">
-                <a href="#" className="secondary-button-xl">
+                <Link to='/about-us' className="secondary-button-xl">
                     Conoce mas!
-                </a>
+                </Link>
             </div>
         </Col>
       </Row>

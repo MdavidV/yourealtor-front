@@ -63,6 +63,7 @@
 
 .map-text{
   @include texts($semantic-weight, $black, $semantic-size);
+  text-align: justify;
 }
 
 .map-subheading{
@@ -103,4 +104,10 @@
 
 .paragraph-info{
   @include texts($paragraph-weight, $black, $paragraph-size-20)
+}
+
+//SPACES
+
+.spaces-subheading{
+  @include texts($subheading-weight, $black, $paragraph-size)
 }

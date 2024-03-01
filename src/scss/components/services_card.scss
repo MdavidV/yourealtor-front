@@ -1,0 +1,66 @@
+.services-cont{
+    padding: 120px 0;
+    background-color: #dbe3e5;
+    .services-card {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        font-weight: bold;
+        padding: 1em;
+        color: #dbe3e5;
+        width: 200px;
+        height: 200px;
+        box-shadow: 0 1px 5px rgba(0, 0, 0, 0.99);
+        border-radius: 50px;
+        background-size: cover;
+        position: relative;
+        cursor: pointer;
+        background-color: $base-color;
+        transition: transform 300ms ease-out, box-shadow 300ms ease-out;
+        background-image: var(--glow-effect), url(https://images.unsplash.com/photo-1557672199-6e8c8b2b8fff?ixlib=rb-1.2.1&auto=format&fit=crop&w=934&q=80);
+        
+        &:hover {
+          box-shadow: 0 5px 15px rgba(0, 0, 0, 0.44);
+        }
+      
+        .glow {
+          position: absolute;
+          width: 100%;
+          height: 100%;
+          left: 0;
+          top: 0;
+          border-radius: 10px;
+          pointer-events: none; // Asegura que el mouseover en .glow no interfiera
+        }
+    
+        .services-card-icon{
+            width: 50%;
+            display: flex;
+            justify-content: center;
+            i{
+                color: $yellow2;
+                text-align: center;
+                font-size: 65px;
+            }
+            
+            svg{
+                color: $yellow2;
+
+                width: 100%;
+                font-size: 65px;
+                margin-bottom: 10px;
+            }
+        }
+    
+        .services-card-link{
+            transition: all ease .3s;
+            &:hover{
+                color: $primary-light-color;
+                text-decoration: underline;
+            }
+    
+        }
+      }
+}
+  

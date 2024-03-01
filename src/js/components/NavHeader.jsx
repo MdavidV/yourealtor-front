@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
-import Logo from "../../assets/Logo_Scrolled.png";
-import MainLogo from "../../assets/Logo_Fixed.jpg";
+import Logo from "../../assets/Logo_Fixed.jpg";
+import MainLogo from "../../assets/Logo_Fixed_NoBG.png";
 import {
   Collapse,
   Navbar,
