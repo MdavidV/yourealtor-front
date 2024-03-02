@@ -13,9 +13,9 @@ const OurServices = () => {
               <i className="bi bi-house"></i>
             </div>
 
-            <div className="services-text">
+            <div className="services-text-container">
               <h2 className="section-title text-center">Nuestros Servicios</h2>
-              <p>
+              <p className="services-text ">
                 En YOUREALTOR, nos distinguimos por nuestro innovador ecosistema
                 inmobiliario, diseñado para proporcionar una experiencia
                 integral y sin precedentes en el sector. Nuestra propuesta de
@@ -24,16 +24,29 @@ const OurServices = () => {
                 garantizando resultados excepcionales para compradores,
                 vendedores y arrendatarios.
               </p>
-              <Link to='/our-services' className="text-center d-block mt-4 secondary-button-sm">Descubre Nuestros Servicios</Link>
+              <Link
+                to="/our-services"
+                className="text-center d-block mt-4 secondary-button-sm"
+              >
+                Descubre Nuestros Servicios
+              </Link>
             </div>
           </Col>
         </Row>
       </Container>
-      <Col xl='6' md='12'>
+      <Col xl="6" md="12">
         <div className="services-img-container">
-          <div className="img-effect text-center d-flex flex-column justify-content-center align-items-center">
-            <h2 className="banner-tittle">Oferta Con nosotros</h2>
-            <Link className="services-btn">Ofertar!</Link>
+          <div className="img-effect d-flex flex-column justify-content-center align-items-center">
+            <div className="img-effect-text col-8 ">
+              <h2 className="services-title">
+                Busca vender o arrendar su inmueble?
+              </h2>
+              <p className=" text-white mt-3 services-text">
+                Establecemos relaciones de confianza para arrendar o vender su
+                inmueble con el mejor trato.
+              </p>
+            </div>
+            <Link className="services-btn text-center ">Ofertar!</Link>
           </div>
           <img src={Image} alt="Deal Image" className="services-img" />
         </div>

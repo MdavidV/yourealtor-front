@@ -30,7 +30,7 @@ const Footer = () => {
                 <a href='#ourTeam'>Conocenos</a>
               </li>
               <li className="footer-link">
-                <Link>Nuestra Historia</Link>
+                <Link to='/about-us'>Nuestra Historia</Link>
               </li>
             </ul>
           </Col>

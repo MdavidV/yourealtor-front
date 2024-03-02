@@ -17,7 +17,7 @@ const Home = () => {
       <Banner />
       <CardsActivo/>
       <AboutUs />
-      {/* <OurAllys /> */}
+      <OurAllys />
       <OurTeam />
       <ContactUs />
       <MapSection />

@@ -106,8 +106,27 @@
   @include texts($paragraph-weight, $black, $paragraph-size-20)
 }
 
+//SERVICES 
+
+.services-title{
+  @include texts($tittle-weight, $bg-color, $tittle-size);
+}
+
+
+.services-text-img{
+  @include texts($paragraph-weight, $bg-color, $paragraph-size)
+}
+
+.services-text{
+  @include texts($paragraph-weight, $black, $paragraph-size-20);
+  text-align: justify;
+}
 //SPACES
 
 .spaces-subheading{
   @include texts($subheading-weight, $black, $paragraph-size)
+}
+
+.spaces-card-text{
+  @include texts($semantic-weight, $primary-light-color, $paragraph-size)
 }

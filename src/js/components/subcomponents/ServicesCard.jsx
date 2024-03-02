@@ -75,7 +75,7 @@ const ServicesCard = () => {
               onMouseLeave={handleMouseLeave}
             >
               <div className="services-card-icon">{item.frontIcon}</div>
-              <h3>{item.frontTitle}</h3>
+              <h3 className="spaces-card-text">{item.frontTitle}</h3>
             </div>
             <div
               className="services-card card-back"
@@ -83,7 +83,7 @@ const ServicesCard = () => {
             >
               <div className="services-card-icon">{item.frontIcon}</div>
               {item.backTexts.map((text, textIndex) => (
-                <p key={textIndex}>{text}</p>
+                <p key={textIndex} className="spaces-card-text">{text}</p>
               ))}
               <Link to={item.to} className="services-card-link">
                 Ver Mas
