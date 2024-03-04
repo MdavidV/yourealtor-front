@@ -76,7 +76,7 @@ const Filter = ({ isHome })=> {
         
         let parametros = {
             Ciudad: selectedCity,
-            Tipo_Servicio: serviceType != 0 ? serviceType : 'Venta',
+            Tipo_Servicio: serviceType,
             Tipo_Activo: propertyType,
         };
         const { Ciudad, Tipo_Servicio, Tipo_Activo } = parametros;
@@ -90,8 +90,10 @@ const Filter = ({ isHome })=> {
 
     useEffect(() => {
         if (dataFiltered && dataFiltered.length > 0) {
+            console.log(dataFiltered);
           navigate('/properties', { state: { dataFiltered,  selectedService} });
         }else if(dataFiltered && dataFiltered.length === 0){
+            console.log(dataFiltered);
             navigate('/properties', { state: { dataFiltered,  selectedService} });
         }
         // Esta dependencia asegura que el efecto se ejecute solo cuando `dataFiltered` cambie.

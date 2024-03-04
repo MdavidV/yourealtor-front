@@ -54,7 +54,7 @@ const CardActivo = ({ items, activo, idActivo }) => {
       <CardBody>
         <Row className="mt-2 align-items-center">
             <Col sm='7' ><p className="map-text">{activo.Tipo_Activo} en {activo.Tipo_Servicio}</p></Col>
-            <Col sm='5' className="text-end"><p className="map-text"><IoLocationSharp/> {activo.Ciudad}</p></Col>
+            <Col sm='5'><p className="map-text text-end"><IoLocationSharp/> {activo.Ciudad}</p></Col>
         </Row>
         <Row className="my-4 align-items-center buildingCards__items">
           {activo.Habitaciones ? 

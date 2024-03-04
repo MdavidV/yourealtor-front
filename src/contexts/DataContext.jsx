@@ -14,7 +14,7 @@ export const useData = ()=>{
 export const DataProvider =({ children }) =>{
     const [data, setData] = useState('');
     const [cities, setCities] = useState('');
-    const [dataFiltered, setDataFiltered] = useState('');
+    const [dataFiltered, setDataFiltered] = useState([]);
     const [activo, setActivo] = useState('');
 
     const fetchData = async()=>{
@@ -47,25 +47,16 @@ export const DataProvider =({ children }) =>{
         }
     }
 
-    const filteringData = (Ciudad, Tipo_Servicio, Tipo_Activo, data)=>{
-        let items = [];
-         data.forEach( element => {
-            if(Ciudad != '' && Tipo_Activo != ''){
-                if(element.Tipo_Servicio === Tipo_Servicio && element.Ciudad === Ciudad && element.Tipo_Activo === Tipo_Activo)
-                    items.push(element)        
-            }else if(Ciudad != '' && Tipo_Activo === ''){
-                if(element.Tipo_Servicio === Tipo_Servicio && element.Ciudad === Ciudad)
-                    items.push(element);
-            }else if(Ciudad === '' && Tipo_Activo != ''){
-                if(element.Tipo_Servicio === Tipo_Servicio && element.Tipo_Activo === Tipo_Activo)
-                    items.push(element)
-            }else if(Ciudad === '' && Tipo_Activo === ''){
-                if(element.Tipo_Servicio === Tipo_Servicio)
-                    items.push(element);
-            }
+    const filteringData = (Ciudad, Tipo_Servicio, Tipo_Activo, data) => {
+        const items = data.filter((element) => {
+          const condicionCiudad = Ciudad !== '' ? element.Ciudad === Ciudad : true;
+          const condicionServicio = Tipo_Servicio !== '' ? element.Tipo_Servicio === Tipo_Servicio : true;
+          const condicionActivo = Tipo_Activo !== '' ? element.Tipo_Activo === Tipo_Activo : true;
+          return condicionCiudad && condicionServicio && condicionActivo;
         });
+    
         setDataFiltered(items);
-    }
+      };
 
     const getOneActive = async(id) =>{
         try {

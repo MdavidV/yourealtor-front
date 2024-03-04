@@ -36,13 +36,11 @@ import SlickBig from "../components/subcomponents/slickBig";
 import { useNavigate } from "react-router-dom";
 import { InlineShareButtons } from "sharethis-reactjs";
 
-
 const BringProperty = () => {
   const navigate = useNavigate();
   const params = useParams();
 
   const { getOneActive, activo } = useData();
-
 
   useEffect(() => {
     const loadActivo = async () => {
