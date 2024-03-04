@@ -10,13 +10,14 @@ nav.mynavbar{
     &.nav_user{
       text-align: center;
     }
-    &:hover{
+    &:hover {
       text-decoration: underline;
     }
   }
-  .collapse.navbar-collapse{
-    align-items: center;
-    margin-left: 15px;
+  a{
+    &:hover {
+      text-decoration: underline;
+    }
   }
   ul.ml-auto.myLogin.navbar-nav {
       justify-content: flex-end;
@@ -27,6 +28,7 @@ nav.mynavbar{
   }
   .myLogin{
     width: fit-content;
+    margin-left: 0px;
   }
   .navbar-brand{
     margin-right: 0;
@@ -51,6 +53,11 @@ nav.mynavbar{
   }
 }
 .navbar__collapse{
+  .navbar-brand{
+    img {
+      min-width: 140px;
+    }
+  }
   .navbar-toggler{
     border: 1px solid $white;
     .navbar-toggler-icon{
@@ -64,15 +71,46 @@ nav.mynavbar{
     width: 100%;
     justify-content: flex-end;
   }
-}
-@media (min-width: $Medium) and (max-width: $X-Large){
-  .navbar__collapse{
-    .nav_user{
-      &_name{
-        display: none;
+  .collapse.show.navbar-collapse{
+    background-color: $white-opacity-low;
+    ul.mynavbarItems, ul.myLogin{
+      li.nav-item{
+        padding-left: 20px;
+        border-bottom: 1px solid $white;
+      }
+    }
+    ul.myLogin{
+      width: 100%;
+      li.nav-item{
+        padding: 8px 0 8px 20px;
       }
     }
   }
+}
+.reserved__space{
+  background-color: $base-color;
+  width: 100%;
+  height: 124px;
+  margin-bottom: 50px;
+  max-height: 124px;
+}
+
+@media screen and (min-width: $Medium){
+  .navbar__collapse{
+    .collapse.navbar-collapse{
+      align-items: center;
+      margin-left: 15px;
+    }
+    .collapse.show.navbar-collapse{
+      ul.myLogin{
+        width: fit-content;
+      }
+    }
+  }
+  .reserved__space{
+    height: calc(100vw / 11);
+  }
+    
 }
 @media screen and (min-width: $Large){
   .navbar__collapse{
@@ -87,6 +125,14 @@ nav.mynavbar{
       justify-content: space-between;
     }
   }
+  nav.mynavbar{
+    .myLogin{
+      margin-left: 25px;
+    }
+  }  
+  .reserved__space{
+    height: calc(100vw / 10);
+  }
 }
 @media screen and (min-width: $X-Large){
   .navbar__collapse{
@@ -97,6 +143,15 @@ nav.mynavbar{
   .navbar__fixed{
     .collapse.navbar-collapse ul.ml-auto.mynavbarItems.navbar-nav {
       width: 60%;
+    }
+  }
+}
+@media (min-width: $Medium) and (max-width: $X-Large){
+  .navbar__collapse{
+    .nav_user{
+      &_name{
+        display: none;
+      }
     }
   }
 }
@@ -111,5 +166,10 @@ nav.mynavbar{
       width: 50%;
     }
   }
+  nav.mynavbar{
+    .myLogin{
+      margin-left: 35px;
+    }
+  }  
 }
 

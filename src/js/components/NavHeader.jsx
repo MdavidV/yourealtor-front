@@ -15,8 +15,9 @@ import {
 } from "reactstrap";
 import { Link } from "react-router-dom";
 import { useAuth } from "../../contexts/AuthContext";
+import PropTypes from 'prop-types';
 
-const NavHeader = () => {
+const NavHeader = ({ isHome }) => {
   const { user, isAuthenticated, logout } = useAuth();
   const [dropDownOpen, setdropDownOpen] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
@@ -39,12 +40,16 @@ const NavHeader = () => {
   }, []);
 
   return (
-    <Navbar
+    <>
+      {
+        !isHome ? <div className="reserved__space"></div> : ''
+      }
+      <Navbar
       expand="md"
       fixed="top"
       light
-      className={`mynavbar ${
-        isTop
+      className={`mynavbar
+      ${isTop
           ? "navbar__collapse nav-fixed-text"
           : "navbar__fixed nav-scrolled-text"
       }`}
@@ -94,38 +99,45 @@ const NavHeader = () => {
                   </Link>
                 </NavLink>
 
-                <Dropdown isOpen={dropDownOpen} toggle={toggleDropDown}>
-                  <DropdownMenu>
-                    <DropdownItem>
-                      <Link to={"/profile"}>Ir a mi perfil</Link>
-                    </DropdownItem>
-                    <DropdownItem>
-                      <Link
-                        to="/"
-                        onClick={() => {
-                          logout();
-                        }}
-                      >
-                        Cerrar sesion
-                      </Link>
-                    </DropdownItem>
-                  </DropdownMenu>
-                </Dropdown>
-              </NavItem>
-            </>
-          ) : (
-            <>
-              <NavItem className="mx-3">
-                <Link to={"/Login"}>
-                  <p>Ingresa</p>
-                </Link>
-              </NavItem>
-            </>
-          )}
-        </Nav>
-      </Collapse>
-    </Navbar>
+                  <Dropdown isOpen={dropDownOpen} toggle={toggleDropDown}>
+                    <DropdownMenu>
+                      <DropdownItem>
+                        <Link to={"/profile"}>Ir a mi perfil</Link>
+                      </DropdownItem>
+                      <DropdownItem>
+                        <Link
+                          to="/"
+                          onClick={() => {
+                            logout();
+                          }}
+                        >
+                          Cerrar sesion
+                        </Link>
+                      </DropdownItem>
+                    </DropdownMenu>
+                  </Dropdown>
+                </NavItem>
+              </>
+            ) : (
+              <>
+                <NavItem>
+                  <Link to={"/Login"}>
+                    <p>Ingresa</p>
+                  </Link>
+                </NavItem>
+              </>
+            )}
+          </Nav>
+        </Collapse>
+      </Navbar>
+    </>
+    
   );
+              
+};
+
+NavHeader.propTypes = {
+  isHome: PropTypes.bool.isRequired
 };
 
 export default NavHeader;

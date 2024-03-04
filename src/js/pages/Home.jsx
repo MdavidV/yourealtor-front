@@ -6,6 +6,7 @@ import OurTeam from "../components/OurTeam";
 import MapSection from "../components/MapSection";
 import Footer from "../components/Footer";
 import CardsActivo from "../components/CardsActivos";
+import Filter from "../components/Filter";
 import OurAllys from "../components/OurAllys";
 import OurServicesSection from "../components/OurServicesSection";
 
@@ -13,8 +14,9 @@ import OurServicesSection from "../components/OurServicesSection";
 const Home = () => {
   return (
     <>
-      <NavHeader />
+      <NavHeader isHome={true} />
       <Banner />
+      <Filter isHome={true}/>
       <CardsActivo/>
       <AboutUs />
       <OurAllys />

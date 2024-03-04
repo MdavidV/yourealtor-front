@@ -1,0 +1,54 @@
+.detallesIn{
+    .detallesIn__info{
+        display: flex;
+        align-items: center;
+        .detallesIn__info_icon{
+            width: 30px;
+            height: fit-content;
+            margin-right: 5px;
+            color: $yellow4;
+            svg{
+                width: 30px;
+                height: 30px;
+            }
+        }
+    }
+}
+.viewActive{
+    .card__detail{
+        .card-header{
+            background-color: $base-color;
+            color: $white;
+            font-family: $title-font;
+        }
+        .card-body{
+            ul{
+                li{
+                    a{
+                        display: flex;
+                        flex-wrap: nowrap;
+                        &:hover{
+                            color: $yellow2;
+                        }
+                    }
+                }
+            }            
+            button.secondary-button-l{
+                margin: auto;
+            }
+        }
+    }
+    ul{
+        list-style: none;
+    }
+    .features{
+        ul{
+            li{
+                margin-bottom: 10px;
+                svg{
+                    color: rgb(76, 175, 80);
+                }
+            }
+        }
+    }
+}

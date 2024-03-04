@@ -1,3 +1,11 @@
+//TEXTS
+.mini-text{
+  @include texts($semantic-weight, $black, $semantic-small-size);
+}
+.strong-text{
+  @include texts($paragraph-weight, $black, $semantic-size);
+}
+
 // NAV TEXTS
 
 .nav-fixed-text {
@@ -24,6 +32,15 @@
 .section-title {
   @include texts($section-heading-weight, $black, $tittle-size);
 }
+.section-subtitle {
+  @include texts($subheading-weight, $black, $subheading-size-30);
+  font-family: $paragraph-font;
+}
+.section-detalle {
+  @include texts($subheading-weight, $black, $paragraph-size);
+  font-family: $paragraph-font;
+}
+
 
 // FORM TEXTS
 

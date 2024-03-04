@@ -12,28 +12,35 @@ import PrivacyPolicy from "../js/pages/PrivacyPolicy.jsx";
 import ContactService from "../js/pages/ContactService.jsx";
 import AboutUsView from "../js/pages/AboutUsView.jsx";
 import ServicesView from "../js/pages/ServicesView.jsx";
-import SpacesView from "../js/components/SpacesView.jsx";
+import SpacesView from "../js/pages/SpacesView.jsx";
+import BringProperty from "../js/pages/BringProperty.jsx";
+import BringProperties from "../js/pages/BringProperties.jsx";
+import { DataProvider } from "./DataContext.jsx";
 
 function App() {
   return (
     <AuthProvider>
-      <BrowserRouter>
-        <Routes>
-          <Route path="/confirm/:token" element={<ConfirmView />} />
-          <Route path="/login" element={<Login />} />
-          <Route path="/signup" element={<Signup />} />
-          <Route path="/" element={<Home />} />
-          <Route element={<ProtectedRoute />}>
-            <Route path="/profile/*" element={<Profile />} />
-          </Route>
-          <Route path="/confirmView" element={<ConfirmView />}></Route>
-          <Route path="/profile" element={<Navigate to="/profile/informacion-personal" />} />
-          <Route path="/privacy" element={<PrivacyPolicy />}></Route>
+      <DataProvider>
+        <BrowserRouter>
+          <Routes>
+            <Route path="/confirm/:token" element={<ConfirmView />} />
+            <Route path="/login" element={<Login />} />
+            <Route path="/signup" element={<Signup />} />
+            <Route path="/" element={<Home />} />
+            <Route element={<ProtectedRoute />}>
+              <Route path="/profile/*" element={<Profile />} />
+            </Route>
+            <Route path="/confirmView" element={<ConfirmView />}></Route>
+            <Route path="/profile" element={<Navigate to="/profile/informacion-personal" />} />
+            <Route path="/property/:id" element={<BringProperty/>} />
+            <Route path="/properties" element={<BringProperties/>} />
+            <Route path="/privacy" element={<PrivacyPolicy />}></Route>
           <Route path="/contact" element={<ContactService />}></Route>
           <Route path="/about-us" element={<AboutUsView />}></Route>
           <Route path="/our-services/*" element={<ServicesView />}></Route>
         </Routes>
-      </BrowserRouter>
+        </BrowserRouter>
+      </DataProvider>
     </AuthProvider>
   );
 }

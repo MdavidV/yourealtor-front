@@ -1,89 +1,103 @@
 .populars{ 
     background: linear-gradient(to bottom, transparent 45%, $base-color 45%);
-    .Home_cards{
-        overflow: hidden;
-        .card-body{
-            svg{
-                margin-top: -4px;
-            }
+}
+
+.buildingCards{
+    overflow: hidden;
+    .card-body{
+        svg{
+            margin-top: -4px;
         }
-        &__header{
-            position: relative;
-            &--top{
-                position: absolute;
-                z-index: 2;
-                padding: 10px 20px 0 10px;
-                &--icon{
-                    .nav-link{
-                        width: fit-content;
-                        display: inline-block;
-                        position: relative;
-                        svg{
-                            width: 40px;
-                            height: 40px;
+    }
+    &__header{
+        position: relative;
+        &--top{
+            position: absolute;
+            z-index: 2;
+            padding: 10px 20px 0 10px;
+            &--icon{
+                .nav-link{
+                    width: fit-content;
+                    display: inline-block;
+                    position: relative;
+                    svg{
+                        width: 40px;
+                        height: 40px;
+                        fill: $white;
+                        fill-opacity: 0.5;
+                    }
+                    &:hover
+                    {   svg{
                             fill: $white;
-                            fill-opacity: 0.5;
+                            fill-opacity: 1;
                         }
-                        &:hover
-                        {   svg{
-                                fill: $white;
-                                fill-opacity: 1;
-                            }
-                            &::after{
-                                background-color: $red;
-                                display: block;
-                                position: absolute;
-                                content: "";
-                                width: 20px;
-                                height: 20px;
-                                top: 50%;
-                                left: 50%;
-                                transform: translate(-50%, -50%);
-                                z-index: -1;
-                            }
+                        &::after{
+                            background-color: $red;
+                            display: block;
+                            position: absolute;
+                            content: "";
+                            width: 20px;
+                            height: 20px;
+                            top: 50%;
+                            left: 50%;
+                            transform: translate(-50%, -50%);
+                            z-index: -1;
                         }
                     }
                 }
             }
         }
-        &__items{
-            &--item{
-                flex: 0;
-                min-width: fit-content;
-                border-left: 2px solid $semantic-text-color;
-                margin-top: 10px;
-                &:first-child{
-                    border-left: none;
-                }
-                .map-text{
-                    padding-right: 5px;
-                }
+        .img_button{
+            padding: 0;
+            img{
+                vertical-align: top;
+            }
+        }
+    }
+    &__items{
+        &--item{
+            flex: 0;
+            min-width: fit-content;
+            border-left: 2px solid $semantic-text-color;
+            margin-top: 10px;
+            &:first-child{
+                border-left: none;
+            }
+            .map-text{
+                padding-right: 5px;
+            }
+        }
+    }
+    @media screen and (min-width: $Large) {
+        .card-body{
+            .secondary-button-l{
+                padding: 10px 20px;
+            }
+        }
+    }
+    @media screen and (min-width: $X-Large) {
+        .card-body{
+            .secondary-button-l{
+                padding: 10px 2vw;
             }
         }
     }
     @media (min-width: $Large) and (max-width: $X-Large){
-        .Home_cards{
-            &__items{
-                flex-direction: column;
-                &--item{
-                    border-left: none;
-                }
+        &__items{
+            flex-direction: column;
+            &--item{
+                border-left: none;
             }
         }
     }
     @media (min-width: $Large) and (max-width: $XX-Large){
-        .Home_cards{
-            &__items{
-                flex-direction: column;
-                &--item{
-                    border-left: none;
-                }
+    
+        &__items{
+            flex-direction: column;
+            &--item{
+                border-left: none;
             }
-            .card-body{
-                .secondary-button-l{
-                    padding: 10px 5px;
-                }
-            }
-        }
+        }        
     }
 }
+
