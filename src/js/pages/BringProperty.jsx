@@ -4,7 +4,6 @@ import {
     Container, 
     Row,
     ListGroup, 
-    ListGroupItem,
     Card,
     CardHeader,
     CardBody, 
@@ -27,6 +26,9 @@ import { useNavigate } from "react-router-dom";
 const BringProperty = ()=>{
     const navigate = useNavigate();
     const params = useParams();
+
+    const width = window.innerWidth;
+    console.log(width);
 
     const {
         getOneActive,
@@ -56,14 +58,16 @@ const BringProperty = ()=>{
                             </Col>
                         </Row>
                     </Container>
-                    <Row className="slider-container my-4">
-                        <Col>   
-                            <SlickBig data={activo}/>
-                        </Col>
-                    </Row>
+                    <Container fluid>
+                        <Row className="slider-container my-4">
+                            <Col>   
+                                <SlickBig data={activo}/>
+                            </Col>
+                        </Row>
+                    </Container>
                     <Container>
                         <Row>
-                            <Col md={9}>
+                            <Col lg={9}>
                                 <Row className="my-5">
                                     <Col>
                                         <p className="mini-text">Precio {activo.Tipo_Servicio ==='Venta' ? 'de' : 'del '}{activo.Tipo_Servicio}</p>
@@ -79,9 +83,9 @@ const BringProperty = ()=>{
                                 </Row>
                                 <Row className="my-5">
                                     <Col>
-                                        <h2>Detalles del inmueble</h2>
+                                        <h2 className="section-detalle my-2">Detalles del inmueble</h2>
                                         <Row className="detallesIn">
-                                            <Col md='4' className="detallesIn__info my-4">
+                                            <Col xs={6} md={3} className="detallesIn__info my-4">
                                                 <div className="detallesIn__info_icon">
                                                     <IoHourglassOutline />
                                                 </div>
@@ -90,7 +94,7 @@ const BringProperty = ()=>{
                                                     <p className="strong-text">{activo.Anos} {activo.Anos > 1 ? 'Años' : 'Año'}</p>
                                                 </div>
                                             </Col>
-                                            <Col md='4' className="detallesIn__info my-4">
+                                            <Col xs={6} md={3} className="detallesIn__info my-4">
                                                 <div className="detallesIn__info_icon">
                                                     <IoLayers />
                                                 </div>
@@ -99,7 +103,7 @@ const BringProperty = ()=>{
                                                     <p className="strong-text"> {activo.Estrato}</p>
                                                 </div>
                                             </Col>
-                                            <Col md='4' className="detallesIn__info my-4">
+                                            <Col xs={6} md={3} className="detallesIn__info my-4">
                                                 <div className="detallesIn__info_icon">
                                                     <IoHome />
                                                 </div>
@@ -108,9 +112,7 @@ const BringProperty = ()=>{
                                                     <p className="strong-text"> {activo.Estado}</p>
                                                 </div>
                                             </Col>
-                                        </Row>
-                                        <Row className="detallesIn">
-                                            <Col md='4' className="detallesIn__info my-4">
+                                            <Col xs={6} md={3} className="detallesIn__info my-4">
                                                 <div className="detallesIn__info_icon">
                                                     <IoExpandOutline />
                                                 </div>
@@ -119,7 +121,9 @@ const BringProperty = ()=>{
                                                     <p className="strong-text"> {activo.Area}m<sup>2</sup></p>
                                                 </div>
                                             </Col>
-                                            <Col md='4' className="detallesIn__info my-4">
+                                        </Row>
+                                        <Row className="detallesIn">
+                                            <Col xs={6} md={3} className="detallesIn__info my-4">
                                                 <div className="detallesIn__info_icon">
                                                     <IoBed/>
                                                 </div>
@@ -128,7 +132,7 @@ const BringProperty = ()=>{
                                                     <p className="strong-text"> {activo.Habitaciones}</p>
                                                 </div>
                                             </Col>
-                                            <Col md='4' className="detallesIn__info my-4">
+                                            <Col xs={6} md={3} className="detallesIn__info my-4">
                                                 <div className="detallesIn__info_icon">
                                                     <FaBath />
                                                 </div>
@@ -136,10 +140,8 @@ const BringProperty = ()=>{
                                                     <p className="mini-text">{activo.Banos > 1 ? 'Baños' : 'Baño'}</p>
                                                     <p className="strong-text">{activo.Banos}</p>
                                                 </div>
-                                            </Col>                                    
-                                        </Row>
-                                        <Row className="detallesIn">
-                                            <Col md='4' className="detallesIn__info my-4">
+                                            </Col>
+                                            <Col xs={6} md={3} className="detallesIn__info my-4">
                                                 <div className="detallesIn__info_icon">
                                                     <IoBusiness />
                                                 </div>
@@ -148,7 +150,7 @@ const BringProperty = ()=>{
                                                     <p className="strong-text">{activo.Pisos}</p>
                                                 </div>
                                             </Col>
-                                            <Col md='4' className="detallesIn__info my-4">
+                                            <Col xs={6} md={3} className="detallesIn__info my-4">
                                                 <div className="detallesIn__info_icon">
                                                     <IoCashOutline />
                                                 </div>
@@ -156,8 +158,10 @@ const BringProperty = ()=>{
                                                     <p className="mini-text">Administración</p>
                                                     <p className="strong-text"> {activo.Administracion_Incluida === 1? 'Incluida' : activo.Costo_Administracion}</p>
                                                 </div>
-                                            </Col>
-                                            <Col md='4' className="detallesIn__info my-4">
+                                            </Col>                                 
+                                        </Row>
+                                        <Row className="detallesIn">
+                                            <Col xs={6} md={3} className="detallesIn__info my-4">
                                                 <div className="detallesIn__info_icon">
                                                     <IoCarSportOutline />
                                                 </div>
@@ -170,7 +174,7 @@ const BringProperty = ()=>{
                                     </Col>
                                 </Row>
                             </Col>
-                            <Col md={3} className="my-5">
+                            <Col lg={3} className="my-5">
                                 <Card className="card__detail">
                                     <CardHeader>
                                         <CardTitle>Contáctanos</CardTitle>
@@ -227,20 +231,20 @@ const BringProperty = ()=>{
                                     <li className="my-2">
                                         <p className="strong-text">Ciudad</p><p>{activo.Ciudad}</p></li>
                                     <li className="my-2">
-                                    <p className="strong-text">Dirección</p><p>{activo.Direccion}</p></li>
+                                        <p className="strong-text">Dirección</p><p>{activo.Direccion}</p></li>
                                     <li className="my-2">
-                                    <p className="strong-text">Barrio</p><p>{activo.Barrio}</p></li>
+                                        <p className="strong-text">Barrio</p><p>{activo.Barrio}</p></li>
                                 </ListGroup>
                             </Col>
                             <Col>
                                 <ListGroup>
                                     <li className="my-2">
-                                    <p className="strong-text">Localidad</p><p>{activo.Localidad}</p></li>
+                                        <p className="strong-text">Localidad</p><p>{activo.Localidad}</p></li>
                                     <li className="my-2">
-                                    <p className="strong-text">Dirección</p><p>{activo.Direccion}</p></li>
+                                        <p className="strong-text">Dirección</p><p>{activo.Direccion}</p></li>
                                     {activo.conjunto?
                                     <li className="my-2">
-                                    <p className="strong-text">Conjunto</p><p>{activo.Conjunto}</p></li>
+                                        <p className="strong-text">Conjunto</p><p>{activo.Conjunto}</p></li>
                                     :''}
                                 </ListGroup>
                             </Col>

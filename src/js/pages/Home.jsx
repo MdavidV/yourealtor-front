@@ -7,7 +7,7 @@ import MapSection from "../components/MapSection";
 import Footer from "../components/Footer";
 import CardsActivo from "../components/CardsActivos";
 import Filter from "../components/Filter";
-import OurAllys from "../components/OurAllys";
+// import OurAllys from "../components/OurAllys";
 import OurServicesSection from "../components/OurServicesSection";
 
 
@@ -19,7 +19,7 @@ const Home = () => {
       <Filter isHome={true}/>
       <CardsActivo/>
       <AboutUs />
-      <OurAllys />
+      {/* <OurAllys /> */}
       <OurTeam />
       <ContactUs />
       <MapSection />

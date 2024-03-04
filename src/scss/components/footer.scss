@@ -1,6 +1,15 @@
 .footer-cont {
   background-color: $base-color;
   border-top: 2px solid $semantic-text-color;
+  padding-left: 0;
+  padding-right: 0;
+  .container-fluid{
+    padding-left: 0;
+    padding-right: 0;
+    & > div{
+      margin: auto;
+    }
+  }
 
   .footer-links-list {
     list-style: none;
@@ -41,8 +50,9 @@
 
 
   .copy-rigth {
-    width: 1440px;
+    width: 100vw;
     border-top: 1px solid $semantic-text-color;
+    margin: auto;
   }
 }
 

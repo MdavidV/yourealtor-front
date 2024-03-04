@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 
 const Footer = () => {
   return (
-    <div className="footer-cont form-paragraph">
+    <Container className="footer-cont form-paragraph" fluid>
       <Container className="d-flex flex-column justify-content-center align-items-center">
         <Row className="mt-5">
           <Col xs="4" className="logo-footer">
@@ -57,33 +57,34 @@ const Footer = () => {
                 href="https://www.facebook.com/profile.php?id=61556430376948"
                 className="d-inline-block"
               >
-                <i class="bi bi-facebook"></i>
+                <i className="bi bi-facebook"></i>
               </a>
               <a href="https://www.instagram.com/yourealtor2/" className=" d-inline-block">
-                <i class="bi bi-instagram"></i>
+                <i className="bi bi-instagram"></i>
               </a>
               <a
                 href="https://www.linkedin.com/company/yourealtor/"
                 className=" d-inline-block"
               >
-                <i class="bi bi-linkedin"></i>
+                <i className="bi bi-linkedin"></i>
               </a>
               <a href="#" className=" d-inline-block">
-                <i class="bi bi-whatsapp"></i>
+                <i className="bi bi-whatsapp"></i>
               </a>
             </div>
           </Col>
         </Row>
-
+      </Container>
+      <Container fluid>
         <Row className="py-4">
-          <div className="copy-rigth text-center">
+          <Col className="copy-rigth text-center">
             <p className="mt-3 footer-copy-text">
               Yourealtor Worldwide © 2024 All rights reserved
             </p>
-          </div>
+          </Col>
         </Row>
       </Container>
-    </div>
+    </Container>
   );
 };
 
