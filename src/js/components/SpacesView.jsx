@@ -7,7 +7,7 @@ import Img4 from "../../assets/Spaces-4.png";
 import Img5 from "../../assets/Spaces-5.png";
 import Img6 from "../../assets/Services-1.png";
 import Img7 from "../../assets/Services-2.png";
-import Img8 from "../../assets/Services-2.png";
+import Img8 from "../../assets/Services-3.png";
 
 const SpacesView = () => {
   return (

@@ -14,7 +14,7 @@ import BackOfficeView from "../components/BackOfficeView";
 const ServicesView = () => {
   return (
     <div className="services-view">
-      <NavHeader />
+      <NavHeader isHome='true'/>
       <Banner />
 
       <ServicesCard />

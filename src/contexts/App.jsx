@@ -7,12 +7,11 @@ import ConfirmView from "../js/pages/confirmView.jsx";
 import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
 import { AuthProvider } from "./AuthContext.jsx";
 import ProtectedRoute from "../ProtectedRoute.jsx";
-import ProfileInfo from "../js/components/profileComponents/ProfileInfo.jsx";
+
 import PrivacyPolicy from "../js/pages/PrivacyPolicy.jsx";
 import ContactService from "../js/pages/ContactService.jsx";
 import AboutUsView from "../js/pages/AboutUsView.jsx";
 import ServicesView from "../js/pages/ServicesView.jsx";
-import SpacesView from "../js/pages/SpacesView.jsx";
 import BringProperty from "../js/pages/BringProperty.jsx";
 import BringProperties from "../js/pages/BringProperties.jsx";
 import { DataProvider } from "./DataContext.jsx";
