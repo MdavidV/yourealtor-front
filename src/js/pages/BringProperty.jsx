@@ -52,7 +52,7 @@ const BringProperty = ()=>{
                     <Container>
                         <Row>
                             <Col>
-                                <h1>{activo.Nombre_Activo} en {activo.Barrio}, {activo.Ciudad}</h1>
+                                <h1 className="section-title">{activo.Nombre_Activo} en {activo.Barrio}, {activo.Ciudad}</h1>
                             </Col>
                         </Row>
                     </Container>
