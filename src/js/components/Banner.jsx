@@ -1,9 +1,17 @@
 import React from "react";
 import bg from "../../assets/Banner_bg.jpg";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { Col, Container, Row } from "reactstrap";
+import { useData } from "../../contexts/DataContext";
 
 const Banner = () => {
+  const navigate = useNavigate();
+  const { data, fetchData, cities, getAllCities, dataFiltered, filteringData } =
+    useData();
+  const handleChange = () => {
+    const selectedService = 'Arriendo';
+    navigate("/properties", { state: { dataFiltered, selectedService} });
+  };
   return (
     <div className="banner">
       <img src={bg} alt="" className="img-banner" />
@@ -19,9 +27,12 @@ const Banner = () => {
                 <p className="banner-text">Lorem ipsum dolor sit amet.</p>
               </div>
               <div className="buttons-container  m-3">
-                <Link to={"/"} className="primary-button-xl mx-3">
+                <button
+                  onClick={handleChange}
+                  className="primary-button-xl mx-3"
+                >
                   Arrienda
-                </Link>
+                </button>
                 <Link to={"/"} className="primary-button-xl mx-3">
                   Compra
                 </Link>

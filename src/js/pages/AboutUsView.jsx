@@ -15,6 +15,9 @@ import {
 
 import Img1 from "../../assets/About_us3.png";
 import Img2 from "../../assets/About_us4.png";
+import Img3 from "../../assets/certificacion-1.png";
+import Img4 from "../../assets/certificacion-2.png";
+import Img5 from "../../assets/certificacion-3.png";
 import CountUp from "react-countup";
 import { PiHandshakeFill } from "react-icons/pi";
 import ModelService from "../components/subcomponents/ModelService";
@@ -151,6 +154,41 @@ const AboutUsView = () => {
                 <img src={Img2} alt="" className="w-100" />
               </Col>
             </Row>
+
+            <Row className="my-5 justify-content-center">
+              <Col md="12" className="text-center">
+                <h4 className="section-title my-3">Respaldo de Calidad</h4>
+                <p>
+                  Nuestras certificaciones son el respaldo y garantía de la
+                  calidad y experiencia de nuestros servicios.
+                </p>
+              </Col>
+            </Row>
+
+            <Row className="d-flex justify-content-center align-items-center"> 
+              <Col md="4" className="certification-container">
+                <img src={Img3} alt="" className="img-certificactions"/>
+                <ul>
+                  <li>Matricula de Arrendador</li>
+                  <li>Secretaria de Habitat - Bogota </li>
+                </ul>
+              </Col>
+
+              <Col md="4" className="certification-container">
+                <img src={Img4} alt="" className="img-certificactions"/>
+                <ul>
+                  <li>Registro Unico de Proponentes</li>
+                </ul>
+              </Col>
+
+              <Col md="4" className="certification-container">
+                <img src={Img5} alt="" className="img-certificactions"/>
+                <ul>
+                  <li>Signos Distintivos</li>
+                  <li>Propiedad </li>
+                </ul>
+              </Col>
+            </Row>
           </TabPane>
 
           <TabPane tabId="3">
@@ -247,7 +285,7 @@ const AboutUsView = () => {
             </Row>
           </TabPane>
 
-          <TabPane tabId='4'>
+          <TabPane tabId="4">
             <ModelService />
           </TabPane>
         </TabContent>

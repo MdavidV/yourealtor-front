@@ -18,7 +18,7 @@ const Footer = () => {
           <Col>
             <ul className="footer-links-list">
               <li className="footer-link">
-                <Link>Ventas</Link>
+                <Link to='/properties'>Ventas</Link>
               </li>
               <li className="footer-link">
                 <Link>Arriendos</Link>
