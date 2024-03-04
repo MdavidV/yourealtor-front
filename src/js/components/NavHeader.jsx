@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
-import Logo from "../../assets/Logo_Scrolled.png";
-import MainLogo from "../../assets/Logo_Fixed.jpg";
+import Logo from "../../assets/Logo_Fixed.jpg";
+import MainLogo from "../../assets/Logo_Fixed_NoBG.png";
 import {
   Collapse,
   Navbar,
@@ -54,54 +54,50 @@ const NavHeader = ({ isHome }) => {
           : "navbar__fixed nav-scrolled-text"
       }`}
     >
-        <NavbarBrand href="/">
-          <img src={isTop ? MainLogo : Logo} alt="" />
-        </NavbarBrand>
-        <NavbarToggler onClick={toggle} />
-        <Collapse isOpen={isOpen} navbar>
-          <Nav className="ml-auto mynavbarItems" navbar>
-            <NavItem>
-              <NavLink href="/">
-                <p>Compra</p>
-              </NavLink>
-            </NavItem>
-            <NavItem>
-              <NavLink href="/">
-                <p>Renta</p>
-              </NavLink>
-            </NavItem>
-            <NavItem>
-              <NavLink href="/">
-                <p>Vende</p>
-              </NavLink>
-            </NavItem>
-            <NavItem>
-              <NavLink href="/">
-                <p>Arrienda</p>
-              </NavLink>
-            </NavItem>
-            <NavItem>
-              <NavLink href="/">
-                <p>Contactenos</p>
-              </NavLink>
-            </NavItem>
-          </Nav>
-          <Nav className="ml-auto myLogin" navbar>
-            {isAuthenticated ? (
-              <>
-                <NavItem
-                  onMouseEnter={toggleDropDown}
-                  onMouseLeave={toggleDropDown}
-                >
-                  <NavLink className="nav_user">
-                    <Link to={"/profile"}>
-                      <i className="bi bi-person-fill mx-1"></i>{" "}
-                      <span className="nav_user_name">
-                        {user.username.charAt(0).toUpperCase() +
-                          user.username.slice(1)}
-                      </span>
-                    </Link>
-                  </NavLink>
+      <NavbarBrand href="/">
+        <img src={isTop ? MainLogo : Logo} alt="" />
+      </NavbarBrand>
+      <NavbarToggler onClick={toggle} />
+      <Collapse isOpen={isOpen} navbar>
+        <Nav className="ml-auto mynavbarItems" navbar>
+          <NavItem>
+            <NavLink href="/our-services">
+              <p>Servicios</p>
+            </NavLink>
+          </NavItem>
+          <NavItem>
+            <NavLink href="/about-us">
+              <p>Quienes Somos?</p>
+            </NavLink>
+          </NavItem>
+          <NavItem>
+            <NavLink href="/">
+              <p>Oferta tu Inmueble</p>
+            </NavLink>
+          </NavItem>
+          <NavItem>
+            <NavLink href="#contactanos">
+              <p>Contactanos</p>
+            </NavLink>
+          </NavItem>
+        </Nav>
+        <Nav className="ml-auto myLogin" navbar>
+          {isAuthenticated ? (
+            <>
+              <NavItem
+                className="mx-5 "
+                onMouseEnter={toggleDropDown}
+                onMouseLeave={toggleDropDown}
+              >
+                <NavLink className="nav_user">
+                  <Link to={"/profile"}>
+                    <i className="bi bi-person-fill mx-1"></i>{" "}
+                    <span className="nav_user_name">
+                      {user.username.charAt(0).toUpperCase() +
+                        user.username.slice(1)}
+                    </span>
+                  </Link>
+                </NavLink>
 
                   <Dropdown isOpen={dropDownOpen} toggle={toggleDropDown}>
                     <DropdownMenu>

@@ -1,0 +1,57 @@
+.our-services-container {
+  .cont {
+    margin: 0 auto;
+    // width: 80%;
+    .services-icon-container {
+      width: 120px;
+      height: 120px;
+      margin: 20px auto;
+      i {
+        font-size: 120px;
+        color: $semantic-text-color;
+      }
+    }
+
+    .services-text {
+      padding: 10px 25px;
+      p {
+        text-align: justify;
+        margin-top: 12px;
+      }
+    }
+  }
+  .services-img-container {
+    position: relative;
+    top: 0;
+    overflow: hidden;
+    height: 100%;
+    img {
+      width: 100%;
+      height: 100%;
+      transition: transform 0.5s ease;
+    }
+    .img-effect {
+      width: 100%;
+      height: 100%;
+      background-color: rgba($color: #4a90e2, $alpha: 0.6);
+      position: absolute;
+      cursor: pointer;
+      transition: background-color 0.5s ease;
+      z-index: 10;
+      overflow: hidden;
+      &:hover + img {
+        transform: scale(1.1); 
+      }
+    }
+  }
+}
+
+
+@media screen and (max-width: $X-Large){
+    .our-services-container{
+        flex-direction: column;
+        .cont{
+            margin: 20px 0;
+        }
+    }
+}

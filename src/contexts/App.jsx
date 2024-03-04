@@ -8,6 +8,11 @@ import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
 import { AuthProvider } from "./AuthContext.jsx";
 import ProtectedRoute from "../ProtectedRoute.jsx";
 import ProfileInfo from "../js/components/profileComponents/ProfileInfo.jsx";
+import PrivacyPolicy from "../js/pages/PrivacyPolicy.jsx";
+import ContactService from "../js/pages/ContactService.jsx";
+import AboutUsView from "../js/pages/AboutUsView.jsx";
+import ServicesView from "../js/pages/ServicesView.jsx";
+import SpacesView from "../js/pages/SpacesView.jsx";
 import BringProperty from "../js/pages/BringProperty.jsx";
 import BringProperties from "../js/pages/BringProperties.jsx";
 import { DataProvider } from "./DataContext.jsx";
@@ -29,7 +34,12 @@ function App() {
             <Route path="/profile" element={<Navigate to="/profile/informacion-personal" />} />
             <Route path="/property/:id" element={<BringProperty/>} />
             <Route path="/properties" element={<BringProperties/>} />
-          </Routes>
+            <Route path="/privacy" element={<PrivacyPolicy />}></Route>
+          <Route path="/contact" element={<ContactService />}></Route>
+          <Route path="/about-us" element={<AboutUsView />}></Route>
+          <Route path="/our-services" element={<ServicesView />}></Route>
+          <Route path="/spaces-info" element={<SpacesView />}></Route>
+        </Routes>
         </BrowserRouter>
       </DataProvider>
     </AuthProvider>

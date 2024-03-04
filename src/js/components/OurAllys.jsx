@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 
 const OurAllys = () => {
   return (
-    <>
+    <div id="ourAllys">
       <h1 className="section-title mx-5 text-center">Nuestros Aliados</h1>
       <div className="our-allys-cont d-flex align-items-center justify-content-evenly">
         <div className="logo-cont d-flex flex-column align-items-center">
@@ -24,14 +24,12 @@ const OurAllys = () => {
         <div className="logo-cont d-flex flex-column align-items-center">
           <img src={Logo} alt="" />
 
-          <Link to={'/confirmVIew'}>
-            <a href="#" className="primary-button-l my-3">
-              Descubre Mas!
-            </a>
+          <Link to={'/confirmView'} className="primary-button-l my-3">
+                Descubre Mas!
           </Link>
         </div>
       </div>
-    </>
+    </div>
   );
 };
 

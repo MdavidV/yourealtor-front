@@ -13,4 +13,5 @@ export const SQL_PASSWORD = process.env.SQL_PASSWORD
 export const SQL_DB = process.env.SQL_DB
 export const GMAIL_USER = process.env.GMAIL_USER
 export const GMAIL_PASSWORD = process.env.GMAIL_PASSWORD
+export const CALENDLY_TOKEN = process.env.CALENDLY_TOKEN
 

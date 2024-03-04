@@ -1,9 +1,6 @@
 import { Col, Container, Row } from "reactstrap";
 import Logo from "../../assets/Logo_Fixed.jpg";
-import SocialMedia1 from "../../assets/Facebook_logo.png";
-import SocialMedia2 from "../../assets/Instagram_logo.png";
-import SocialMedia3 from "../../assets/Linkedin_logo.png";
-import SocialMedia4 from "../../assets/Whatsapp_logo.png";
+
 import { Link } from "react-router-dom";
 
 const Footer = () => {
@@ -12,7 +9,7 @@ const Footer = () => {
       <Container className="d-flex flex-column justify-content-center align-items-center">
         <Row className="mt-5">
           <Col xs="4" className="logo-footer">
-            <Link to={"/"} >
+            <Link to={"/"}>
               <img src={Logo} />
             </Link>
           </Col>
@@ -21,19 +18,19 @@ const Footer = () => {
           <Col>
             <ul className="footer-links-list">
               <li className="footer-link">
-                <Link>Compra</Link>
+                <Link>Ventas</Link>
               </li>
               <li className="footer-link">
-                <Link>Venta</Link>
+                <Link>Arriendos</Link>
               </li>
               <li className="footer-link">
-                <Link>Renta</Link>
+                <Link>Permutar</Link>
               </li>
               <li className="footer-link">
-                <Link>Conocenos</Link>
+                <a href='#ourTeam'>Conocenos</a>
               </li>
               <li className="footer-link">
-                <Link>Nuestra Historia</Link>
+                <Link to='/about-us'>Nuestra Historia</Link>
               </li>
             </ul>
           </Col>
@@ -42,10 +39,10 @@ const Footer = () => {
           <Col>
             <ul className="footer-links-list">
               <li className="footer-link">
-                <Link>Testimonios</Link>
+                <Link to='/privacy'>Politicas de Privacidad</Link>
               </li>
               <li className="footer-link">
-                <Link>Comienza tu carrera</Link>
+                <Link to='/contact'>Comienza tu carrera</Link>
               </li>
               <li className="footer-link">
                 <Link>FAQS</Link>
@@ -55,18 +52,24 @@ const Footer = () => {
         </Row>
         <Row>
           <Col>
-            <div className="social-media-icons mt-2 text-center">
-              <a href="#" className="">
-                <img src={SocialMedia1} alt="" />
+            <div className="social-media-icons mt-2 ">
+              <a
+                href="https://www.facebook.com/profile.php?id=61556430376948"
+                className="d-inline-block"
+              >
+                <i class="bi bi-facebook"></i>
               </a>
-              <a href="#" className="ms-3">
-                <img src={SocialMedia2} alt="" />
+              <a href="https://www.instagram.com/yourealtor2/" className=" d-inline-block">
+                <i class="bi bi-instagram"></i>
               </a>
-              <a href="#" className="ms-3">
-                <img src={SocialMedia3} alt="" />
+              <a
+                href="https://www.linkedin.com/company/yourealtor/"
+                className=" d-inline-block"
+              >
+                <i class="bi bi-linkedin"></i>
               </a>
-              <a href="#" className="ms-3">
-                <img src={SocialMedia4} alt="" />
+              <a href="#" className=" d-inline-block">
+                <i class="bi bi-whatsapp"></i>
               </a>
             </div>
           </Col>

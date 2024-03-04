@@ -115,3 +115,50 @@
         border: 1px solid $yellow4;
     }
 }
+
+// Services Button
+
+.services-btn {
+    height: 50px;
+    width: 250px;
+    background: transparent;
+    border: 3px solid $gray2;
+    color: $primary-light-color;
+    font-size: 18px;
+    margin-top: 25px;
+    cursor: pointer;
+    position: relative;
+    padding: 10px 0;
+      
+    &::after,
+    &::before {
+      content: "";
+      position: absolute;
+      width: 40px;
+      height: 40px;
+      border: inherit;
+      transition: 0.5s ease;
+    }
+
+    &::before {
+      left: -15px;
+      top: -15px;
+      border-width: 3px 0 0 3px;
+    }
+
+    &::after {
+      right: -15px;
+      bottom: -15px;
+      border-width: 0 3px 3px 0;
+    }
+
+
+    &:hover{
+      &::after,
+      &::before {
+        width: calc(100% + 27px);
+        height: calc(100% + 27px);
+      }
+    }
+
+  }

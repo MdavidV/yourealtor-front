@@ -16,6 +16,9 @@ let transporter = nodemailer.createTransport({
     user: mail.user,
     pass: mail.pass,
   },
+  tls: {
+    rejectUnauthorized: false
+  }
 });
 
 export const sendEmail = async (email, subject, html) => {
@@ -48,4 +51,33 @@ export const getTemplate = (firstName, token) => {
         >Confirmar Cuenta</a>
     </div>
     `;
+};
+
+export const sendEmailForm = async (req, res) => {
+  const { userName, telefono, email, mensaje } = req.body;
+
+  const contentHTML = `
+    <h1>Informacion de Usuario</h1>
+    <ul>
+      <li> Nombre: ${userName} </li>
+      <li> Telefono: ${telefono} </li>
+      <li> Correo Electronico: ${email} </li>
+    </ul>
+    <p>Mensaje: ${mensaje} </p>
+    `;
+
+
+    const info = await transporter.sendMail({
+      from: "Yourealtor",
+      to: mail.user,
+      subject: 'Formulario de Contacto desde la Pagina web',
+      html: contentHTML
+    })
+
+    console.log('Message Sent', info.messageId);
+
+
+    console.log(contentHTML);
+
+    res.send('recived')
 };

@@ -9,6 +9,7 @@ import {
   changePasswordRequest,
 } from "../api/auth";
 import Cookies from "js-cookie";
+import { sendMailRequest } from "../api/email.api";
 
 export const AuthContext = createContext();
 
@@ -91,6 +92,8 @@ export const AuthProvider = ({ children }) => {
     setIsAuthenticated(false);
     setUser(null);
   };
+
+
   useEffect(() => {
     if (errors.length > 0) {
       const timer = setTimeout(() => {
@@ -138,7 +141,7 @@ export const AuthProvider = ({ children }) => {
 
     checkLogin();
   }, []);
-
+  
   return (
     <AuthContext.Provider
       value={{
