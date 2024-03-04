@@ -106,7 +106,7 @@ const SlickBig = ({ data })=> {
     if(images){
 
     const slides = images.map((url, index) => (
-        <div key={index} className="">
+        <div key={index}>
             <img width="100%" src={url} alt={`Imagen ${index + 1}`} onClick={() => openModalWithImage(url)} />
         </div>
     ));
