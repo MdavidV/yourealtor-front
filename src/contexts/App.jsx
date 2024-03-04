@@ -12,7 +12,7 @@ import PrivacyPolicy from "../js/pages/PrivacyPolicy.jsx";
 import ContactService from "../js/pages/ContactService.jsx";
 import AboutUsView from "../js/pages/AboutUsView.jsx";
 import ServicesView from "../js/pages/ServicesView.jsx";
-import SpacesView from "../js/pages/SpacesView.jsx";
+import SpacesView from "../js/components/SpacesView.jsx";
 
 function App() {
   return (
@@ -31,8 +31,7 @@ function App() {
           <Route path="/privacy" element={<PrivacyPolicy />}></Route>
           <Route path="/contact" element={<ContactService />}></Route>
           <Route path="/about-us" element={<AboutUsView />}></Route>
-          <Route path="/our-services" element={<ServicesView />}></Route>
-          <Route path="/spaces-info" element={<SpacesView />}></Route>
+          <Route path="/our-services/*" element={<ServicesView />}></Route>
         </Routes>
       </BrowserRouter>
     </AuthProvider>

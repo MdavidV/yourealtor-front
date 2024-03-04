@@ -1,0 +1,39 @@
+.spaces-view {
+  .first-section {
+    border-bottom: 12px solid $semantic-text-color;
+
+    .spaces-icons-container {
+      padding: 25px 0;
+      border-style: solid;
+      border-color: $base-color;
+      border-width: 0px 2px 2px 2px;
+      margin-top: -30px;
+      img {
+        width: 90%;
+      }
+    }
+  }
+
+  .second-section {
+    border-bottom: 12px solid $semantic-text-color;
+    padding: 25px 0;
+    .spaces-icons-warehouses {
+      margin-top: -10px;
+      padding: 35px 0;
+      border: 2px solid $base-color;
+      img {
+        width: 70%;
+        z-index: -1;
+      }
+    }
+
+    .spaces-icons-office {
+      margin-top: -10px;
+      padding: 25px 0;
+      border: 2px solid $base-color;
+      img {
+        width: 42%;
+      }
+    }
+  }
+}

@@ -121,6 +121,14 @@
   @include texts($paragraph-weight, $black, $paragraph-size-20);
   text-align: justify;
 }
+
+.bpo-text{
+  @include texts($paragraph-weight, $black, $paragraph-size)
+}
+
+.service-field-text{
+  @include texts( $paragraph-weight, $bg-color, $paragraph-size-20);
+}
 //SPACES
 
 .spaces-subheading{
