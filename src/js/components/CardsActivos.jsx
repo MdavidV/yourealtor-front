@@ -25,16 +25,15 @@ const CardsActivos = ()=>{
                         <h2 className="section-title my-2">Populares</h2>
                     </Col>
                     <Col className="text-end">
-                        <a className="my-2 populars__link">Explorar<i className="d-ibline-block ms-3 bi bi-arrow-right"></i></a>
+                        <a className="my-2 populars__link" href="/spaces">Explorar<i className="d-ibline-block ms-3 bi bi-arrow-right"></i></a>
                     </Col>
                 </Row>
                 <Row className="my-3">
                     {activos.length > 0 && activos.map( (act,index) => {
                         const items = act.Imagenes.split(', ');
-                        console.log(items);
                         return(
                             <Col key={index} sm="12" lg="4">
-                                <CardActivo items={items} activo={act}/>
+                                <CardActivo items={items} activo={act} idActivo={act.idDetalle_Activos}/>
                             </Col>
                         )
                     })

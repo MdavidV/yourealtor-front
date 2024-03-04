@@ -1,26 +1,28 @@
 import { pool } from '../databaseSql.js';
 
-export const createActivo = async (req, res) => {
-    console.log('createActivo');
-    // const {nombre, barrio } = req.body;
-    // try {
-    
-    //   const [ rows ] = await pool.query('INSER INTO Detalle_Activos(Nombre_Activo, Barrio) VALUES (?,?)',[nombre, barrio]);
-    //   res.json(rows);
-    // } catch (error) {
-    //   return res.status(500).json({ message: error.message });
-    // }
+export const getCities= async (req, res) => {
+    try{
+      const [rows] = await pool.query( `
+          SELECT * FROM Ciudades
+        `)
+      res.json(rows);
+    }
+   catch (error) {
+      return res.status(500).json({ message: error.message });
+    }
   };
 
 export const getActivos = async (req, res) => {   
     try {
       const [ rows ] = await pool.query(`
-        SELECT A.*, C.Nombre_Servicio AS Tipo_Servicio
+        SELECT A.*, C.Nombre_Servicio AS Tipo_Servicio, D.Tipo_Activo
         FROM Detalle_Activos A
         INNER JOIN Detalle_Activo_Tipos_Servicios B
         ON A.idDetalle_Activos = B.Detalle_Activos_idDetalle_Activos
         INNER JOIN Tipos_de_Servicio C
         ON B.Tipos_de_Servicio_idTipos_de_Servicio = C.idTipos_de_Servicio
+        INNER JOIN Activos D
+        ON A.Activos_Id_Activo = D.Id_Activo
       `);
       res.json(rows);
     } catch (error) {
@@ -31,7 +33,19 @@ export const getActivos = async (req, res) => {
 export const getActivo = async (req, res) => {
     const idDetalleActivos = parseInt(req.params.id, 10);
     try {
-        const [ result ] = await pool.query('SELECT * FROM Detalle_Activos WHERE idDetalle_Activos = ?', [idDetalleActivos])
+        const [ result ] = await pool.query(`
+          SELECT A.*, C.Nombre_Servicio AS Tipo_Servicio, D.Tipo_Activo
+          FROM Detalle_Activos A
+          INNER JOIN Detalle_Activo_Tipos_Servicios B
+          ON A.idDetalle_Activos = B.Detalle_Activos_idDetalle_Activos
+          INNER JOIN Tipos_de_Servicio C
+          ON B.Tipos_de_Servicio_idTipos_de_Servicio = C.idTipos_de_Servicio
+          INNER JOIN Activos D
+          ON A.Activos_Id_Activo = D.Id_Activo
+          WHERE idDetalle_Activos = ?
+          
+          
+          `, [idDetalleActivos])
         
         if(result.length === 0){
             return res.status(404).json({
