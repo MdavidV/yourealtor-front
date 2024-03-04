@@ -34,22 +34,27 @@ const ServicesCard = () => {
       frontIcon: <i className="bi bi-houses-fill"></i>,
       frontTitle: "Spaces",
       backTexts: ["Ventas", "Arrendamientos", "Hipotecas"],
-      to: '/spaces-info'
+      to: '/our-services/spaces-info'
     },
     {
       frontIcon: <i className="bi bi-buildings"></i>,
       frontTitle: "Property",
       backTexts: ["Administracion", "Operacion", "Auditorias Externas"],
+      to: '/our-services/property-info'
+      
     },
     {
       frontIcon: <PiPaintBrushHouseholdBold />,
       frontTitle: "Flipping Houses",
       backTexts: ["Apartamentos", "Casas", "Locales", "Oficinas"],
+
     },
     {
       frontIcon: <i className="bi bi-clipboard-data"></i>,
       frontTitle: "Back Office",
       backTexts: ["BPO", "Gestion documental Inmobiliaria"],
+      to: '/our-services/back-office-info'
+
     },
   ];
 

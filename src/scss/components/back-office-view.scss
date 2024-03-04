@@ -1,0 +1,25 @@
+.back-office-container {
+
+    border-bottom: 10px solid $semantic-text-color;
+  .bpo-img {
+    cursor: pointer;
+  }
+
+  .left-list{
+    list-style: circle;
+    li{
+        margin: 10px;
+    }
+  }
+
+  .checked-list {
+    list-style: none; /* Elimina el estilo predeterminado */
+    li {
+        margin: 10px 0 ;
+      &:before {
+        color: green; /* Cambia el color si lo necesitas */
+        content: "\2713\0020"; /* Carácter Unicode para el símbolo de verificación seguido de un espacio */
+      }
+    }
+  }
+}

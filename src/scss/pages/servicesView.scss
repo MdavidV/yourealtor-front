@@ -1,53 +1,77 @@
-.services-view{
-    .services-list{
-        ul{
-            margin-left: 75px;
-            // display: flex;
-            // // flex-wrap: wrap;
-            text-align: start;
-            
-            li{
-                // width: 45%;
-                margin: 17px 15px;
-                font-size: 20px;
-            }
-        }
+.services-view {
+  .services-info {
+    .services-text {
+      text-align: justify;
+      width: 80%;
+      margin: 0 auto;
     }
-    .services-text{
-        text-align: justify;
+
+    .services-img-container {
+      background-color: #dbe3e5;
+      overflow: hidden;
+      &:hover {
+        img {
+          transform: scale(1.1);
+        }
+      }
+
+      .services-img {
+        transition: all ease 0.5s;
         width: 80%;
-        margin: 0 auto;
-    }
-    
-    .services-img-container{
-        background-color: #dbe3e5;
-        overflow: hidden;
-        &:hover{
-            img{
-                transform: scale(1.1);
-            }
-        }
-        
-        .services-img{
-            transition: all ease .5s;
-            width: 80%;
-        }
-
+      }
     }
 
-    .services-img-container-2{
-        background-color: #cddadc;
-        overflow: hidden;
-        &:hover{
-            img{
-                transform: scale(1.1);
-            }
+    .services-img-container-2 {
+      background-color: #cddadc;
+      overflow: hidden;
+      &:hover {
+        img {
+          transform: scale(1.1);
         }
-        
-        .services-img{
-            transition: all ease .5s;
-            width: 80%;
-        }
+      }
+
+      .services-img {
+        transition: all ease 0.5s;
+        width: 80%;
+      }
     }
+
+    .last-section-services {
+      border-bottom: 10px solid $semantic-text-color;
+      padding: 15px 0 ;
+      .all-services {
+        svg {
+          font-size: 575px;
+          color: $base-color;
+        }
+      }
+
+      .all-services-cont {
+        .service-field {
+          width: 100%;
+          height: auto;
+          margin: 10px 0 10px -45px;
+          padding: 15px 25px 15px 15px;
+          background-color: #1891ab;
+          border-radius: 0 100px 0 12px;
+          cursor: pointer;
+          transition: all ease 0.5s;
+          &:hover {
+            margin-left: 0;
+          }
+          &:nth-child(odd) {
+            &:hover {
+              background-color: #5113b3;
+            }
+          }
+
+          &:nth-child(even) {
+            &:hover {
+              background-color: #5e5ea2;
+            }
+          }
+        }
+      }
+    }
+  }
 }
-
