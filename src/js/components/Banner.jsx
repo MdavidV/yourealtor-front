@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import bg from "../../assets/Banner_bg.jpg";
 import { Link, useNavigate } from "react-router-dom";
 import { Col, Container, Row } from "reactstrap";
@@ -6,12 +6,30 @@ import { useData } from "../../contexts/DataContext";
 
 const Banner = () => {
   const navigate = useNavigate();
-  const { data, fetchData, cities, getAllCities, dataFiltered, filteringData } =
-    useData();
+  const { 
+    data, 
+    fetchData, 
+    cities, 
+    getAllCities,
+    dataFiltered,
+    filteringData
+} = useData();
+
+useEffect(()=>{
+  getAllCities();
+  fetchData();
+},[])
+
+
   const handleChange = () => {
     const selectedService = 'Arriendo';
     navigate("/properties", { state: { dataFiltered, selectedService} });
   };
+  const handleChanges = () => {
+    const selectedService = 'Arriendo';
+    navigate("/properties", { state: { dataFiltered, selectedService} });
+  };
+
   return (
     <div className="banner">
       <img src={bg} alt="" className="img-banner" />
@@ -33,9 +51,9 @@ const Banner = () => {
                 >
                   Arrienda
                 </button>
-                <Link to={"/"} className="primary-button-xl mx-3">
+                <button onClick={handleChanges} className="primary-button-xl mx-3">
                   Compra
-                </Link>
+                </button>
               </div>
             </Col>
           </Row>

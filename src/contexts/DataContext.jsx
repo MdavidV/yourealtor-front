@@ -14,7 +14,7 @@ export const useData = ()=>{
 export const DataProvider =({ children }) =>{
     const [data, setData] = useState('');
     const [cities, setCities] = useState('');
-    const [dataFiltered, setDataFiltered] = useState([]);
+    const [dataFiltered, setDataFiltered] = useState('');
     const [activo, setActivo] = useState('');
 
     const fetchData = async()=>{
@@ -52,6 +52,7 @@ export const DataProvider =({ children }) =>{
           const condicionCiudad = Ciudad !== '' ? element.Ciudad === Ciudad : true;
           const condicionServicio = Tipo_Servicio !== '' ? element.Tipo_Servicio === Tipo_Servicio : true;
           const condicionActivo = Tipo_Activo !== '' ? element.Tipo_Activo === Tipo_Activo : true;
+
           return condicionCiudad && condicionServicio && condicionActivo;
         });
     
