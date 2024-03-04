@@ -31,17 +31,42 @@ import {
   IoPaperPlaneOutline,
   IoCheckmark,
 } from "react-icons/io5";
+import {
+  IoExpandOutline,
+  IoHourglassOutline,
+  IoLayers,
+  IoHome,
+  IoBed,
+  IoBusiness,
+  IoCashOutline,
+  IoCarSportOutline,
+  IoLogoWhatsapp,
+  IoCallOutline,
+  IoPaperPlaneOutline,
+  IoCheckmark,
+} from "react-icons/io5";
 import { FaBath } from "react-icons/fa";
 import SlickBig from "../components/subcomponents/slickBig";
 import { useNavigate } from "react-router-dom";
 import { InlineShareButtons } from "sharethis-reactjs";
+import { InlineShareButtons } from "sharethis-reactjs";
 
-const BringProperty = ()=>{
-    const navigate = useNavigate();
-    const params = useParams();
+const BringProperty = () => {
+  const navigate = useNavigate();
+  const params = useParams();
 
   const { getOneActive, activo } = useData();
+  const { getOneActive, activo } = useData();
 
+  useEffect(() => {
+    const loadActivo = async () => {
+      if (params.id) {
+        await getOneActive(params.id);
+      }
+    };
+    loadActivo();
+    window.scrollTo(0, 0);
+  }, []);
   useEffect(() => {
     const loadActivo = async () => {
       if (params.id) {
@@ -316,3 +341,4 @@ const BringProperty = ()=>{
     )
 }
 export default BringProperty;
+
