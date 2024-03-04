@@ -46,7 +46,7 @@ const OurServices = () => {
                 inmueble con el mejor trato.
               </p>
             </div>
-            <Link className="services-btn text-center ">Ofertar!</Link>
+            <Link className="services-btn text-center " to='/offer'>Ofertar!</Link>
           </div>
           <img src={Image} alt="Deal Image" className="services-img" />
         </div>

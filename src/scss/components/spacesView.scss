@@ -1,4 +1,47 @@
 .spaces-view {
+  .steps-container {
+    .step-container {
+      border-left: 2px solid $red;
+      padding: 15px;
+      .step-title {
+        background-color: $base-color;
+        width: 100%;
+        padding: 10px 15px;
+      }
+      .step-text{
+        text-align: center;
+      }
+    }
+  }
+
+  .step-container {
+    padding: 15px;
+    cursor: pointer;
+    transition: all ease .3s;
+    position: relative;
+    border-radius: 0;
+    box-shadow: none;
+    top: 0;
+    border: 1px solid transparent;
+    &:hover{
+      top: -25px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1), 0 6px 20px rgba(0, 0, 0, 0.1);
+      border-radius: 22px;
+      border: 1px solid $red;
+    }
+    .step-title {
+      background-color: $base-color;
+      width: 100%;
+      padding: 10px 15px;
+      margin-bottom: 12px;
+    }
+    
+  }
+
+  .last-step{
+    border-bottom: 1px solid $red;
+  }
+
   .first-section {
     border-bottom: 12px solid $semantic-text-color;
 

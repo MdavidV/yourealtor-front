@@ -155,3 +155,10 @@
 .spaces-card-text{
   @include texts($semantic-weight, $primary-light-color, $paragraph-size)
 }
+
+// ABOUT US
+
+.countup{
+  @include texts ($tittle-weight, $secondary-light-color, $huge-size)
+}
+

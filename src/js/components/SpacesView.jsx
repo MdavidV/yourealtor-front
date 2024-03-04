@@ -13,6 +13,54 @@ const SpacesView = () => {
   return (
     <div className="spaces-view">
       <Container>
+        <h1 className="section-title mt-5">
+          5 pasos para tener el espacio que deseas...
+        </h1>
+        <Row className="steps-container my-3 mt-5">
+          <Col md="3" className="step-container d-flex flex-column justify-content-center align-items-center">
+            <div className="step-title">
+              <h3 className='banner-tittle'>Buscamos</h3>
+            </div>
+            <div className="step-text">
+              <p>La mejor opcion de tu presupuesto y expectativa.</p>
+            </div>
+          </Col>
+          <Col md="3" className="step-container d-flex flex-column justify-content-center align-items-center">
+            <div className="step-title">
+              <h3 className='banner-tittle'>Encontramos</h3>
+            </div>
+            <div className="step-text">
+              <p>Lo que buscas en nuestro inventario o en el mercado.</p>
+            </div>
+          </Col>
+          <Col md="3" className="step-container d-flex flex-column justify-content-center align-items-center">
+            <div className="step-title">
+              <h3 className='banner-tittle'>Presentamos</h3>
+            </div>
+            <div className="step-text">
+              <p>Las mejores opciones de compra, venta y arriendo.</p>
+            </div>
+          </Col>
+          <Col md="3" className="step-container d-flex flex-column justify-content-center align-items-center">
+            <div className="step-title">
+              <h3 className='banner-tittle'>Seleccionas</h3>
+            </div>
+            <div className="step-text">
+              <p>Lo que mas te guste y se acomode a tu presupuesto.</p>
+            </div>
+          </Col>
+        </Row>
+
+        <Row className="my-5 justify-content-center">
+          <Col md="3" className="step-container last-step">
+            <div className="step-title">
+              <h3 className='banner-tittle'>Firmas</h3>
+            </div>
+            <div className="step-text">
+              <p className="text-center">Y te mudas al espacio que te haga sonar y crecer.</p>
+            </div>
+          </Col>
+        </Row>
         <h2 className="section-title mt-2">Como servimos...</h2>
         <div className="first-section">
           <Row className="my-2">

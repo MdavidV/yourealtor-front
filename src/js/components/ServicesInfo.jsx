@@ -8,6 +8,7 @@ const ServicesInfo = () => {
   return (
     <div className="services-info">
       <Container>
+
         <Row className="justify-content-center align-items-center my-3">
           <Col md="6">
             <h1 className="section-title my-2 text-center">

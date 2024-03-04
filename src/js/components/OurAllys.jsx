@@ -1,35 +1,25 @@
 import React from "react";
-import Logo from "../../assets/Logo_Allys.png";
+import Logo from "../../assets/Allys-1.png";
 import { Link } from "react-router-dom";
+import PdfUrl from '../../assets/polizas.pdf'
+
+import { Col, Container, Row } from "reactstrap";
 
 const OurAllys = () => {
   return (
-    <div id="ourAllys">
-      <h1 className="section-title mx-5 text-center">Nuestros Aliados</h1>
-      <div className="our-allys-cont d-flex align-items-center justify-content-evenly">
-        <div className="logo-cont d-flex flex-column align-items-center">
-          <img src={Logo} alt="" />
-          <a href="#" className="primary-button-l my-3">
-            Descubre Mas!
-          </a>
-        </div>
-
-        <div className="logo-cont d-flex flex-column align-items-center middle">
-          <img src={Logo} alt="" />
-          <a href="#" className="primary-button-l my-3">
-            Descubre Mas!
-          </a>
-        </div>
-
-        <div className="logo-cont d-flex flex-column align-items-center">
-          <img src={Logo} alt="" />
-
-          <Link to={'/confirmView'} className="primary-button-l my-3">
-                Descubre Mas!
-          </Link>
-        </div>
-      </div>
+    <div className=" d-flex justify-content-evenly">
+      <Row className=" align-items-center justify-content-evenly w-100">
+        <Col md="12" className="our-allys-cont d-flex flex-column align-items-center justify-content-center">
+          <h1 className="banner-tittle mx-5 text-center">
+            Descubre Como Adquirir tu Poliza
+          </h1>
+          <a href={PdfUrl} download="polizas.pdf" className="primary-button-l mt-5">
+              Descubrelo Aqui!
+            </a>
+        </Col>
+      </Row>
     </div>
+
   );
 };
 

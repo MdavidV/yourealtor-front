@@ -1,0 +1,39 @@
+.about-us-menu {
+  .nav-link {
+    font-size: 22px;
+  }
+}
+.about-us-range {
+  padding: 30px 0;
+  .range-container {
+    .range-icon-container {
+      border-radius: 100%;
+      background-color: $base-color;
+      cursor: pointer;
+      width: 200px;
+      height: 200px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1), 0 6px 20px rgba(0, 0, 0, 0.1);
+      transition: all ease-in .3s;
+      &:hover{
+        background-color: $semantic-text-color;
+        margin-top: -15px;
+      }
+      i,
+      svg {
+        font-size: 100px;
+        color: $bg-color;
+      }
+    }
+
+    .range-text-container {
+      margin-top: 12px;
+      h3 {
+        @include texts($paragraph-weight, $black, $paragraph-size);
+        text-align: center;
+      }
+    }
+  }
+}

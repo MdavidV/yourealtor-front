@@ -71,7 +71,7 @@ const NavHeader = ({ isHome }) => {
             </NavLink>
           </NavItem>
           <NavItem>
-            <NavLink href="/">
+            <NavLink href="/offer">
               <p>Oferta tu Inmueble</p>
             </NavLink>
           </NavItem>

@@ -15,6 +15,7 @@ import ServicesView from "../js/pages/ServicesView.jsx";
 import BringProperty from "../js/pages/BringProperty.jsx";
 import BringProperties from "../js/pages/BringProperties.jsx";
 import { DataProvider } from "./DataContext.jsx";
+import OfferView from "../js/pages/OfferView.jsx";
 
 function App() {
   return (
@@ -37,6 +38,7 @@ function App() {
           <Route path="/contact" element={<ContactService />}></Route>
           <Route path="/about-us" element={<AboutUsView />}></Route>
           <Route path="/our-services/*" element={<ServicesView />}></Route>
+          <Route path="/offer" element={<OfferView />}></Route>
         </Routes>
         </BrowserRouter>
       </DataProvider>
