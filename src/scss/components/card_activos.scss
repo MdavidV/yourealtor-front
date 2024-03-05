@@ -1,5 +1,8 @@
 .populars{ 
     background: linear-gradient(to bottom, transparent 45%, $base-color 45%);
+    .populars__link{
+        background-color: transparent;
+    }
 }
 
 .buildingCards{

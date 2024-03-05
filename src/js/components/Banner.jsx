@@ -57,10 +57,8 @@ useEffect(()=>{
 
   useEffect(() => {
     if (dataFiltered && dataFiltered.length > 0) {
-        console.log(dataFiltered);
       navigate('/properties', { state: { dataFiltered,  selectedService} });
     }else if(dataFiltered && dataFiltered.length === 0){
-        console.log(dataFiltered);
         navigate('/properties', { state: { dataFiltered,  selectedService} });
     }
     // Esta dependencia asegura que el efecto se ejecute solo cuando `dataFiltered` cambie.
