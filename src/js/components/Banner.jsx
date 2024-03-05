@@ -1,13 +1,16 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import bg from "../../assets/Banner_bg.jpg";
 import { Link, useNavigate } from "react-router-dom";
 import { Col, Container, Row } from "reactstrap";
 import { useData } from "../../contexts/DataContext";
 
 const Banner = () => {
+  
+  const [selectedService, setSelectedService] = useState('');
+  
   const navigate = useNavigate();
   const { 
-    data, 
+    data,
     fetchData, 
     cities, 
     getAllCities,
@@ -20,15 +23,48 @@ useEffect(()=>{
   fetchData();
 },[])
 
+  const handleChange = (e) => {
+    e.preventDefault();
 
-  const handleChange = () => {
-    const selectedService = 'Arriendo';
-    navigate("/properties", { state: { dataFiltered, selectedService} });
+    let parametros = {
+        Ciudad: '',
+        Tipo_Servicio: 'Arriendo',
+        Tipo_Activo: '',
+    };
+
+    const { Ciudad, Tipo_Servicio, Tipo_Activo } = parametros;
+
+    setSelectedService(Tipo_Servicio);
+
+    filteringData(Ciudad, Tipo_Servicio, Tipo_Activo, data);
   };
-  const handleChanges = () => {
-    const selectedService = 'Arriendo';
-    navigate("/properties", { state: { dataFiltered, selectedService} });
+
+  const handleChanges = (e) => {
+    e.preventDefault();
+
+    let parametros = {
+        Ciudad: '',
+        Tipo_Servicio: 'Venta',
+        Tipo_Activo: '',
+    };
+
+    const { Ciudad, Tipo_Servicio, Tipo_Activo } = parametros;
+
+    setSelectedService(Tipo_Servicio);
+
+    filteringData(Ciudad, Tipo_Servicio, Tipo_Activo, data);
   };
+
+  useEffect(() => {
+    if (dataFiltered && dataFiltered.length > 0) {
+        console.log(dataFiltered);
+      navigate('/properties', { state: { dataFiltered,  selectedService} });
+    }else if(dataFiltered && dataFiltered.length === 0){
+        console.log(dataFiltered);
+        navigate('/properties', { state: { dataFiltered,  selectedService} });
+    }
+    // Esta dependencia asegura que el efecto se ejecute solo cuando `dataFiltered` cambie.
+  }, [dataFiltered, navigate, selectedService]);
 
   return (
     <div className="banner">

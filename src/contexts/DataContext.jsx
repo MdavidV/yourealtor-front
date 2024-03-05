@@ -48,6 +48,7 @@ export const DataProvider =({ children }) =>{
     }
 
     const filteringData = (Ciudad, Tipo_Servicio, Tipo_Activo, data) => {
+        console.log(Tipo_Servicio);
         const items = data.filter((element) => {
           const condicionCiudad = Ciudad !== '' ? element.Ciudad === Ciudad : true;
           const condicionServicio = Tipo_Servicio !== '' ? element.Tipo_Servicio === Tipo_Servicio : true;
