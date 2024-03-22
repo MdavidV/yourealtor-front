@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import Logo from "../../assets/logo_unScrolled.png";
+import Logo from "../../assets/Logo.png";
 import Bg from "../../assets/Bg_Form_View.jpg";
 import { Col, Container, Form, FormGroup, Input, Label, Row } from "reactstrap";
 import { Link, useNavigate } from "react-router-dom";
@@ -38,7 +38,7 @@ const Login = () => {
       </div>
 
       <Container className="d-flex justify-content-center align-items-center ">
-        <div className="col-6 p-3  form-login-cont">
+        <Col lg={6} xs={12}className=" p-3  form-login-cont">
           <div className="form-container">
             <div>
               <Col className="my-3 text-center">
@@ -54,7 +54,7 @@ const Login = () => {
             </Col>
 
             <form className="my-form" id="myForm" onSubmit={onSubmit}>
-              <div className="form-group">
+              <div className="form-group col-12">
                 <label className="form-paragraph" htmlFor="email">
                   Correo Electrónico
                 </label>
@@ -69,7 +69,7 @@ const Login = () => {
                 )}
               </div>
 
-              <div className="form-group">
+              <div className="form-group col-12">
                 <label className="form-paragraph" htmlFor="password">
                   Contraseña
                 </label>
@@ -84,7 +84,7 @@ const Login = () => {
                 )}
               </div>
 
-              <div className="form-group">
+              <div className="form-group ">
                 <button
                   type="submit"
                   className="button-login primary-button-xl "
@@ -102,7 +102,7 @@ const Login = () => {
               </p>
             </form>
           </div>
-        </div>
+        </Col>
       </Container>
     </div>
   );

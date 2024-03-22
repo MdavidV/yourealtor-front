@@ -1,4 +1,5 @@
 import User from "../models/User.js";
+import Asesor from "../models/asesorSchema.js";
 import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
 import { TOKEN_SECRET } from "../config.js";
@@ -8,7 +9,6 @@ import {
   verifyVerificationToken,
 } from "../libs/jwt.js";
 import { getTemplate, sendEmail } from "../libs/sendEmail.js";
-// import User from "../models/user";
 
 export const signup = async (req, res) => {
   const { firstName, secondName, email, password } = req.body;
@@ -144,18 +144,14 @@ export const changePassword = async (req, res) => {
   try {
     const { id, currentPassword, newPassword } = req.body;
     const userFound = await User.findById(id);
-    
+
     const oldIsMatch = await bcrypt.compare(newPassword, userFound.password);
 
     if (oldIsMatch) {
-      return res
-        .status(401)
-        .json({
-          message: "La nueva contrasena NO puede ser igual a la anterior",
-        });
+      return res.status(401).json({
+        message: "La nueva contrasena NO puede ser igual a la anterior",
+      });
     }
-
-    
 
     if (userFound) {
       const isMatch = await bcrypt.compare(currentPassword, userFound.password);

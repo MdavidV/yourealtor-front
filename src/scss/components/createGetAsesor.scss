@@ -1,0 +1,19 @@
+.asesors-container {
+  max-height: 600px;
+  overflow-y: auto;
+  .asesor-row {
+    border: 1px solid green;
+    border-radius: 22px;
+  }
+
+  .asesor-inactivo{
+    color: $gray1;
+    border: 1px solid $gray1;
+  }
+}
+
+@media (max-width: $XX-Large) {
+  .date-asesor {
+    text-align: start !important;
+  }
+}

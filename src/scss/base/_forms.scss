@@ -42,7 +42,7 @@
             background: $semantic-gradient;
             position: absolute;
             top: 0;
-            right: 70px;
+            right: 0;
         }
         
     }
@@ -74,6 +74,9 @@
         &_info{
             order: 2;
             margin-bottom: inherit;
+            &::after{
+                right: 70px;
+            }
         }
         &_content{
             order: 1;

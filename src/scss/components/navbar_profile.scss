@@ -11,3 +11,13 @@
         color: $white;
     }
 }
+
+@media (max-width: $Small) {
+    .user{
+        display: none;
+    }
+
+    .nav-cont{
+        justify-content: center !important;
+    }
+}

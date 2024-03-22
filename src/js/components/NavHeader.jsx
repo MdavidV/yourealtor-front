@@ -1,6 +1,5 @@
 import { useState, useEffect } from "react";
-import Logo from "../../assets/Logo_Fixed.jpg";
-import MainLogo from "../../assets/Logo_Fixed_NoBG.png";
+import MainLogo from "../../assets/Logo.png";
 import {
   Collapse,
   Navbar,
@@ -50,7 +49,7 @@ const NavHeader = ({ isHome }) => {
         >
           <Col>
           <Navbar
-          expand="md"
+          expand="lg"
           fixed="top"
           light
           className={`mynavbar ${isTop
@@ -58,8 +57,8 @@ const NavHeader = ({ isHome }) => {
               : "navbar__fixed nav-scrolled-text"
           } ${!isHome? 'same_bar' : ''}`}
         >
-          <NavbarBrand href="/">
-            <img src={isTop ? MainLogo : Logo} alt="" />
+          <NavbarBrand href="/" className="">
+            <img src={ MainLogo } alt="" />
           </NavbarBrand>
           <NavbarToggler onClick={toggle} />
           <Collapse isOpen={isOpen} navbar className="mobile_collapse">
@@ -77,6 +76,11 @@ const NavHeader = ({ isHome }) => {
               <NavItem>
                 <NavLink href="/offer">
                   <p>Oferta tu Inmueble</p>
+                </NavLink>
+              </NavItem>
+              <NavItem>
+                <NavLink href="/blogs">
+                  <p>Blog</p>
                 </NavLink>
               </NavItem>
               <NavItem>

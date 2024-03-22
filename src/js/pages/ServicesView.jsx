@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import NavHeader from "../components/NavHeader";
 import Footer from "../components/Footer";
 import Banner from "../components/Banner";
@@ -12,6 +12,10 @@ import PropertyView from "../components/PropertyView";
 import BackOfficeView from "../components/BackOfficeView";
 
 const ServicesView = () => {
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
   return (
     <div className="services-view">
       <NavHeader isHome='true'/>

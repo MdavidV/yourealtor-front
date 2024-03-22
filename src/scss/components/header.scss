@@ -1,194 +1,198 @@
-.navbarfluid_home{
-  .mynavbar__mobile{
-    .mynavbar{
+.navbarfluid_home {
+  .mynavbar__mobile {
+    .mynavbar {
       background-color: $base-color;
-      transition: all 0.5s ease;       
+      transition: all 0.5s ease;
     }
   }
 
-  .mynavbar{
-    .mobile_collapse{
-      ul.mynavbarItems{
+  .mynavbar {
+    width: 100%;
+    .mobile_collapse {
+      width: 100%;
+      ul.mynavbarItems {
         width: 100%;
-        li{
+        li {
           margin-left: -12px;
           margin-right: -12px;
           border-bottom: 1px solid $white;
-          &:first-child{
+          &:first-child {
             border-top: 1px solid $white;
             flex-grow: 1;
           }
           &:nth-child(2),
-          &:nth-child(3){
+          &:nth-child(3) {
             flex-grow: 3;
           }
-          &:nth-child(4){
+          &:nth-child(4) {
             flex-grow: 1;
           }
-          &:last-child{
+          &:last-child {
             flex-grow: 2;
             border-bottom: none;
           }
-          a{
-            *{
+          a {
+            * {
               color: $white;
             }
-            p{
+            p {
               padding: 20px;
             }
           }
         }
       }
-    }  
-    .container-fluid{
+    }
+    .container-fluid {
+      width: 100%;
       display: flex;
-      justify-content: center;
-      .navbar-brand{
-        img{
+      justify-content: space-between;
+      .navbar-brand {
+        width: 70%;
+        min-width: 150px;
+        img {
           width: 100%;
-          max-width: 250px;
+          max-width: 350px;
         }
       }
-      button.navbar-toggler{
+      button.navbar-toggler {
         border: 1px solid $white;
-        .navbar-toggler-icon{
+        .navbar-toggler-icon {
           filter: invert(1);
         }
-        &:focus{
+        &:focus {
           box-shadow: none;
           background-color: $white;
-          .navbar-toggler-icon{
+          .navbar-toggler-icon {
             filter: none;
           }
         }
       }
-    }    
+    }
   }
 
-  .navbar__fixed{
+  .navbar__fixed {
     background-color: $base-color;
   }
 
-  .same_bar{
+  .same_bar {
     background-color: $base-color;
   }
-  
-  @media (min-width: $Medium){
-    .mynavbar{
+
+  @media (min-width: $Medium) {
+    .mynavbar {
       padding: 20px 5px;
-      .mobile_collapse{
-        ul.mynavbarItems{
-          li{
+      .mobile_collapse {
+        ul.mynavbarItems {
+          li {
             margin-left: 0;
             margin-right: 0;
             text-align: center;
             border: none !important;
-            a{
-              p{
+            a {
+              p {
                 padding: 0px;
               }
             }
           }
         }
-      }   
-      .container-fluid{
+      }
+      .container-fluid {
         justify-content: space-between;
-        .navbar-brand{
-          width: 15%;
+        .navbar-brand {
+          width: 40%;
         }
-        .mobile_collapse{
+        .mobile_collapse {
           justify-content: flex-end;
         }
       }
     }
   }
-  @media (min-width: $Large){
-    .mynavbar{
-      .mobile_collapse{
-        ul.mynavbarItems{
-          li{
+  @media (min-width: $Large) {
+    .mynavbar {
+      .mobile_collapse {
+        ul.mynavbarItems {
+          li {
             margin-left: 30px;
-            &:first-child{
+            &:first-child {
               flex-grow: 1;
             }
             &:nth-child(2),
-            &:nth-child(3){
+            &:nth-child(3) {
               flex-grow: 1;
             }
-            &:nth-child(4){
+            &:nth-child(4) {
               flex-grow: 1;
             }
-            &:last-child{
+            &:last-child {
               flex-grow: 1;
             }
           }
         }
       }
-      .container-fluid{
-        .navbar-brand{
+      .container-fluid {
+        .navbar-brand {
           width: 30%;
         }
       }
     }
-    .navbar__fixed, .same_bar{
-      .mobile_collapse{
-        ul.mynavbarItems{
+    .navbar__fixed,
+    .same_bar {
+      .mobile_collapse {
+        ul.mynavbarItems {
           width: 100%;
           display: flex;
           justify-content: center;
-          li.nav-item{
+          li.nav-item {
             margin-left: 0;
-            &:not(:last-child){
+            &:not(:last-child) {
               flex-grow: 1;
             }
-            &:last-child{
+            &:last-child {
               flex-grow: 5;
               margin-right: 20px;
               display: flex;
               justify-content: flex-end;
               position: relative;
-              &:hover{
-                & > a{
+              &:hover {
+                & > a {
                   box-shadow: 0px 3px 0px 0px $yellow2;
-                  p{
-                    
+                  p {
                     color: $yellow2;
                   }
                 }
               }
-              .dropdown{
+              .dropdown {
                 position: absolute;
                 transform: translate(-50%, -50%);
                 top: 100%;
                 right: 35%;
-                button:hover{
+                button:hover {
                   color: $black;
                   background-color: $yellow2;
                 }
-                
               }
             }
-            &:hover:not(:last-child){
-              a{
+            &:hover:not(:last-child) {
+              a {
                 box-shadow: 0px 3px 0px 0px $yellow2;
-                p{
+                p {
                   color: $yellow2;
                 }
-              }                   
+              }
             }
           }
         }
       }
     }
   }
-  @media (min-width: $X-Large){
-    .mynavbar{
-      .navbar__collapse{
-        .mobile_collapse{
-          ul.mynavbarItems{
+  @media (min-width: $X-Large) {
+    .mynavbar {
+      .navbar__collapse {
+        .mobile_collapse {
+          ul.mynavbarItems {
             width: auto;
-            li{
-              &:last-child{
+            li {
+              &:last-child {
                 margin-right: 20px;
               }
             }
@@ -197,14 +201,14 @@
       }
     }
   }
-  @media (min-width: $Medium) and (max-width: $X-Large){
-    .mynavbar{
-      .mobile_collapse{
-        ul.mynavbarItems{
-          li{
-            &:last-child{
-              a{
-                span{
+  @media (min-width: $Medium) and (max-width: $X-Large) {
+    .mynavbar {
+      .mobile_collapse {
+        ul.mynavbarItems {
+          li {
+            &:last-child {
+              a {
+                span {
                   display: none;
                 }
               }
@@ -214,18 +218,17 @@
       }
     }
   }
-  
 }
 
-.reserved__space{
+.reserved__space {
   width: 100%;
   height: 80px;
   margin-bottom: 280px;
   transition: all 0.5s ease;
 }
 
-@media (min-width: $Medium){
-  .reserved__space{
+@media (min-width: $Medium) {
+  .reserved__space {
     height: 110px;
     margin-bottom: 50px;
   }

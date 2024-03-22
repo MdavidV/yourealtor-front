@@ -8,3 +8,10 @@
         border-bottom: 3px solid $yellow1;
     }
 }
+
+
+@media (max-width: $Medium) {
+    .info-field, .name-field{
+        margin: 2rem 0 !important;
+    }
+}

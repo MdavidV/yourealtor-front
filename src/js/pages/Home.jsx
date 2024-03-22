@@ -7,26 +7,28 @@ import MapSection from "../components/MapSection";
 import Footer from "../components/Footer";
 import CardsActivo from "../components/CardsActivos";
 import Filter from "../components/Filter";
-// import OurAllys from "../components/OurAllys";
+import OurAllys from "../components/OurAllys";
 import OurServicesSection from "../components/OurServicesSection";
-
+import { useEffect } from "react";
 
 const Home = () => {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
   return (
     <>
       <NavHeader isHome={true} />
       <Banner />
-      <Filter isHome={true}/>
-      <CardsActivo/>
+      <Filter isHome={true} />
+      <CardsActivo />
       <AboutUs />
-      {/* <OurAllys /> */}
+      <OurAllys />
       <OurTeam />
       <ContactUs />
       <MapSection />
-      <OurServicesSection />
+      <OurServicesSection isHome={true} />
       <Footer />
     </>
-
   );
 };
 

@@ -43,7 +43,7 @@ export const DataProvider =({ children }) =>{
             }
 
         } catch (error) {
-            return console.log({ message: error.message });
+            // return console.log({ message: error.message });
         }
     }
 

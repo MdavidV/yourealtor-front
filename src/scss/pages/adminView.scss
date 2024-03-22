@@ -1,0 +1,20 @@
+.admin-view-container{
+    background-color: $primary-light-color;
+    width: 100%;
+    min-height: 100vh;
+    position: absolute;
+    top: 0;
+    left: 0;
+
+    .asesor-row{
+        padding: 12px 0 ;
+        margin: 12px auto;
+        text-align: start;
+        button{
+            margin: 15px 10px;
+        }
+        p{
+            margin: 12px ;
+        }
+    }
+}
