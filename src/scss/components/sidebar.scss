@@ -2,49 +2,90 @@
   width: 350px;
   height: 750px;
   margin: 45px 0 0 20px;
+
   .sidebar-menu {
     width: 350px;
-    height: 350px;
     background-color: $base-color;
     border-radius: 22px;
     color: $white;
-
+    padding: 12px 0;
     ul {
       border-left: 3px solid $semantic-text-color;
-      margin-top: 30px;
+      margin-top: 10px;
+
       li {
-        width: 100%;
         list-style: none;
         padding: 12px 30px;
         cursor: pointer;
         overflow: hidden;
-        transition: max-height 0.3s ease;
+        transition: all 0.5s ease; // Ajuste para la transición
+        position: relative;
+
+        &:not(.active) {
+          max-height: 50px; // Altura máxima cuando no está activo
+        }
 
         &.active {
-          max-height: 100px; // Altura máxima para mostrar los elementos desplegables
-          color: $semantic-text-color;
+          max-height: 500px; // Ajusta esto según el contenido
+          background-color: $white-opacity-low;
         }
-        color: $white;
-        text-decoration: none;
-
-        
 
         i {
           float: right;
+          transition: transform 0.5s ease;
         }
 
-        ol{
-            li{
-                &:hover{
-                    text-decoration: underline;
-                }
+        &.active i {
+          transform: rotate(-180deg);
+
+        }
+
+        ol {
+          opacity: 0;
+          visibility: hidden;
+          max-height: 0;
+          overflow: hidden;
+          transition: opacity 0.5s ease, visibility 0s linear 0.5s, max-height 0.5s ease;
+
+          li {
+            padding: 15px 0;
+            &:hover{
+              text-decoration: underline;
             }
+          }
+        }
+
+        &.active ol {
+          opacity: 1;
+          visibility: visible;
+          max-height: 400px; // Ajusta según necesidad
+          transition-delay: 0s;
         }
       }
+    }
+  }
 
-      .active {
-        background-color: $white-opacity-low;
+
+  @media (max-width: 768px) {
+    width: 100%;
+    height: auto;
+    margin: 0;
+
+    .sidebar-menu {
+      border-radius: 0;
+      width: 100%;
+
+      ul {
+        border-left: none;
+
+        li {
+          padding: 10px 20px;
+        }
       }
+    }
+
+    .sidebar-buttons {
+      display: none;
     }
   }
 }

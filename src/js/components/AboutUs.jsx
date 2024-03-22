@@ -35,13 +35,13 @@ const AboutUs = () => {
             <div className="aboutUs__content--text2">
               <h2 className="section-title ">CEO</h2>
               <p className="aboutUs__content--text">
-                Lorem ipsum
+                Orlando Camacho Valencia
               </p>
             </div>
             <div className="aboutUs__content--text3">
               <h2 className="section-title ">COO</h2>
               <p className="aboutUs__content--text">
-                Lorem ipsum
+                Hector Gallego Marquez
               </p>
             </div>
 

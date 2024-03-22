@@ -1,12 +1,31 @@
 .login-view {
-  .login-bg {
-    width: 100vw;
-    height: 100vh;
-    object-fit: cover;
-    z-index: -1;
-    position: absolute;
+  .logo-container {
+    margin: 0 auto;
+    width: 100%;
+    padding: 12px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: $base-color;
+    img {
+      width: 100%;
+    }
   }
-
+  @media (min-width: $Medium) {
+    .logo-container {
+      justify-content: start;
+      align-items: start;
+      margin: 0;
+    }
+  }
+  .login-bg {
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: -1;
+  }
 }
 
 .form-container {
@@ -14,28 +33,13 @@
   border-radius: 20px;
   background-color: $secondary-color;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  padding: 20px 0 50px 0;
+  padding: 20px  50px ;
 }
 
 .my-form {
-  max-width: 400px;
-  margin: 0 auto;
-
-  .name-container {
-    display: flex;
-    justify-content: space-between;
-    .form-group {
-      flex: 1;
-      margin-right: 10px;
-    }
-    .second-name {
-      margin: 0 0 0 10px;
-    }
-  }
-
   .form-group {
-    margin-bottom: 20px;
-
+    margin: 20px auto ;
+    width: 100%;
     label {
       display: block;
       margin-bottom: 8px;
@@ -50,6 +54,12 @@
       border-radius: 12px;
       color: $black;
       padding: 10px;
+    }
+
+    @media (max-width: $Small) {
+      .form-input {
+        max-width: 300px;
+      }
     }
   }
 

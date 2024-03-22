@@ -1,5 +1,5 @@
 import { Col, Container, Row } from "reactstrap";
-import Logo from "../../assets/Logo_Fixed.jpg";
+import Logo from "../../assets/Logo.png";
 
 import { Link } from "react-router-dom";
 

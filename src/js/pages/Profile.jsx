@@ -7,9 +7,12 @@ import Sidebar from "../components/profileComponents/Sidebar";
 import ProfileInfo from "../components/profileComponents/ProfileInfo";
 import Meetings from "../components/profileComponents/Meetings";
 import Liked from "../components/profileComponents/Liked";
+import CreateBlog from "../components/profileComponents/CreateBlog";
+import GetBlogById from "../components/profileComponents/GetBlogById";
+import ModifyBlog from "../components/profileComponents/ModifyBlog";
 
 const Profile = () => {
-  const { user, isAuthenticated, profile, role } = useAuth();
+  const { user, isAuthenticated, profile } = useAuth();
 
   useEffect(() => {
     if (isAuthenticated && user && !user.created) {
@@ -17,7 +20,6 @@ const Profile = () => {
     }
   }, [isAuthenticated, user]); 
   
-
 
   return (
     <>
@@ -27,13 +29,16 @@ const Profile = () => {
 
       <Navbar username={user.username} />
       <div className="profile-content d-flex">
-        <Sidebar />
+        <Sidebar role={user.role} isProfile={true}/>
 
         <div className="content">
           <Routes>
             <Route path="informacion-personal" element={<ProfileInfo/>} />
             <Route path="meetings" element={<Meetings />} />
             <Route path="propiedades" element={<Liked />} />
+            <Route path="create-blog" element={<CreateBlog />} />
+            <Route path="blogs-asesor" element={<GetBlogById />} />
+            <Route path="modify-blog" element={<ModifyBlog />} />
           </Routes>
         </div>
       </div>

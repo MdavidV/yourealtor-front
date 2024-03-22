@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import NavHeader from "../components/NavHeader";
 import Banner from "../components/Banner";
 import Footer from "../components/Footer";
@@ -20,6 +20,7 @@ import Img4 from "../../assets/certificacion-2.png";
 import Img5 from "../../assets/certificacion-3.png";
 import CountUp from "react-countup";
 import { PiHandshakeFill } from "react-icons/pi";
+import { PopupWidget } from "react-calendly";
 import ModelService from "../components/subcomponents/ModelService";
 
 const AboutUsView = () => {
@@ -28,6 +29,9 @@ const AboutUsView = () => {
   const toggle = (tab) => {
     if (activeTab !== tab) setActiveTab(tab);
   };
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
   return (
     <>
       <NavHeader isHome={false} />
@@ -69,21 +73,18 @@ const AboutUsView = () => {
           </NavItem>
         </Nav>
         <TabContent activeTab={activeTab}>
-          <TabPane tabId="1">
+          <TabPane tabId="1" className="first-tab">
             <Row className="justify-content-center my-3">
               <Col className="py-3" md="9">
                 <h1 className="section-title my-2">Quienes Somos ?</h1>
                 <p>
-                  En YOUREALTOR, somos una firma líder en el mercado
-                  inmobiliario colombiano, comprometidos con la excelencia y la
-                  satisfacción total de nuestros clientes. Nuestro equipo de
-                  expertos, liderado por Héctor Gallego, se especializa en
-                  entender y superar las expectativas de nuestros clientes
-                  mediante soluciones personalizadas y un servicio de alta
-                  calidad. Con el respaldo de importantes certificaciones,
-                  aseguramos una experiencia inmobiliaria confiable y de primer
-                  nivel. Contáctanos para descubrir cómo podemos guiarte hacia
-                  el éxito inmobiliario con profesionalismo y precisión.
+                  En YOUREALTOR, líderes del sector inmobiliario colombiano, nos
+                  dedicamos a superar las expectativas de nuestros clientes con
+                  soluciones personalizadas y servicio de primera, guiados por
+                  nuestro experto Héctor Gallego. Aseguramos una experiencia
+                  confiable con nuestro respaldo certificado. Contáctanos para
+                  una asesoría de excelencia en tu camino hacia el éxito
+                  inmobiliario.
                 </p>
               </Col>
             </Row>
@@ -165,9 +166,9 @@ const AboutUsView = () => {
               </Col>
             </Row>
 
-            <Row className="d-flex justify-content-center align-items-center"> 
+            <Row className="d-flex justify-content-center align-items-center">
               <Col md="4" className="certification-container">
-                <img src={Img3} alt="" className="img-certificactions"/>
+                <img src={Img3} alt="" className="img-certificactions" />
                 <ul>
                   <li>Matricula de Arrendador</li>
                   <li>Secretaria de Habitat - Bogota </li>
@@ -175,14 +176,14 @@ const AboutUsView = () => {
               </Col>
 
               <Col md="4" className="certification-container">
-                <img src={Img4} alt="" className="img-certificactions"/>
+                <img src={Img4} alt="" className="img-certificactions" />
                 <ul>
                   <li>Registro Unico de Proponentes</li>
                 </ul>
               </Col>
 
               <Col md="4" className="certification-container">
-                <img src={Img5} alt="" className="img-certificactions"/>
+                <img src={Img5} alt="" className="img-certificactions" />
                 <ul>
                   <li>Signos Distintivos</li>
                   <li>Propiedad </li>
@@ -290,6 +291,18 @@ const AboutUsView = () => {
           </TabPane>
         </TabContent>
       </Container>
+
+      <PopupWidget
+        url="https://calendly.com/vinaarizadavid"
+        /*
+         * react-calendly uses React's Portal feature (https://reactjs.org/docs/portals.html) to render the popup modal. As a result, you'll need to
+         * specify the rootElement property to ensure that the modal is inserted into the correct domNode.
+         */
+        rootElement={document.getElementById("root")}
+        text="Agenda Aqui una Cita con un Asesor!"
+        textColor="#ffffff"
+        color="#00a2ff"
+      />
 
       <Footer />
     </>

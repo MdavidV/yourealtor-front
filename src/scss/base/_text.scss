@@ -1,9 +1,9 @@
 //TEXTS
 .mini-text{
-  @include texts($semantic-weight, $black, $semantic-small-size);
+  @include texts($semantic-weight, $black, $paragraph-size-20);
 }
 .strong-text{
-  @include texts($paragraph-weight, $black, $semantic-size);
+  @include texts($paragraph-weight, $black, $paragraph-size);
 }
 
 // NAV TEXTS
@@ -162,3 +162,25 @@
   @include texts ($tittle-weight, $secondary-light-color, $huge-size)
 }
 
+
+//BLOG 
+
+.blog-card-title{
+  @include texts ($subheading-weight, $black, $paragraph-size-20)
+}
+
+.blog-card-subtitle{
+  @include texts ($semantic-weight, $black, $semantic-size)
+}
+
+.blog-author-text{
+  @include texts ($semantic-weight, $black, $semantic-size)
+}
+
+.blog-subtitle-text{
+  @include texts ($subheading-size, $black, $subheading-size)
+}
+
+.blog-content-text{
+  @include texts ($semantic-weight, $black, $paragraph-size)
+}

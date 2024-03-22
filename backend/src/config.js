@@ -14,4 +14,7 @@ export const SQL_DB = process.env.SQL_DB
 export const GMAIL_USER = process.env.GMAIL_USER
 export const GMAIL_PASSWORD = process.env.GMAIL_PASSWORD
 export const CALENDLY_TOKEN = process.env.CALENDLY_TOKEN
-
+export const AWS_ACCES_KEY_ID = process.env.AWS_ACCESS_KEY_ID
+export const AWS_SECRET_ACCESS_KEY = process.env.AWS_SECRET_ACCESS_KEY
+export const AWS_S3_BUCKET = process.env.AWS_S3_BUCKET
+export const AWS_REGION = process.env.AWS_REGION

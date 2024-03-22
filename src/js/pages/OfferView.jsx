@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import NavHeader from "../components/NavHeader";
 import Footer from "../components/Footer";
 import ContactUs from "../components/ContactUs";
@@ -6,6 +6,10 @@ import { PopupModal } from "react-calendly";
 
 const OfferView = () => {
   const [isOpen, setIsOpen] = useState(false);
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
 
   return (
     <div id="offerView">

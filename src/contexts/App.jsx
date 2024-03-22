@@ -16,8 +16,13 @@ import BringProperty from "../js/pages/BringProperty.jsx";
 import BringProperties from "../js/pages/BringProperties.jsx";
 import { DataProvider } from "./DataContext.jsx";
 import OfferView from "../js/pages/OfferView.jsx";
+import Blogs from "../js/pages/Blogs.jsx";
+import BlogDetail from "../js/components/BlogDetail.jsx";
+import AdminDashboard from "../js/pages/AdminDashboard.jsx";
+import { useEffect } from "react";
 
 function App() {
+  
   return (
     <AuthProvider>
       <DataProvider>
@@ -31,15 +36,24 @@ function App() {
               <Route path="/profile/*" element={<Profile />} />
             </Route>
             <Route path="/confirmView" element={<ConfirmView />}></Route>
-            <Route path="/profile" element={<Navigate to="/profile/informacion-personal" />} />
-            <Route path="/property/:id" element={<BringProperty/>} />
-            <Route path="/properties" element={<BringProperties/>} />
+            <Route
+              path="/profile"
+              element={<Navigate to="/profile/informacion-personal" />}
+            />
+            <Route path="/property/:id" element={<BringProperty />} />
+            <Route path="/properties" element={<BringProperties />} />
             <Route path="/privacy" element={<PrivacyPolicy />}></Route>
-          <Route path="/contact" element={<ContactService />}></Route>
-          <Route path="/about-us" element={<AboutUsView />}></Route>
-          <Route path="/our-services/*" element={<ServicesView />}></Route>
-          <Route path="/offer" element={<OfferView />}></Route>
-        </Routes>
+            <Route path="/contact" element={<ContactService />}></Route>
+            <Route path="/about-us" element={<AboutUsView />}></Route>
+            <Route path="/our-services/*" element={<ServicesView />}></Route>
+            <Route path="/offer" element={<OfferView />}></Route>
+            <Route path="/blogs" element={<Blogs />}></Route>
+            <Route path="/blog/:slug" element={<BlogDetail />}></Route>
+            <Route
+              path="/admin-properties/*"
+              element={<AdminDashboard />}
+            ></Route>
+          </Routes>
         </BrowserRouter>
       </DataProvider>
     </AuthProvider>

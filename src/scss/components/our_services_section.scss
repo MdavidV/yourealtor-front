@@ -25,10 +25,13 @@
     top: 0;
     overflow: hidden;
     height: 100%;
-    img {
+    min-height: 400px;
+    .services-img {
+      min-height: 400px;
       width: 100%;
       height: 100%;
       transition: transform 0.5s ease;
+      object-fit: cover;
     }
     .img-effect {
       width: 100%;
@@ -44,10 +47,19 @@
       }
     }
   }
+
+  .is-home-false{
+    height: 400px;
+
+    img{
+      object-fit: cover;
+      object-position: center;
+    }
+  }
 }
 
 
-@media screen and (max-width: $X-Large){
+@media (max-width: $X-Large){
     .our-services-container{
         flex-direction: column;
         .cont{
@@ -55,3 +67,5 @@
         }
     }
 }
+
+

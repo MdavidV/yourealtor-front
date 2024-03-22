@@ -2,6 +2,7 @@
     width: 100vw;
     height: 100vh;
     position: relative;
+    min-height: 800px;
     max-width: 100%;
     img{
         width: 100vw;
@@ -22,40 +23,26 @@
             height: 100vh;
             position: relative;
             .fixed-position-banner{
-                position: absolute;
-                left: 50%;
-                top: 45%;
-                transform: translate(-50%, -50%);
-                max-width: 100%;
+                margin-top: 300px;
                 .buttons-container {
                     display: flex;
                     flex-wrap: wrap;
                     justify-content: center;
-                    a{
+                    button{
                         margin-bottom: 20px;
                     }
                 }
             }
         }
     }
-    @media screen and (min-width: $Medium){
-        .banner-dark{
-            .banner_content{
-                .fixed-position-banner{
-                    left: 5%;
-                    top: 45%;
-                    transform: translate(0, 0);
-                }
-            }
+    @media (min-width: $Large){
+        .fixed-position-banner-cont{
+            align-items: start !important;
+            justify-content: center !important;
         }
     }
     @media screen and (min-width: $XX-Large){
-        .banner-dark{
-            .banner_content{
-                .fixed-position-banner{
-                    left: 0;
-                }
-            }
-        }
+
     }
+
 }

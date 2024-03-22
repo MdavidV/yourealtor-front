@@ -4,7 +4,6 @@ import {
   loginRequest,
   verifyTokenRequest,
   profileRequest,
-  confirmRequest,
   activosRequest,
   changePasswordRequest,
 } from "../api/auth";
@@ -22,7 +21,7 @@ export const useAuth = () => {
 };
 
 export const AuthProvider = ({ children }) => {
-  const [user, setUser] = useState(null);
+  const [user, setUser] = useState({});
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [errors, setErrors] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -35,7 +34,7 @@ export const AuthProvider = ({ children }) => {
       setIsAuthenticated(true);
     } catch (error) {
       console.log(error.response.data);
-      setErrors(error.response.data);
+      setErrors(error.response.data.message);
     }
   };
 
@@ -65,6 +64,7 @@ export const AuthProvider = ({ children }) => {
   const profile = async () => {
     try {
       const res = await profileRequest();
+      console.log(res);
       setUser(res.data);
     } catch (error) {
       console.log(error);
@@ -92,7 +92,6 @@ export const AuthProvider = ({ children }) => {
     setIsAuthenticated(false);
     setUser(null);
   };
-
 
   useEffect(() => {
     if (errors.length > 0) {
@@ -141,7 +140,7 @@ export const AuthProvider = ({ children }) => {
 
     checkLogin();
   }, []);
-  
+
   return (
     <AuthContext.Provider
       value={{

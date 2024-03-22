@@ -1,10 +1,9 @@
 import { useForm } from "react-hook-form";
 import React, { useEffect } from "react";
-import Logo from "../../assets/logo_unScrolled.png";
+import Logo from "../../assets/Logo.png";
 import Bg from "../../assets/Bg_Form_View.jpg";
 import { Col, Container, Row } from "reactstrap";
-import { Link, useNavigate,  } from "react-router-dom";
-import { registerRequest } from "../../api/auth";
+import { Link, useNavigate } from "react-router-dom";
 import { useAuth } from "../../contexts/AuthContext";
 import Swal from "sweetalert2";
 
@@ -23,20 +22,16 @@ const Signup = () => {
     if (isAuthenticated) {
       Swal.fire({
         title: "Confirma tu correo",
-        text:'Recuerda revisar tu correo para confirmar tu cuenta!',
-        icon: 'question', 
-      })
-      const timeoutId = setTimeout( () => {
-        navigate('/');
-      }, 3000)
+        text: "Recuerda revisar tu correo para confirmar tu cuenta!",
+        icon: "question",
+      });
+      const timeoutId = setTimeout(() => {
+        navigate("/");
+      }, 3000);
 
       return () => clearTimeout(timeoutId);
-      
-    };
+    }
   }, [isAuthenticated]);
-
-
-
 
   const onSubmit = handleSubmit(async (values) => {
     if (values.password !== values.confirmPassword) {
@@ -61,9 +56,7 @@ const Signup = () => {
       </div>
 
       <Container className="d-flex justify-content-center align-items-center ">
-        <div className="col-6 p-3  form-login-cont">
-        
-
+        <Col lg={6} md={9} sm={12} className=" p-3  form-login-cont">
           <div className="form-container">
             <div>
               <Col className="my-3 text-center">
@@ -71,42 +64,41 @@ const Signup = () => {
               </Col>
             </div>
             <Col className="m-3">
-            {
-              registerErrors.map((error, i) => ( 
-                <p className="error-message" key={i}>{error}</p>
-               ))
-            }
+              {registerErrors.map((error, i) => (
+                <p className="error-message" key={i}>
+                  {error}
+                </p>
+              ))}
             </Col>
-          
+
             <form className="my-form" id="myForm" onSubmit={onSubmit}>
               <div className="form-group">
-                <div className="name-container ">
-                  <div className="form-group">
-                    <label className="form-paragraph" htmlFor="firstName">
-                      Nombre
-                    </label>
-                    <input
-                      type="text"
-                      id="firstName"
-                      className="form-input"
-                      {...register("firstName", { required: true })}
-                    />
-                    {errors.firstName && <p className="error-message">First Name is required</p>}
-                  </div>
-
-                  <div className="form-group second-name">
-                    <label className="form-paragraph" htmlFor="secondName">
-                      Apellido
-                    </label>
-                    <input
-                      type="text"
-                      id="secondName"
-                      className="form-input"
-                      {...register("secondName", { required: true })}
-                    />
-                    {errors.secondName && <p className="error-message">Second Name is required</p>}
-                  </div>
-                </div>
+                <label className="form-paragraph" htmlFor="firstName">
+                  Nombre
+                </label>
+                <input
+                  type="text"
+                  id="firstName"
+                  className="form-input"
+                  {...register("firstName", { required: true })}
+                />
+                {errors.firstName && (
+                  <p className="error-message">First Name is required</p>
+                )}
+              </div>
+              <div className="form-group second-name">
+                <label className="form-paragraph" htmlFor="secondName">
+                  Apellido
+                </label>
+                <input
+                  type="text"
+                  id="secondName"
+                  className="form-input"
+                  {...register("secondName", { required: true })}
+                />
+                {errors.secondName && (
+                  <p className="error-message">Second Name is required</p>
+                )}
               </div>
 
               <div className="form-group">
@@ -119,7 +111,9 @@ const Signup = () => {
                   className="form-input"
                   {...register("email", { required: true })}
                 />
-                {errors.email && <p className="error-message">Email is required</p>}
+                {errors.email && (
+                  <p className="error-message">Email is required</p>
+                )}
               </div>
 
               <div className="form-group">
@@ -132,7 +126,9 @@ const Signup = () => {
                   className="form-input"
                   {...register("password", { required: true })}
                 />
-                {errors.password && <p className="error-message">Password is required</p>}
+                {errors.password && (
+                  <p className="error-message">Password is required</p>
+                )}
               </div>
 
               <div className="form-group">
@@ -147,12 +143,14 @@ const Signup = () => {
                     required: true,
                     validate: (value) =>
                       value === password ||
-                      errors.confirmPassword && "passwords doesnt match"
+                      (errors.confirmPassword && "passwords doesnt match"),
                   })}
                 />
                 {errors.confirmPassword && (
-              <p className="error-message">{errors.confirmPassword.message}</p>
-            )}
+                  <p className="error-message">
+                    {errors.confirmPassword.message}
+                  </p>
+                )}
               </div>
 
               <div className="form-group">
@@ -173,7 +171,7 @@ const Signup = () => {
               </p>
             </form>
           </div>
-        </div>
+        </Col>
       </Container>
     </div>
   );

@@ -1,7 +1,12 @@
 .populars{ 
+    margin-top: 300px;
     background: linear-gradient(to bottom, transparent 45%, $base-color 45%);
     .populars__link{
         background-color: transparent;
+    }
+
+    @media (min-width: $Large) {
+        margin-top: 60px;
     }
 }
 

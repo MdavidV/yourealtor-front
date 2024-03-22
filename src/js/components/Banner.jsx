@@ -70,15 +70,14 @@ useEffect(()=>{
       <div className="banner-dark">
         <Container className="banner_content" fluid>
           <Row className="fixed-position-banner ">
-            <Col className="d-flex flex-column justify-content-center align-items-center ">
+            <Col xxl={5} lg={8} xs={12}className="d-flex flex-column align-items-center justify-content-center fixed-position-banner-cont">
               <div className="title-container m-3">
                 <h1 className="banner-tittle">
                   {" "}
-                  Find Real Estate <br /> That Suits You
+                  ¡Un mundo de soluciones <br /> inmobiliarias!
                 </h1>
-                <p className="banner-text">Lorem ipsum dolor sit amet.</p>
               </div>
-              <div className="buttons-container  m-3">
+              <div className="buttons-container  mx-5 my-3" >
                 <button
                   onClick={handleChange}
                   className="primary-button-xl mx-3"
