@@ -12,13 +12,11 @@ const TableSql = ({ tableName, tableCont, tableField, reloadData }) => {
   const showMessage = () => {
     setShowAlert(true);
 
-    // Limpiar timeout previo si existe
     if (timeoutId) clearTimeout(timeoutId);
 
-    // Establecer nuevo timeout para ocultar el mensaje después de 5 segundos
     const id = setTimeout(() => {
       setShowAlert(false);
-    }, 5000); // Ajusta el tiempo según necesites
+    }, 5000);
 
     setTimeoutId(id);
   };
@@ -28,7 +26,6 @@ const TableSql = ({ tableName, tableCont, tableField, reloadData }) => {
     try {
       const response = await deleteFieldRequest(tableName, idField);
       console.log(response);
-      // Verificar si la eliminación fue exitosa antes de actualizar el estado
       if (response.status === 200) {
         showMessage();
         reloadData();
@@ -37,6 +34,7 @@ const TableSql = ({ tableName, tableCont, tableField, reloadData }) => {
       console.error(error);
     }
   };
+
 
   useEffect(() => {
     // Limpieza en caso de que el componente se desmonte antes de tiempo
@@ -62,7 +60,7 @@ const TableSql = ({ tableName, tableCont, tableField, reloadData }) => {
               key={item[tableField.idField]}
               className="d-flex justify-content-between"
             >
-              <td>{item[tableField.nameField]}</td>
+              <td>{item[tableField.nameField] }</td>
               <td className="text-center">
                 <Button
                   color="danger"

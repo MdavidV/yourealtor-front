@@ -10,7 +10,7 @@ export const createBlogRequest = async (blogData) => {
 };
 
 export const getBlogsRequest = async (req, res) => {
-  return await axios.get("https://yourealtor-api.onrender.com/blogs");
+  return await axios.get("http://localhost:4000/blogs");
 };
 
 export const getBlogBySlugRequest = async (slug) => {

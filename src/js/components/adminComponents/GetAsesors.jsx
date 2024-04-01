@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import {
   deleteAsesorRequest,
-  getAsesorsRequest,
   updateAvailabilityAsesorRequest,
 } from "../../../api/admin";
 import { Alert, Button, Col, Container, Input, Row } from "reactstrap";
@@ -9,9 +8,10 @@ import { format, isValid } from "date-fns";
 import { BsFillPencilFill, BsSaveFill } from "react-icons/bs";
 import { FaTrashAlt } from "react-icons/fa";
 import AsesorFilter from "./SubComponents/AsesorFilter";
+import { useData } from "../../../contexts/DataContext";
 
 const GetAsesors = () => {
-  const [asesors, setAsesors] = useState([]);
+  const {asesors, getAsesors} = useData(); 
   const [showAlert, setShowAlert] = useState(false);
   const [timeoutId, setTimeoutId] = useState(null);
   const [editingAsesorId, setEditingAsesorId] = useState(null); // Estado para el modo de edición
@@ -40,14 +40,14 @@ const GetAsesors = () => {
     }
   };
 
-  const fetchData = async () => {
-    const response = await getAsesorsRequest();
-
-    const sortedAsesors = response.data.sort((a, b) =>
+  const fetchData =  () => {
+    
+    getAsesors()
+    const sortedAsesors = asesors.sort((a, b) =>
       a.availability === "Disponible" ? -1 : 1
     );
 
-    setAsesors(sortedAsesors);
+    
     setFilteredAsesors(sortedAsesors);
   };
 
@@ -68,10 +68,9 @@ const GetAsesors = () => {
 
   useEffect(() => {
     fetchData();
-  }, []);
+  }, [asesors]);
 
   useEffect(() => {
-    // Limpieza en caso de que el componente se desmonte antes de tiempo
     return () => {
       if (timeoutId) clearTimeout(timeoutId);
     };

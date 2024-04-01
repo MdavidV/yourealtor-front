@@ -92,91 +92,15 @@ export const deleteActivo = async (req, res) => {
   // }
 };
 
-// export const getInternalChars = async (req, res) => {
-//   try {
-//     const chars = await pool.query(
-//       "SELECT Nombre_Caracteristica FROM Caracteristicas_Internas"
-//     );
+export const createActivo = async (req, res) => {
+  try {
+    console.log(req.body);
+    res.status(200).json(req.body);
+  } catch (error) {
+    
+  }
+}
 
-//     res.json(chars);
-//   } catch (error) {
-//     console.log(error);
-//   }
-// };
-
-// export const createInternalChars = async (req, res) => {
-//   try {
-//     const newCharData = {
-//       newChar: req.body.nameChar,
-//     };
-//     console.log(newCharData.newChar);
-//     const newChar = await pool.query(
-//       `INSERT INTO Caracteristicas_Internas(Nombre_Caracteristica) VALUES ('${newCharData.newChar}')`
-//     );
-
-//     res.json(newChar);
-//   } catch (error) {
-//     console.error(error);
-//   }
-// };
-
-// export const getExternalChars = async (req, res) => {
-//   try {
-//     const chars = await pool.query(
-//       "SELECT Nombre_Caracteristica FROM Caracteristicas_Externas"
-//     );
-
-//     res.json(chars);
-//   } catch (error) {
-//     console.log(error);
-//   }
-// };
-
-// export const createExternalChars = async (req, res) => {
-//   try {
-//     const newCharData = {
-//       newChar: req.body.nameChar,
-//     };
-//     console.log(newCharData.newChar);
-//     const newChar = await pool.query(
-//       `INSERT INTO Caracteristicas_Externas(Nombre_Caracteristica) VALUES ('${newCharData.newChar}')`
-//     );
-
-//     res.json(newChar);
-//   } catch (error) {
-//     console.error(error);
-//   }
-// };
-
-// export const deleteInternalChars = async (req, res) => {
-//   try {
-//     const charName = req.body.charName;
-
-//     console.log(req.body);
-
-//     const deletedChar = await pool.query(
-//       `DELETE FROM Caracteristicas_Internas WHERE Nombre_Caracteristica = '${charName}'`
-//     );
-
-//     res.json(deletedChar);
-//   } catch (error) {
-//     console.error(error);
-//   }
-// };
-
-// export const deleteExternalChars = async (req, res) => {
-//   try {
-//     const charName = req.body.charName;
-
-//     const deletedChar = await pool.query(
-//       `DELETE FROM Caracteristicas_Externas WHERE Nombre_Caracteristica = '${charName}'`
-//     );
-
-//     res.json(deletedChar);
-//   } catch (error) {
-//     console.error(error);
-//   }
-// };
 
 export const getTable = async (req, res) => {
   try {
@@ -216,6 +140,9 @@ export const createField = async (req, res) => {
     },
     Tipo_De_Negocio: {
       fieldName: "Nombre_Tipo_De_Negocio",
+    },
+    Tipo_Activo: {
+      fieldName: "Nombre_Tipo_Activo",
     },
   };
 

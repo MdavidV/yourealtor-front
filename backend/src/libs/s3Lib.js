@@ -71,3 +71,28 @@ export const deleteFile = async (fileName) => {
     throw error; // Lanza el error para manejarlo en el caller de esta función
   }
 };
+
+
+export const uploadPropertyFile = async (file, matriculaInmobiliaria) => {
+  const contentType = determineContentType(file.name);
+  const stream = fs.createReadStream(file.tempFilePath);
+  const fileName = `${matriculaInmobiliaria}/${Date.now()}-${file.name}`; // Asegura nombre único
+  const uploadParams = {
+    Bucket: AWS_S3_BUCKET,
+    Key: fileName,
+    Body: stream,
+    ACL: "public-read",
+    ContentType: contentType,
+  };
+
+  const command = new PutObjectCommand(uploadParams);
+
+  try {
+    await client.send(command);
+    const fileUrl = `https://${AWS_S3_BUCKET}.s3.${AWS_REGION}.amazonaws.com/${fileName}`;
+    return fileUrl; // Devuelve la URL del archivo subido
+  } catch (error) {
+    console.error("Error uploading file:", error);
+    throw error; // Lanza el error para que pueda ser manejado en el .catch del Promise.all
+  }
+};

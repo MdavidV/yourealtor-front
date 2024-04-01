@@ -86,7 +86,7 @@ function Sidebar({ isProfile }) {
       dropdownItems: [
         {
           title: "Nuevo Inmueble",
-          to: "/profile/propiedades",
+          to: "/admin-properties/registro-inmueble",
         },
         {
           title: "Tus Inmuebles",
@@ -97,6 +97,10 @@ function Sidebar({ isProfile }) {
     {
       title: "Tablas",
       dropdownItems: [
+        {
+          title: "Tipo de Inmueble",
+          to: "/admin-properties/tipo-inmueble",
+        },
         {
           title: "Caracteristicas Internas",
           to: "/admin-properties/caracteristicas-internas",

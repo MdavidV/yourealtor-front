@@ -13,6 +13,8 @@ import GetType from "../components/adminComponents/getType";
 import GetClients from "../components/adminComponents/getClients";
 import GetOwners from "../components/adminComponents/getOwners";
 import CreateFiled from "../components/adminComponents/SubComponents/CreateFiled";
+import PropertyForm from "../components/adminComponents/PropertyForm";
+import PropertyType from "../components/adminComponents/PropertyType";
 
 const AdminDashboard = () => {
   const navigate = useNavigate();
@@ -38,6 +40,7 @@ const AdminDashboard = () => {
               element={<GetAsesors />}
             />
 
+            <Route path="/registro-inmueble" element={<PropertyForm />}/>
             <Route path="/registro-asesor" element={<CreateAsesor />}/>
             <Route path="/caracteristicas-internas" element={<InternalChars />}/>
             <Route path="/caracteristicas-externas" element={<ExternalChars />}/>
@@ -47,6 +50,7 @@ const AdminDashboard = () => {
             <Route path="/tipos-de-negocio" element={<GetType />}/>
             <Route path="/clientes" element={<GetClients />}/>
             <Route path="/propietarios" element={<GetOwners />}/>
+            <Route path="/tipo-inmueble" element={<PropertyType />}/>
           </Routes>
         </div>
       </div>
