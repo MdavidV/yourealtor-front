@@ -1,23 +1,22 @@
 import React, { useEffect, useState } from "react";
 import { getTableRequest } from "../../../api/activo.api";
 import TableSql from "./SubComponents/TableSql";
+import { useData } from "../../../contexts/DataContext";
 
 const GetPerodicity = () => {
+  const tableName = "Periodizidad";
+  const { fetchTableData, dataTable } = useData();
   const [data, setData] = useState([]);
 
-  const tableName = "Periodizidad";
-  const fetchData = async () => {
-    const response = await getTableRequest(tableName);
-    setData(response.data[0]);
-  };
+  const getData = () => fetchTableData(tableName);
 
   useEffect(() => {
-    fetchData();
+    getData();
   }, []);
 
-  useEffect(() => {
-    console.log(data);
-  }, [data]);
+  useEffect( () => {
+    setData(dataTable);
+  }, [dataTable]);
 
   return (
     <div>
@@ -25,7 +24,7 @@ const GetPerodicity = () => {
         tableName={tableName}
         tableCont={data}
         tableField={{ idField: "idPeriodizidad", nameField: "Tipo_De_Periodo" }}
-        reloadData={fetchData}
+        reloadData={getData}
       />
     </div>
   );

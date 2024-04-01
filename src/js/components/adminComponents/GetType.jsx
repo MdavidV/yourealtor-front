@@ -1,29 +1,34 @@
 import React, { useEffect, useState } from "react";
 import { getTableRequest } from "../../../api/activo.api";
 import TableSql from "./SubComponents/TableSql";
+import { useData } from "../../../contexts/DataContext";
 
 const GetType = () => {
   const tableName = "Tipo_De_Negocio";
+  const { fetchTableData, dataTable } = useData();
   const [data, setData] = useState([]);
 
-  const fetchData = async () => {
-    const response = await getTableRequest(tableName);
-    setData(response.data[0]);
-  };
+  const getData = () => fetchTableData(tableName);
 
   useEffect(() => {
-    fetchData();
+    getData();
   }, []);
+
+  useEffect( () => {
+    setData(dataTable);
+  }, [dataTable])
+
+
   return (
     <>
       <TableSql
         tableName={tableName}
         tableCont={data}
         tableField={{
-          idField: "idTipo_de_Negocio",
+          idField: "idTipo_De_Negocio",
           nameField: "Nombre_Tipo_De_Negocio",
         }}
-        reloadData={fetchData}
+        reloadData={getData}
       />
     </>
   );
