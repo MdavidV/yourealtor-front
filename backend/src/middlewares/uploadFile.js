@@ -27,8 +27,6 @@ export const uploadPropertyFileToS3 = async (req, res, next) => {
     return next();
   }
 
-  console.log(req.files);
-
   const basicInfoObj = JSON.parse(req.body.basicInfo);
 
   const matriculaInmobiliaria = basicInfoObj.Matricula_Inmobiliaria;

@@ -112,7 +112,7 @@ const PropertyInfoForm = ({ setBasicInfo }) => {
             className="form-select"
           >
             {dataPropertyType.map((type) => (
-              <option value={type.Nombre_Tipo_Activo} key={type.idTipo_Activo}>
+              <option value={type.idTipo_Activo} key={type.idTipo_Activo}>
                 {type.Nombre_Tipo_Activo}
               </option>
             ))}
@@ -129,7 +129,7 @@ const PropertyInfoForm = ({ setBasicInfo }) => {
           >
             {dataType.map((type) => (
               <option
-                value={type.Nombre_Tipo_De_Negocio}
+                value={type.idTipo_De_Negocio}
                 key={type.idTipo_De_Negocio}
               >
                 {type.Nombre_Tipo_De_Negocio}
@@ -258,6 +258,9 @@ const PropertyInfoForm = ({ setBasicInfo }) => {
             Alcobas
           </label>
           <input
+          {...register("Alcobas", {
+            required: "Este campo es obligatorio.",
+          })}
             min="0"
             type="number"
             className={`form-control ${errors.Alcobas ? "is-invalid" : ""}`}
@@ -269,6 +272,9 @@ const PropertyInfoForm = ({ setBasicInfo }) => {
             Baños
           </label>
           <input
+          {...register("Baños", {
+            required: "Este campo es obligatorio.",
+          })}
             min="0"
             type="number"
             className={`form-control ${errors.Baños ? "is-invalid" : ""}`}

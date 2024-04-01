@@ -4,7 +4,6 @@ import {
   loginRequest,
   verifyTokenRequest,
   profileRequest,
-  activosRequest,
   changePasswordRequest,
 } from "../api/auth";
 import Cookies from "js-cookie";
@@ -103,12 +102,6 @@ export const AuthProvider = ({ children }) => {
     }
   }, [errors]);
 
-  const getActivos = async (req, res) => {
-    try {
-      const res = await activosRequest();
-      console.log(res);
-    } catch (error) {}
-  };
 
   useEffect(() => {
     async function checkLogin() {
@@ -148,7 +141,6 @@ export const AuthProvider = ({ children }) => {
         login,
         logout,
         profile,
-        getActivos,
         changePassword,
         loading,
         user,
