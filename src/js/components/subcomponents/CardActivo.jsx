@@ -22,37 +22,41 @@ import {
 } from "reactstrap";
 import { useNavigate } from "react-router-dom";
 
-const CardActivo = ({ items, activo, idActivo }) => {
+const CardActivo = ({  activo  }) => {
   const navigate = useNavigate();
 
   const [activeIndex, setActiveIndex] = useState(0);
 
   const next = () => {
-    setActiveIndex((prevIndex) =>
-      prevIndex === items.length - 1 ? 0 : prevIndex + 1
+    setActiveIndex((activeIndex) =>
+    activeIndex === urlsArray.length - 1 ? 0 : activeIndex + 1
     );
   };
-
+  
   const previous = () => {
-    setActiveIndex((prevIndex) =>
-      prevIndex === 0 ? items.length - 1 : prevIndex - 1
+    
+    setActiveIndex((activeIndex) =>
+    activeIndex === 0 ? urlsArray.length - 1 : activeIndex - 1
     );
   };
 
   const urlsArray = activo.Imagenes.split(",");
 
+  
 
 
-  const slides = urlsArray.map((url, index) => (
-    <CarouselItem key={index}>
-      <Button
-        className="img_button"
-        onClick={() => navigate(`/property/${activo.Activo_idActivo}`)}
-      >
-        <CardImg top width="100%" src={url} alt={`Imagen ${index + 1}`} />
-      </Button>
-    </CarouselItem>
-  ));
+  const slides = urlsArray.map((url, index) => {
+    return (
+      <CarouselItem key={index}>
+        <Button
+          className="img_button"
+          onClick={() => navigate(`/property/${activo.Activo_idActivo}`)}
+        >
+          <CardImg top width="100%" src={url} alt={`Imagen ${index + 1}`} />
+        </Button>
+      </CarouselItem>
+    );
+  });
   return (
     <Card className="buildingCards my-3">
       <Carousel
@@ -70,11 +74,6 @@ const CardActivo = ({ items, activo, idActivo }) => {
             ) : (
               ""
             )}
-            <Col className="text-end buildingCards__header--top--icon">
-              <NavLink>
-                <IoHeartCircle />
-              </NavLink>
-            </Col>
           </Row>
         </Container>
         {slides}
@@ -129,9 +128,9 @@ const CardActivo = ({ items, activo, idActivo }) => {
           <Col>
             <Button
               className="secondary-button-l"
-              onClick={() => navigate(`/property/${idActivo}`)}
+              onClick={() => navigate(`/property/${activo.Activo_idActivo}`)}
             >
-              {activo.Tipo_Servicio === "Arriendo"
+              {activo.Tipo_Negocio === "Alquiler"
                 ? "Arrienda Ya!"
                 : "Compra Ya!"}
             </Button>
@@ -148,7 +147,7 @@ const CardActivo = ({ items, activo, idActivo }) => {
 CardActivo.propTypes = {
   items: PropTypes.array.isRequired,
   activo: PropTypes.object.isRequired,
-  idActivo: PropTypes.number.isRequired,
+  Activo_idActivo: PropTypes.number.isRequired,
 };
 
 export default CardActivo;

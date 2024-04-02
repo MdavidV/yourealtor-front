@@ -43,9 +43,9 @@ const SlickBig = ({ data })=> {
         const structureImages = async(item)=> {
             const data = await item;
             if(data){
-                let items = data.Imagenes;
+                let items = data.Imagenes.split(",");
+
                 if(items){
-                    items =  items.split(', ');
                     if(items.length < 3){
                         items.push(items[0]);
                         setImages(items);

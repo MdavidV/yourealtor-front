@@ -47,10 +47,6 @@ function Sidebar({ isProfile }) {
       ],
     },
     {
-      title: "Perfil de Citas",
-      dropdownItems: [{ title: "Citas Programadas", to: "/profile/meetings" }],
-    },
-    {
       title: userRole === "Admin" || userRole === 'Asesor' ? "Panel de Administrador" : "Propiedades Guardadas",
       dropdownItems:
       userRole === "Admin" || userRole === 'Asesor'
@@ -90,7 +86,7 @@ function Sidebar({ isProfile }) {
         },
         {
           title: "Tus Inmuebles",
-          to: "/profile/propiedades",
+          to: "/admin-properties/propiedades",
         },
       ],
     },

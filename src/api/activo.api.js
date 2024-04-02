@@ -4,6 +4,10 @@ export const getActivosRequest = async ()=>{
     return await axios.get('http://localhost:4000/activos');
 }
 
+export const getActivosByAdminRequest = async () => {
+    return await axios.get('http://localhost:4000/get-activo-admin');
+}
+
 export const getCitiesRequest = async ()=>{
     return await axios.get('http://localhost:4000/cities');
 }

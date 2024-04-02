@@ -227,10 +227,10 @@ const PropertyInfoForm = ({ setBasicInfo }) => {
             className="form-select"
             {...register("Estado_Propiedad", { required: true })}
           >
-            <option value="usado">Usado</option>
-            <option value="nuevo">Nuevo</option>
-            <option value="proyecto">En Proyecto</option>
-            <option value="construccion">En construccion</option>
+            <option value="Usado">Usado</option>
+            <option value="Nuevo">Nuevo</option>
+            <option value="Proyecto">En Proyecto</option>
+            <option value="Construccion">En construccion</option>
           </select>
         </div>
       </div>

@@ -8,7 +8,8 @@ import {
    getTable,
    deleteField,
    createField,
-   createActivo
+   createActivo,
+   getActivoByAdmin
 } from '../controllers/sqlController.js';
 import { uploadPropertyFileToS3 } from '../middlewares/uploadFile.js';
 
@@ -16,6 +17,7 @@ const router = Router();
 
 router.get('/activos', getActivos);
 router.get('/activos/:id', getActivo);
+router.get('/get-activo-admin', getActivoByAdmin);
 router.get('/cities', getCities);
 
 router.put('/activos/:id', updateActivo);

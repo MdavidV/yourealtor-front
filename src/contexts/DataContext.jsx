@@ -1,6 +1,7 @@
 import { createContext, useContext, useState } from "react";
 import {
   getActivoRequest,
+  getActivosByAdminRequest,
   getActivosRequest,
   getCitiesRequest,
   getTableRequest,
@@ -29,6 +30,7 @@ export const DataProvider = ({ children }) => {
   const [extData, setExtData] = useState([]);
   const [dataFiltered, setDataFiltered] = useState("");
   const [activo, setActivo] = useState("");
+  const [activosAdmin, setActivosAdmin] = useState([]);
 
   const getAsesors = async () => {
     try {
@@ -137,7 +139,7 @@ export const DataProvider = ({ children }) => {
     const items = data.filter((element) => {
       const condicionCiudad = Ciudad !== "" ? element.Ciudad === Ciudad : true;
       const condicionServicio =
-        Tipo_Servicio !== "" ? element.Tipo_Servicio === Tipo_Servicio : true;
+        Tipo_Servicio !== "" ? element.Tipo_Negocio === Tipo_Servicio : true;
       const condicionActivo =
         Tipo_Activo !== "" ? element.Tipo_Activo === Tipo_Activo : true;
 
@@ -158,6 +160,16 @@ export const DataProvider = ({ children }) => {
       }
     } catch (error) {
       return;
+    }
+  };
+
+  const getActivoByAdmin = async () => {
+    try {
+      const response = await getActivosByAdminRequest();
+      console.log(response)
+      setActivosAdmin(response.data);
+    } catch (error) {
+      console.error(error);
     }
   };
   return (
@@ -185,6 +197,8 @@ export const DataProvider = ({ children }) => {
         filteringData,
         activo,
         getOneActive,
+        getActivoByAdmin,
+        activosAdmin,
       }}
     >
       {children}

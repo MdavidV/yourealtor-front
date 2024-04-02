@@ -52,28 +52,111 @@ JOIN
 };
 
 export const getActivo = async (req, res) => {
-  // const idDetalleActivos = parseInt(req.params.id, 10);
-  // try {
-  //     const [ result ] = await pool.query(`
-  //       SELECT A.*, C.Nombre_Servicio AS Tipo_Servicio, D.Tipo_Activo
-  //       FROM Detalle_Activos A
-  //       INNER JOIN Detalle_Activo_Tipos_Servicios B
-  //       ON A.idDetalle_Activos = B.Detalle_Activos_idDetalle_Activos
-  //       INNER JOIN Tipos_de_Servicio C
-  //       ON B.Tipos_de_Servicio_idTipos_de_Servicio = C.idTipos_de_Servicio
-  //       INNER JOIN Activos D
-  //       ON A.Activos_Id_Activo = D.Id_Activo
-  //       WHERE idDetalle_Activos = ?
-  //       `, [idDetalleActivos])
-  //     if(result.length === 0){
-  //         return res.status(404).json({
-  //             message: "Activo no encontrado"
-  //         });
-  //     }
-  //     res.json(result[0]);
-  // } catch (error) {
-  //     return res.status(500).json({ message: error.message });
-  // }
+  const idDetalleActivos = parseInt(req.params.id, 10);
+  try {
+    // SELECT A.*, C.Nombre_Servicio AS Tipo_Servicio, D.Tipo_Activo
+    // FROM Detalle_Activos A
+    // INNER JOIN Detalle_Activo_Tipos_Servicios B
+    // ON A.idDetalle_Activos = B.Detalle_Activos_idDetalle_Activos
+    // INNER JOIN Tipos_de_Servicio C
+    // ON B.Tipos_de_Servicio_idTipos_de_Servicio = C.idTipos_de_Servicio
+    // INNER JOIN Activos D
+    // ON A.Activos_Id_Activo = D.Id_Activo
+    const [result] = await pool.query(
+      `
+      SELECT 
+    DA.idDetalle_Activos,
+    DA.Activo_idActivo,
+    DA.Tipo_Activo_idTipo_Activo,
+    DA.Titulo_Del_Inmueble,
+    DA.Matricula_Inmobiliaria,
+    DA.Precio_Venta,
+    DA.Precio_Alquiler,
+    DA.Valor_Administracion,
+    DA.Estado_Propiedad,
+    DA.Año_Construccion,
+    DA.Alcobas,
+    DA.Baños,
+    DA.Garaje,
+    DA.Estrato,
+    DA.Piso,
+    DA.Area_Privada,
+    DA.Area_Construida,
+    DA.Area_Total,
+    DA.Video,
+    DA.Departamento,
+    DA.Ciudad,
+    DA.Localidad,
+    DA.Barrio,
+    DA.Direccion,
+    DA.Descripcion,
+    DA.Imagenes,
+    DA.Documentos,
+    GROUP_CONCAT(DISTINCT CE.Nombre_Caracteristica SEPARATOR ', ') AS Caracteristicas_Externas,
+    GROUP_CONCAT(DISTINCT CI.Nombre_Caracteristica SEPARATOR ', ') AS Caracteristicas_Internas,
+    TN.Nombre_Tipo_De_Negocio,
+    T.Nombre_Tipo_Activo
+FROM 
+    Detalle_Activos DA
+JOIN 
+    Caracteristicas_Externas_Detalle_Activos CEDA ON DA.idDetalle_Activos = CEDA.Detalle_Activos_idDetalle_Activos
+JOIN 
+    Caracteristicas_Externas CE ON CEDA.Caracteristicas_Externas_idCaracteristicas_Externas = CE.idCaracteristicas_Externas
+JOIN 
+    Caracteristicas_Internas_Detalle_Activos CIDA ON DA.idDetalle_Activos = CIDA.Detalle_Activos_idDetalle_Activos
+JOIN 
+    Caracteristicas_Internas CI ON CIDA.Caracteristicas_Internas_idCaracteristicas_Internas = CI.idCaracteristicas_Internas
+JOIN 
+    Tipo_De_Negocio_Detalle_Activo TNDA ON DA.idDetalle_Activos = TNDA.Detalle_Activos_idDetalle_Activos
+JOIN 
+    Tipo_De_Negocio TN ON TNDA.Tipo_De_Negocio_idTipo_De_Negocio = TN.idTipo_De_Negocio
+JOIN 
+    Tipo_Activo T ON DA.Tipo_Activo_idTipo_Activo = T.idTipo_Activo
+WHERE 
+    DA.Activo_idActivo = ?
+GROUP BY 
+    DA.idDetalle_Activos;
+
+        `,
+      [idDetalleActivos]
+    );
+    if (result.length === 0) {
+      return res.status(404).json({
+        message: "Activo no encontrado",
+      });
+    }
+    res.json(result[0]);
+  } catch (error) {
+    return res.status(500).json({ message: error.message });
+  }
+};
+
+export const getActivoByAdmin = async (req, res) => {
+  const getTableResult = await pool.query(`
+  SELECT 
+    A.idActivo,
+    A.Encargado_Del_Activo,
+    A.Estado_Activo,
+    T.Nombre_Tipo_Activo,
+    DA.Titulo_Del_Inmueble,
+    DA.Matricula_Inmobiliaria,
+    DA.Ciudad,
+    TN.Nombre_Tipo_De_Negocio
+FROM 
+    Activo A
+JOIN 
+    Detalle_Activos DA ON A.idActivo = DA.Activo_idActivo
+JOIN 
+    Tipo_Activo T ON DA.Tipo_Activo_idTipo_Activo = T.idTipo_Activo
+JOIN 
+    Tipo_De_Negocio_Detalle_Activo TNDA ON DA.idDetalle_Activos = TNDA.Detalle_Activos_idDetalle_Activos
+JOIN 
+    Tipo_De_Negocio TN ON TNDA.Tipo_De_Negocio_idTipo_De_Negocio = TN.idTipo_De_Negocio;
+  `);
+
+  if(getTableResult){
+    res.status(200).json(getTableResult.shift());
+  }
 };
 
 export const updateActivo = async (req, res) => {

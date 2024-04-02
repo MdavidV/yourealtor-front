@@ -25,7 +25,7 @@ const BringProperties = ()=>{
                     <Col className="bringData__activos pt-4">
                         <h2 className="section-subtitle">
                             Resultados de anuncios en {
-                            selectedService ? selectedService : 'venta'}
+                            selectedService ? selectedService : 'Venta'}
                         </h2>
                     </Col>
                 </Row>
@@ -36,7 +36,7 @@ const BringProperties = ()=>{
                             const items = act.Imagenes.split(', ');
                             return(
                                 <Col key={index} sm="12" lg="4">
-                                    <CardActivo items={items} activo={act} idActivo={act.idDetalle_Activos}/>
+                                    <CardActivo items={items} activo={act} idActivo={act.Activo_idActivo}/>
                                 </Col>
                             )
                         }) :

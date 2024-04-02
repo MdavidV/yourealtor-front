@@ -21,17 +21,26 @@ const Filter = ({ isHome })=> {
         cities, 
         getAllCities,
         dataFiltered,
-        filteringData
+        filteringData,
+        dataType,
+        fetchType,
+        dataPropertyType,
+        fetchPropertyType,
     } = useData();
 
     useEffect(()=>{
         getAllCities();
         fetchData();
+        fetchPropertyType("Tipo_Activo");
+        fetchType("Tipo_De_Negocio");
     },[])
+
+    useEffect(() => {
+        console.log(dataType, dataPropertyType)
+    }, [dataType, dataPropertyType])
     
     //lista de servicios y tipo de proiedad
-    const propertyTypes = ['Casa', 'Apartamento', 'Local', 'Bodega'];
-    const serviceTypes = ['Venta', 'Arriendo', 'Arriendo corto'];
+    
     
     //valores obtenidos
     const [propertyType, setPropertyType] = useState('');
@@ -128,9 +137,9 @@ const Filter = ({ isHome })=> {
                             <Dropdown className="filterMain__form__group__dropdown" isOpen={dropdownPropertyOpen} toggle={() => setDropdownPropertyOpen(!dropdownPropertyOpen)}>
                                 <DropdownToggle caret> {propertyType ? propertyType : 'Tipo de Inmueble'} </DropdownToggle>
                                 <DropdownMenu className="filterMain__form__group__list">
-                                {propertyTypes.map((type, index) => (
-                                    <DropdownItem key={index} onClick={() => setPropertyType(type)}>
-                                    {type}
+                                {dataPropertyType.map((type, index) => (
+                                    <DropdownItem key={index} onClick={() => setPropertyType(type.Nombre_Tipo_Activo)}>
+                                    {type.Nombre_Tipo_Activo}
                                     </DropdownItem>
                                 ))}
                                 </DropdownMenu>
@@ -140,9 +149,9 @@ const Filter = ({ isHome })=> {
                             <Dropdown className="filterMain__form__group__dropdown" isOpen={dropdownServiceOpen} toggle={() => setDropdownServiceOpen(!dropdownServiceOpen)}>
                                 <DropdownToggle caret> {serviceType ? serviceType : 'Tipo de Servicio'} </DropdownToggle>
                                 <DropdownMenu className="filterMain__form__group__list">
-                                {serviceTypes.map((type, index) => (
-                                    <DropdownItem key={index} onClick={() => setServiceType(type)}>
-                                    {type}
+                                {dataType.map((type, index) => (
+                                    <DropdownItem key={index} onClick={() => setServiceType(type.Nombre_Tipo_De_Negocio)}>
+                                    {type.Nombre_Tipo_De_Negocio}
                                     </DropdownItem>
                                 ))}
                                 </DropdownMenu>

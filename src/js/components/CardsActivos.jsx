@@ -3,19 +3,20 @@ import CardActivo from "./subcomponents/CardActivo";
 import { useNavigate } from "react-router-dom";
 import { Col, Container, Row } from "reactstrap";
 import { useData } from "../../contexts/DataContext";
+import { getActivosRequest } from "../../api/activo.api";
 
 const CardsActivos = () => {
   const [activos, setActivos] = useState([]);
 
-  // useEffect(()=>{
-  //     const loadActivo = async()=>{
-  //         const response = await getActivosRequest();
-  //         const data = response.data;
-  //         const shortData = data.slice(0,3);
-  //         setActivos(shortData);
-  //     }
-  //     loadActivo();
-  // }, []);
+  useEffect(()=>{
+      const loadActivo = async()=>{
+          const response = await getActivosRequest();
+          const data = response.data;
+          const shortData = data.slice(0,3);
+          setActivos(shortData);
+      }
+      loadActivo();
+  }, []);
 
   const [selectedService, setSelectedService] = useState("");
 
@@ -26,9 +27,6 @@ const CardsActivos = () => {
   useEffect(() => {
     getAllCities();
     fetchData();
-
-    const shortData = data.slice(0, 3);
-    setActivos(shortData);
   }, []);
 
   const handleChange = (e) => {

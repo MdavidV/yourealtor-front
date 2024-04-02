@@ -23,12 +23,12 @@ useEffect(()=>{
   fetchData();
 },[])
 
-  const handleChange = (e) => {
+  const handleChangeArriendo = (e) => {
     e.preventDefault();
 
     let parametros = {
         Ciudad: '',
-        Tipo_Servicio: 'Arriendo',
+        Tipo_Servicio: 'Alquiler',
         Tipo_Activo: '',
     };
 
@@ -79,7 +79,7 @@ useEffect(()=>{
               </div>
               <div className="buttons-container  mx-5 my-3" >
                 <button
-                  onClick={handleChange}
+                  onClick={handleChangeArriendo}
                   className="primary-button-xl mx-3"
                 >
                   Arrienda
