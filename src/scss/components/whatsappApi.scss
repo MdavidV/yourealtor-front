@@ -1,7 +1,7 @@
 .whastapp_api{
     position: fixed;
     top: 92%;
-    right: 12%;
+    right: 5%;
     width: fit-content;
     z-index: 10;
 
@@ -30,4 +30,8 @@
     
 }
 
-
+@media screen and (min-width: $XX-Large){
+    .whastapp_api{
+        right: 12%;
+    }
+}
