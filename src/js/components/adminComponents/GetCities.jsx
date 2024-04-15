@@ -5,18 +5,18 @@ import { useData } from "../../../contexts/DataContext";
 
 const GetCities = () => {
   const tableName = "Ciudades";
-  const { fetchTableData, dataTable } = useData();
+  const { cities, loadData } = useData();
   const [data, setData] = useState([]);
-  const getData = () => fetchTableData(tableName);
+
 
 
   useEffect(() => {
-    getData();
+    loadData();
   }, []);
 
   useEffect( () => {
-    setData(dataTable);
-  }, [dataTable])
+    setData(cities);
+  }, [cities])
 
   return (
     <div>
@@ -24,7 +24,7 @@ const GetCities = () => {
         tableName={tableName}
         tableCont={data}
         tableField={{ idField: "idCiudades", nameField: "Ciudad" }}
-        reloadData={getData}
+        reloadData={loadData}
       />
     </div>
   );

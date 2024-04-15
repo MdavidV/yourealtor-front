@@ -5,18 +5,17 @@ import { useData } from "../../../contexts/DataContext";
 
 const GetType = () => {
   const tableName = "Tipo_De_Negocio";
-  const { fetchTableData, dataTable } = useData();
+  const { dataType, loadData } = useData();
   const [data, setData] = useState([]);
 
-  const getData = () => fetchTableData(tableName);
 
   useEffect(() => {
-    getData();
+    loadData();
   }, []);
 
   useEffect( () => {
-    setData(dataTable);
-  }, [dataTable])
+    setData(dataType);
+  }, [dataType]);
 
 
   return (
@@ -28,7 +27,7 @@ const GetType = () => {
           idField: "idTipo_De_Negocio",
           nameField: "Nombre_Tipo_De_Negocio",
         }}
-        reloadData={getData}
+        reloadData={loadData}
       />
     </>
   );

@@ -50,6 +50,8 @@ function determineContentType(fileName) {
       return "image/png";
     case ".gif":
       return "image/gif";
+    case "/pdf":
+      return "document/pdf";
     // Añade más casos según sea necesario
     default:
       return "application/octet-stream"; // Tipo genérico para datos binarios; ajusta según sea necesario
@@ -72,11 +74,16 @@ export const deleteFile = async (fileName) => {
   }
 };
 
-
-export const uploadPropertyFile = async (file, matriculaInmobiliaria) => {
+export const uploadPropertyFile = async (
+  file,
+  matriculaInmobiliaria,
+  subdir = "imagenes"
+) => {
   const contentType = determineContentType(file.name);
   const stream = fs.createReadStream(file.tempFilePath);
-  const fileName = `${matriculaInmobiliaria}/${Date.now()}-${file.name}`; // Asegura nombre único
+  const fileName = `${matriculaInmobiliaria}/${subdir}/${Date.now()}-${
+    file.name
+  }`; // Asegura nombre único
   const uploadParams = {
     Bucket: AWS_S3_BUCKET,
     Key: fileName,
@@ -93,6 +100,6 @@ export const uploadPropertyFile = async (file, matriculaInmobiliaria) => {
     return fileUrl; // Devuelve la URL del archivo subido
   } catch (error) {
     console.error("Error uploading file:", error);
-    throw error; // Lanza el error para que pueda ser manejado en el .catch del Promise.all
+    throw error; // Lanza el error para que pueda ser manejado adecuadamente
   }
 };

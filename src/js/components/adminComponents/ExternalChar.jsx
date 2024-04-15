@@ -1,24 +1,21 @@
 import React, { useEffect, useState } from "react";
-import {
-  getTableRequest,
-} from "../../../api/activo.api";
 import TableSql from "./SubComponents/TableSql";
 import { useData } from "../../../contexts/DataContext";
 
 const ExternalChars = () => {
   const tableName = "Caracteristicas_Externas";
-  const { fetchTableData, dataTable } = useData();
+  const { extData, loadData} = useData();
   const [data, setData] = useState([]);
 
-  const getData = () => fetchTableData(tableName);
+
 
   useEffect(() => {
-    getData();
+    loadData();
   }, []);
 
   useEffect( () => {
-    setData(dataTable);
-  }, [dataTable]);
+    setData(extData);
+  }, [extData]);
 
 
 
@@ -30,7 +27,7 @@ const ExternalChars = () => {
         idField: "idCaracteristicas_Externas",
         nameField: "Nombre_Caracteristica",
       }}
-      reloadData={getData}
+      reloadData={loadData}
 
     />
   );

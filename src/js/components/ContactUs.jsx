@@ -29,7 +29,7 @@ const ContactUs = () => {
               </ListGroupItem>
               <ListGroupItem className="form_info_list_item">
                 <i className="bi bi-telephone"></i>
-                <a href="tel:+571234567899">+573178845335</a>
+                <a href="tel:+573178845335">+573178845335</a>
               </ListGroupItem>
               <ListGroupItem className="form_info_list_item">
                 <i className="bi bi-buildings"></i>

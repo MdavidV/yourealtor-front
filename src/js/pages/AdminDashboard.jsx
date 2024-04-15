@@ -42,6 +42,7 @@ const AdminDashboard = () => {
             />
 
             <Route path="/registro-inmueble" element={<PropertyForm />}/>
+            <Route path="/editar-activo/:activoId" element={<PropertyForm editMode={true}/>}/>
             <Route path="/registro-asesor" element={<CreateAsesor />}/>
             <Route path="/caracteristicas-internas" element={<InternalChars />}/>
             <Route path="/caracteristicas-externas" element={<ExternalChars />}/>

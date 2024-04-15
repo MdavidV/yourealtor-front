@@ -4,18 +4,18 @@ import { useData } from "../../../contexts/DataContext";
 
 const PropertyType = () => {
   const tableName = "Tipo_Activo";
-  const { fetchTableData, dataTable } = useData();
+  const { dataPropertyType, loadData} = useData();
   const [data, setData] = useState([]);
 
-  const getData = () => fetchTableData(tableName);
+
 
   useEffect(() => {
-    getData();
+    loadData();
   }, []);
 
   useEffect(() => {
-    setData(dataTable);
-  }, [dataTable]);
+    setData(dataPropertyType);
+  }, [dataPropertyType]);
 
   return (
     <div>
@@ -23,7 +23,7 @@ const PropertyType = () => {
         tableName={tableName}
         tableCont={data}
         tableField={{ idField: "idTipo_Activo", nameField: "Nombre_Tipo_Activo" }}
-        reloadData={getData}
+        reloadData={loadData}
       />
     </div>
   );

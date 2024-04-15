@@ -22,28 +22,50 @@ export const uploadFileToS3 = async (req, res, next) => {
 };
 
 export const uploadPropertyFileToS3 = async (req, res, next) => {
-  if (!req.files) {
-    console.log("No hay Imgs");
+  if (!req.files || (!req.files.imgs && !req.files.docs)) {
+    console.log("No hay archivos para subir.");
     return next();
   }
 
   const basicInfoObj = JSON.parse(req.body.basicInfo);
-
   const matriculaInmobiliaria = basicInfoObj.Matricula_Inmobiliaria;
 
   if (!matriculaInmobiliaria) {
     return res.status(400).send("La matrícula inmobiliaria es requerida.");
   };
 
-  const files = Object.values(req.files);
+  let filesToUpload = [];
+  let imageUrls = [];
+  let documentUrls = [];
 
-  const uploadPromises = files.map(file => {
-    return uploadPropertyFile(file, matriculaInmobiliaria);
-  });
+  if (req.files?.imgs && req.files.imgs) {
+    filesToUpload = filesToUpload.concat(req.files.imgs.map(file => ({ file, subdir: "images" })));
+  }
+  if (req.files && req.files.docs) {
+    // Asegurándose de que siempre se trate con un array
+    const docsArray = Array.isArray(req.files.docs) ? req.files.docs : [req.files.docs];
+    filesToUpload = filesToUpload.concat(docsArray.map(file => ({ file, subdir: "documents" })));
+  }
+
+  const uploadPromises = filesToUpload.map(({ file, subdir }) =>
+    uploadPropertyFile(file, matriculaInmobiliaria, subdir)
+  );
 
   try {
     const urls = await Promise.all(uploadPromises);
-    req.body.images = urls;
+    urls.forEach((url, index) => {
+      if (filesToUpload[index].subdir === "images") {
+        imageUrls.push(url);
+      } else if (filesToUpload[index].subdir === "documents") {
+        documentUrls.push(url);
+      }
+    });
+
+    req.body.urls = {
+      imgs: imageUrls,
+      docs: documentUrls
+    }; // Estructura los URLs en dos categorías distintas
+
     next();
   } catch (error) {
     console.error("Error al subir archivos a S3:", error);

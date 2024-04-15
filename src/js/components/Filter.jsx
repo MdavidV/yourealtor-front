@@ -19,26 +19,16 @@ const Filter = ({ isHome })=> {
         data, 
         fetchData, 
         cities, 
-        getAllCities,
         dataFiltered,
         filteringData,
         dataType,
-        fetchType,
         dataPropertyType,
-        fetchPropertyType,
     } = useData();
 
     useEffect(()=>{
-        getAllCities();
         fetchData();
-        fetchPropertyType("Tipo_Activo");
-        fetchType("Tipo_De_Negocio");
     },[])
 
-    useEffect(() => {
-        console.log(dataType, dataPropertyType)
-    }, [dataType, dataPropertyType])
-    
     //lista de servicios y tipo de proiedad
     
     

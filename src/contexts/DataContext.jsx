@@ -1,9 +1,8 @@
-import { createContext, useContext, useState } from "react";
+import { createContext, useContext, useEffect, useState } from "react";
 import {
   getActivoRequest,
   getActivosByAdminRequest,
   getActivosRequest,
-  getCitiesRequest,
   getTableRequest,
 } from "../api/activo.api";
 import { getAsesorsRequest } from "../api/admin";
@@ -21,7 +20,6 @@ export const useData = () => {
 export const DataProvider = ({ children }) => {
   const [data, setData] = useState("");
   const [asesors, setAsesors] = useState([]);
-  const [dataTable, setDataTable] = useState([]);
   const [dataPropertyType, setDataPropertyType] = useState([]);
   const [dataType, setDataType] = useState([]);
   const [dataPeriodicity, setDataPeriodicity] = useState([]);
@@ -31,77 +29,32 @@ export const DataProvider = ({ children }) => {
   const [dataFiltered, setDataFiltered] = useState("");
   const [activo, setActivo] = useState("");
   const [activosAdmin, setActivosAdmin] = useState([]);
+  const [owners, setOwners] = useState([]);
+  const [isDataLoaded, setDataLoaded] = useState(false);
+
+  const loadData = async () => {
+    try {
+      const response = await getTableRequest();
+      if (response.status === 200) {
+        setCities(response.data.cities);
+        setDataPropertyType(response.data.propertyTypes);
+        setDataType(response.data.businessType);
+        setIntData(response.data.int);
+        setExtData(response.data.ext);
+        setDataPeriodicity(response.data.periodicity);
+        setOwners(response.data.owners);
+
+      }
+    } catch (error) {
+      console.error(error);
+    }
+  };
 
   const getAsesors = async () => {
     try {
       const response = await getAsesorsRequest();
       if (response.status === 200) {
         setAsesors(response.data);
-      }
-    } catch (error) {
-      console.error(error);
-    }
-  };
-  const fetchTableData = async (tableName) => {
-    try {
-      const response = await getTableRequest(tableName);
-      if (response.status === 200) {
-        setDataTable(response.data[0]);
-      }
-    } catch (error) {
-      console.error(error);
-    }
-  };
-
-  const fetchIntData = async (tableName) => {
-    try {
-      const response = await getTableRequest(tableName);
-      if (response.status === 200) {
-        setIntData(response.data[0]);
-      }
-    } catch (error) {
-      console.error(error);
-    }
-  };
-
-  const fetchExtData = async (tableName) => {
-    try {
-      const response = await getTableRequest(tableName);
-      if (response.status === 200) {
-        setExtData(response.data[0]);
-      }
-    } catch (error) {
-      console.error(error);
-    }
-  };
-
-  const fetchPropertyType = async (tableName) => {
-    try {
-      const response = await getTableRequest(tableName);
-      if (response.status === 200) {
-        setDataPropertyType(response.data[0]);
-      }
-    } catch (error) {
-      console.error(error);
-    }
-  };
-
-  const fetchType = async (tableName) => {
-    try {
-      const response = await getTableRequest(tableName);
-      if (response.status === 200) {
-        setDataType(response.data[0]);
-      }
-    } catch (error) {
-      console.error(error);
-    }
-  };
-
-  const fetchPeriodicity = async (tableName) => {
-    try {
-      const response = await getTableRequest(tableName);
-      if (response.status === 200) {
-        setDataPeriodicity(response.data[0]);
       }
     } catch (error) {
       console.error(error);
@@ -118,20 +71,6 @@ export const DataProvider = ({ children }) => {
       }
     } catch (error) {
       return console.log({ message: error.message });
-    }
-  };
-
-  const getAllCities = async () => {
-    try {
-      if (!cities) {
-        const response = await getCitiesRequest();
-        const data = response.data;
-        setCities(data);
-      } else {
-        return;
-      }
-    } catch (error) {
-      // return console.log({ message: error.message });
     }
   };
 
@@ -163,15 +102,24 @@ export const DataProvider = ({ children }) => {
     }
   };
 
+ 
+
   const getActivoByAdmin = async () => {
     try {
       const response = await getActivosByAdminRequest();
-      console.log(response)
+      console.log(response);
       setActivosAdmin(response.data);
     } catch (error) {
       console.error(error);
     }
   };
+
+  useEffect(() => {
+    loadData();
+    setDataLoaded(true);
+  }, [data]);
+
+  
   return (
     <DataContext.Provider
       value={{
@@ -179,26 +127,22 @@ export const DataProvider = ({ children }) => {
         getAsesors,
         asesors,
         fetchData,
-        fetchTableData,
-        dataTable,
-        fetchIntData,
         intData,
-        fetchExtData,
         extData,
-        fetchPropertyType,
         dataPropertyType,
-        fetchType,
         dataType,
-        fetchPeriodicity,
         dataPeriodicity,
         cities,
-        getAllCities,
         dataFiltered,
         filteringData,
         activo,
         getOneActive,
         getActivoByAdmin,
         activosAdmin,
+        owners,
+        loadData,
+        isDataLoaded,
+        setActivo
       }}
     >
       {children}

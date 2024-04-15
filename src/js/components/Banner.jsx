@@ -13,13 +13,11 @@ const Banner = () => {
     data,
     fetchData, 
     cities, 
-    getAllCities,
     dataFiltered,
     filteringData
 } = useData();
 
 useEffect(()=>{
-  getAllCities();
   fetchData();
 },[])
 

@@ -5,18 +5,17 @@ import { useData } from "../../../contexts/DataContext";
 
 const GetPerodicity = () => {
   const tableName = "Periodizidad";
-  const { fetchTableData, dataTable } = useData();
+  const { dataPeriodicity, loadData } = useData();
   const [data, setData] = useState([]);
 
-  const getData = () => fetchTableData(tableName);
 
   useEffect(() => {
-    getData();
+    loadData();
   }, []);
 
   useEffect( () => {
-    setData(dataTable);
-  }, [dataTable]);
+    setData(dataPeriodicity);
+  }, [dataPeriodicity]);
 
   return (
     <div>
@@ -24,7 +23,7 @@ const GetPerodicity = () => {
         tableName={tableName}
         tableCont={data}
         tableField={{ idField: "idPeriodizidad", nameField: "Tipo_De_Periodo" }}
-        reloadData={getData}
+        reloadData={loadData}
       />
     </div>
   );

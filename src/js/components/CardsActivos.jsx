@@ -8,26 +8,23 @@ import { getActivosRequest } from "../../api/activo.api";
 const CardsActivos = () => {
   const [activos, setActivos] = useState([]);
 
-  useEffect(()=>{
-      const loadActivo = async()=>{
-          const response = await getActivosRequest();
-          const data = response.data;
-          const shortData = data.slice(0,3);
-          setActivos(shortData);
-      }
+  useEffect(() => {
+    const loadActivo = async () => {
+      const response = await getActivosRequest();
+      const data = response.data;
+      const shortData = data.slice(0, 3);
+      setActivos(shortData);
+    };
+
       loadActivo();
+
   }, []);
 
   const [selectedService, setSelectedService] = useState("");
 
   const navigate = useNavigate();
-  const { data, fetchData, cities, getAllCities, dataFiltered, filteringData } =
-    useData();
+  const { data, fetchData, cities, dataFiltered, filteringData } = useData();
 
-  useEffect(() => {
-    getAllCities();
-    fetchData();
-  }, []);
 
   const handleChange = (e) => {
     e.preventDefault();

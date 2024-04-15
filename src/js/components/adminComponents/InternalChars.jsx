@@ -7,19 +7,19 @@ import { useData } from "../../../contexts/DataContext";
 
 const InternalChars = () => {
   const tableName = "Caracteristicas_Internas";
-  const { fetchTableData, dataTable } = useData();
+  const { intData, loadData } = useData();
   const [data, setData] = useState([]);
 
-  const getData = () => fetchTableData(tableName);
+
 
 
   useEffect(() => {
-    getData();
+    loadData();
   }, []);
 
   useEffect( () => {
-    setData(dataTable);
-  }, [dataTable])
+    setData(intData);
+  }, [intData])
 
   return (
     <>
@@ -30,7 +30,7 @@ const InternalChars = () => {
           idField: "idCaracteristicas_Internas",
           nameField: "Nombre_Caracteristica",
         }}
-        reloadData={setData}
+        reloadData={loadData}
       />
     </>
   );

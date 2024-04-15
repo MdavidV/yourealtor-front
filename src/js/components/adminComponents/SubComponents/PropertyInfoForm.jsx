@@ -1,30 +1,51 @@
 import React, { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { useData } from "../../../../contexts/DataContext";
-const PropertyInfoForm = ({ setBasicInfo }) => {
+const PropertyInfoForm = ({ setBasicInfo, initialData }) => {
   const {
     getAsesors,
     asesors,
-    fetchPropertyType,
     dataPropertyType,
     dataType,
-    fetchType,
-    fetchPeriodicity,
     dataPeriodicity,
   } = useData();
 
   const {
     register,
     handleSubmit,
+    setValue,
     formState: { errors },
   } = useForm();
 
+  useEffect(() =>{
+    getAsesors()
+  }, [])
+
   useEffect(() => {
-    fetchPropertyType("Tipo_Activo");
-    getAsesors();
-    fetchType("Tipo_De_Negocio");
-    fetchPeriodicity("Periodizidad");
-  }, []);
+    if (initialData) {
+      // Establecer valores iniciales para campos de texto y otros tipos directamente
+      Object.keys(initialData).forEach((key) => {
+        if (key !== "Nombre_Tipo_Activo" && key !== "Nombre_Tipo_De_Negocio") {
+          setValue(key, initialData[key]);
+        }
+      });
+  
+      // Para el caso especial de select que usa nombres en initialData pero necesita IDs como value
+      const tipoActivo = dataPropertyType.find(type => type.Nombre_Tipo_Activo === initialData.Nombre_Tipo_Activo);
+      if (tipoActivo) {
+        setValue("Nombre_Tipo_Activo", tipoActivo.idTipo_Activo);
+      }
+  
+      const tipoNegocio = dataType.find(type => type.Nombre_Tipo_De_Negocio === initialData.Nombre_Tipo_De_Negocio);
+      if (tipoNegocio) {
+        setValue("Nombre_Tipo_De_Negocio", tipoNegocio.idTipo_De_Negocio);
+      }
+    }
+  }, [initialData, setValue, dataPropertyType, dataType]);
+
+  const selectFieldDefaultValue = (selectFieldName) => {
+    return initialData && initialData[selectFieldName] ? initialData[selectFieldName] : "";
+  };
 
   const onSubmit = (data) => {
     setBasicInfo(data);
@@ -38,6 +59,7 @@ const PropertyInfoForm = ({ setBasicInfo }) => {
             Encargado del inmueble
           </label>
           <select
+          defaultValue={selectFieldDefaultValue("Encargado_Del_Activo")}
             {...register("Encargado_Del_Activo", { required: true })}
             className="form-select"
           >
@@ -89,6 +111,7 @@ const PropertyInfoForm = ({ setBasicInfo }) => {
         <div className="col-lg-6 col-12">
           <label htmlFor="estadoActivo" className="form-label">Estado del Activo</label>
           <select
+          defaultValue={selectFieldDefaultValue("Estado_Activo")}
             className="form-select"
             id="estadoActivo"
             {...register("Estado_Activo", { required: true })}
@@ -108,6 +131,7 @@ const PropertyInfoForm = ({ setBasicInfo }) => {
             Tipo de Inmueble:
           </label>
           <select
+          defaultValue={selectFieldDefaultValue("Nombre_Tipo_Activo")}
             {...register("Nombre_Tipo_Activo", { required: true })}
             className="form-select"
           >
@@ -124,6 +148,7 @@ const PropertyInfoForm = ({ setBasicInfo }) => {
             Tipo de Negocio:
           </label>
           <select
+          defaultValue={selectFieldDefaultValue("Nombre_Tipo_De_Negocio")}
             {...register("Nombre_Tipo_De_Negocio", { required: true })}
             className="form-select"
           >
@@ -183,6 +208,7 @@ const PropertyInfoForm = ({ setBasicInfo }) => {
             Tiempo
           </label>
           <select
+          defaultValue={selectFieldDefaultValue("Tipo_De_Periodo")}
             {...register("Tipo_De_Periodo", { required: true })}
             className="form-select"
           >
@@ -224,6 +250,7 @@ const PropertyInfoForm = ({ setBasicInfo }) => {
             Estado fisico de la propiedad
           </label>
           <select
+          defaultValue={selectFieldDefaultValue("Estado_Propiedad")}
             className="form-select"
             {...register("Estado_Propiedad", { required: true })}
           >
@@ -300,6 +327,7 @@ const PropertyInfoForm = ({ setBasicInfo }) => {
             Estrato
           </label>
           <select
+          defaultValue={selectFieldDefaultValue("Estrato")}
             {...register("Estrato", { required: true })}
             className="form-select"
           >

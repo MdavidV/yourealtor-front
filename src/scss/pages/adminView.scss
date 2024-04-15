@@ -21,10 +21,9 @@
   .property_form {
     margin-top: -30px;
     .card {
-        
       .card-header {
         padding: 15px !important;
-        background-color: #FFFDDB;
+        background-color: #fffddb;
       }
       input,
       select,
@@ -33,16 +32,76 @@
       }
     }
 
-    .btn-close{
-        color: $white;
+    .btn-close {
+      color: $white;
+    }
+  }
+
+  .property-list {
+    th, td {
+      vertical-align: middle;
+      &:first-child {
+        width: 25%; // Ajustar el porcentaje según sea necesario
+      }
+    }
+  
+    .photo-cell img { // Ajusta a tus necesidades
+      width: auto;
+      max-width: 90%;
+      margin: 0.5rem 1rem; // Añade un espacio sobre la imagen si es necesario
+      border-radius: 0.25rem;
+    }
+  
+    .property-data-cell {
+      p {
+        margin: 5px 0;
+        &:first-child {
+          margin-top: 0.5rem;
+        }
+      }
+      .badge {
+        font-size: 1rem; // Ajusta el tamaño de la fuente de los badges si es necesario
+        padding: 0.5em 0.75em; // Aumenta el padding para hacer los badges más grandes
+        border-radius: 0.25rem; // Suaviza las esquinas de los badges si es necesario
+      }
+    }
+  
+
+  
+  
+    @media (max-width: 768px) {
+      td, th{
+        &:first-child {
+          width: 100%; // Ajustar el porcentaje según sea necesario
+        }
+      }
+       th {
+        display: none; // Oculta los encabezados en móviles
+      }
+    
+      .property-data-cell, .photo-cell {
+        display: flex;
+        flex-direction: column;
+        align-items: center; // Alinea el texto a la izquierda
+        text-align: left;
+        &:before {
+          content: attr(data-label);
+          font-weight: bold;
+          text-transform: uppercase;
+          margin-bottom: 0.5rem;
+        }
+      }
     }
   }
 }
 
-
-@media (max-width: $Medium){
-  .img-thumbnail{
+@media (max-width: $Medium) {
+  .img-thumbnail {
     width: 100% !important;
     height: auto !important;
   }
 }
+
+
+
+

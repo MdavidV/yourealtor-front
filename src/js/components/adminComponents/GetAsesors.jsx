@@ -11,7 +11,8 @@ import AsesorFilter from "./SubComponents/AsesorFilter";
 import { useData } from "../../../contexts/DataContext";
 
 const GetAsesors = () => {
-  const {asesors, getAsesors} = useData(); 
+  const { asesors, getAsesors } = useData();
+  const [shouldFetch, setShouldFetch] = useState(true);
   const [showAlert, setShowAlert] = useState(false);
   const [timeoutId, setTimeoutId] = useState(null);
   const [editingAsesorId, setEditingAsesorId] = useState(null); // Estado para el modo de edición
@@ -39,17 +40,20 @@ const GetAsesors = () => {
       return "Fecha no disponible"; // O cualquier otro mensaje que desees mostrar
     }
   };
+  useEffect(() => {
+    if (shouldFetch) {
+      getAsesors();
+      setShouldFetch(false);
+    }
+  }, [shouldFetch, getAsesors]);
 
-  const fetchData =  () => {
-    
-    getAsesors()
+  // Actualiza `filteredAsesors` cada vez que cambia `asesors`
+  useEffect(() => {
     const sortedAsesors = asesors.sort((a, b) =>
       a.availability === "Disponible" ? -1 : 1
     );
-
-    
     setFilteredAsesors(sortedAsesors);
-  };
+  }, [asesors]);
 
   const handleFilter = (searchTerm) => {
     if (!searchTerm.trim()) {
@@ -66,9 +70,6 @@ const GetAsesors = () => {
     }
   };
 
-  useEffect(() => {
-    fetchData();
-  }, [asesors]);
 
   useEffect(() => {
     return () => {
@@ -78,12 +79,9 @@ const GetAsesors = () => {
 
   const deleteAsesor = async (asesorId) => {
     try {
-      const response = await deleteAsesorRequest(asesorId);
-      console.log(response);
-      if (response) {
-        fetchData();
-        showMessage();
-      }
+      await deleteAsesorRequest(asesorId);
+      setShouldFetch(true);
+      showMessage();
     } catch (error) {
       console.error(error);
     }
@@ -97,13 +95,9 @@ const GetAsesors = () => {
   const saveChanges = async () => {
     if (editingAsesorId && newAvailability) {
       try {
-        const response = await updateAvailabilityAsesorRequest(
-          editingAsesorId,
-          { availability: newAvailability }
-        );
-        console.log(response);
-        setEditingAsesorId(null); // Salir del modo de edición
-        fetchData(); // Recargar la lista de asesores
+        await updateAvailabilityAsesorRequest(editingAsesorId, { availability: newAvailability });
+        setEditingAsesorId(null); // Sale del modo de edición
+        setShouldFetch(true); // Esto provocará una recarga de la lista de asesores desde el servidor
       } catch (error) {
         console.error(error);
       }

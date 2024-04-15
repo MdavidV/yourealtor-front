@@ -1,40 +1,41 @@
-import React, { useEffect, useState } from "react";
-import { useData } from "../../../../contexts/DataContext";
+import React, { useState, useEffect } from "react";
 import Select from "react-select";
-import makeAnimated from "react-select/animated";
-import { Badge, Button, FormGroup, Input, Label } from "reactstrap";
+import { Button } from "reactstrap";
+import { useData } from "../../../../contexts/DataContext";
 
-const ExternalCharsForm = ({setExternalChars}) => {
-  const { extData, fetchExtData } = useData();
-  const tableName = "Caracteristicas_Externas";
+const ExternalCharsSelect = ({ setExternalChars, initialData }) => {
+  const { extData } = useData(); // Datos de las características internas
   const [selectedOptions, setSelectedOptions] = useState([]);
 
   useEffect(() => {
-    fetchExtData(tableName);
-  }, []);
+    if (initialData && extData.length > 0) {
+      const initialSelectedOptions = initialData
+        .map((char) => options.find((option) => option.label === char))
+        .filter(Boolean);
+
+      setSelectedOptions(initialSelectedOptions);
+    }
+  }, [initialData, extData]);
+
+  const handleChange = (selectedOptions) => {
+    setSelectedOptions(selectedOptions || []);
+  };
+
+
+  const guardarSeleccion = () => {
+    setExternalChars(selectedOptions);
+  };
 
   const options = extData.map((caracteristica) => ({
     value: caracteristica.idCaracteristicas_Externas,
     label: caracteristica.Nombre_Caracteristica,
   }));
 
-  const handleChange = (selectedOptions) => {
-    setSelectedOptions(selectedOptions || []);
-  };
-
-  const guardarSeleccion = () => {
-    setExternalChars(selectedOptions);
-    // Aquí puedes hacer una llamada al backend para guardar las selecciones, si es necesario
-  };
-
-
-
-  const animatedComponents = makeAnimated();
 
   return (
     <>
       <Select
-        components={animatedComponents}
+  
         isMulti
         options={options}
         className="basic-multi-select"
@@ -50,4 +51,4 @@ const ExternalCharsForm = ({setExternalChars}) => {
   );
 };
 
-export default ExternalCharsForm;
+export default ExternalCharsSelect;

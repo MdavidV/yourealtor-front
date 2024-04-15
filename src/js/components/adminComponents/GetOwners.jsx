@@ -1,30 +1,56 @@
 import React, { useEffect, useState } from "react";
-import { getTableRequest } from "../../../api/activo.api";
-import TableSql from "./SubComponents/TableSql";
+import { FaEdit, FaTrashAlt } from "react-icons/fa";
+import { Alert, Button, Table } from "reactstrap";
+import { useNavigate } from "react-router-dom";
+import Swal from "sweetalert2";
+import { useData } from "../../../contexts/DataContext";
+import OwnerDetailsModal from "./SubComponents/OwnerDetailsModal";
 
 const GetOwners = () => {
-  const tableName = "Propietarios";
   const [data, setData] = useState([]);
+  const [modal, setModal] = useState(false);
+  const [selectedOwner, setSelectedOwner] = useState([]);
+  const {owners, loadData} = useData();
 
-  const fetchData = async () => {
-    const response = await getTableRequest(tableName);
-    setData(response.data[0]);
-  };
+
 
   useEffect(() => {
-    fetchData();
+    loadData();
+    setData(owners);
   }, []);
+
+
+  const toggle = () => setModal(!modal);
+
+  const handleRowClick = (owner) => {
+    setSelectedOwner(owner);
+    toggle();
+  }
+
   return (
-    <>
-      <TableSql
-        tableName={tableName}
-        tableCont={data}
-        tableField={{
-          idField: "idPropietarios",
-          nameField: "Nombre_Propietario",
-        }}
-        reloadData={fetchData}
-      />
+<>
+      <Table hover striped responsive size="sm" className="table-chars">
+        <thead>
+          <tr>
+            <th className="section-title">Propietarios</th>
+          </tr>
+        </thead>
+        <tbody className="table-body table-container">
+          {data.map((item, index) => (
+            <tr
+              key={index}
+              className="d-flex justify-content-between"
+              onClick={() => handleRowClick(item)} // Agrega el manejo del clic aquí
+            >
+              <td>{item.Nombre_Propietario} {item.Apellido_Propietario}</td>
+              <td>{item.Email_Propietario} </td>
+              <td>{item.Telefono_Propietario} </td>
+              <td>Id Inmueble: {item.idActivo} </td>
+            </tr>
+          ))}
+        </tbody>
+      </Table>
+      <OwnerDetailsModal isOpen={modal} toggle={toggle} owner={selectedOwner} />
     </>
   );
 };

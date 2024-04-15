@@ -1,12 +1,20 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useForm } from "react-hook-form";
 
-const OwnerProperty = ({ setOwnerInfo }) => {
+const OwnerProperty = ({ setOwnerInfo, initialData }) => {
   const {
     register,
     handleSubmit,
+    setValue,
     formState: { errors },
   } = useForm();
+
+  useEffect(() =>{
+    console.log(initialData);
+    Object.keys(initialData).forEach(key => {
+      setValue(key, initialData[key]);
+    });
+  }, [initialData, setValue]);
 
   const onSubmit = (data) => {
     console.log(data);

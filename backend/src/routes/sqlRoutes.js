@@ -2,14 +2,14 @@ import { Router } from 'express'
 import { 
    getActivos,
    getActivo,
-   getCities,
    updateActivo,
    deleteActivo,
-   getTable,
    deleteField,
    createField,
    createActivo,
-   getActivoByAdmin
+   getActivoByAdmin,
+   getActivoById,
+   loadData
 } from '../controllers/sqlController.js';
 import { uploadPropertyFileToS3 } from '../middlewares/uploadFile.js';
 
@@ -17,13 +17,14 @@ const router = Router();
 
 router.get('/activos', getActivos);
 router.get('/activos/:id', getActivo);
+router.get('/activo-byId/:idActivo', getActivoById);
 router.get('/get-activo-admin', getActivoByAdmin);
-router.get('/cities', getCities);
+router.patch('/update-activo/:id', uploadPropertyFileToS3, updateActivo)
 
 router.put('/activos/:id', updateActivo);
 router.delete('/activos/:id', deleteActivo);
 
-router.get('/get-table', getTable);
+router.get('/get-tables', loadData);
 router.delete('/delete-field/:tableName/:idField', deleteField);
 router.post('/create-field', createField);
 

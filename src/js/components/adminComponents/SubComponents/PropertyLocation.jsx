@@ -2,22 +2,28 @@ import React, { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { useData } from "../../../../contexts/DataContext";
 
-const PropertyLocation = ({setLocation}) => {
-  const { cities, getAllCities } = useData();
+const PropertyLocation = ({ setLocation, initialData}) => {
+  const { cities, loadData } = useData();
 
   useEffect(() => {
-    getAllCities();
+    if (!cities) {
+      loadData();
+    }
   }, []);
-
-  useEffect(() => {
-    console.log(cities);
-  }, [cities]);
 
   const {
     register,
     handleSubmit,
     formState: { errors },
+    setValue,
   } = useForm();
+
+  useEffect(() =>{
+    console.log(initialData);
+    Object.keys(initialData).forEach(key => {
+      setValue(key, initialData[key]);
+    });
+  }, [initialData, setValue]);
 
   const onSubmit = (data) => {
     // Crear un objeto FormData para enviar la información del formulario
@@ -56,11 +62,12 @@ const PropertyLocation = ({setLocation}) => {
             id="ciudad"
             {...register("Ciudad", { required: "Este campo es obligatorio." })}
           >
-            {cities.map((city, index) => (
-              <option key={index} value={city.Ciudad}>
-                {city.Ciudad}
-              </option>
-            ))}
+            {Array.isArray(cities) &&
+              cities.map((city, index) => (
+                <option key={index} value={city.Ciudad}>
+                  {city.Ciudad}
+                </option>
+              ))}
           </select>
           {errors.Ciudad && (
             <div className="invalid-feedback d-block">

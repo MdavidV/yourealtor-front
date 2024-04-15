@@ -42,8 +42,7 @@ export const getTemplate = (firstName, token) => {
     </head>
 
     <div id="email___content">
-        <img src="https://i.imgur.com/eboNR82.png" alt="">
-        <h2>Hola ${firstName}</h2>
+        <h2>Hola ${firstName}! Te saludamos desde el equipo de Yourealtor.</h2>
         <p>Para confirmar tu cuenta, ingresa al siguiente enlace</p>
         <a
         href="http://localhost:5173/confirm/${token}"

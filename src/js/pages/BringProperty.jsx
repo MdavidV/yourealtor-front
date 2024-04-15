@@ -1,7 +1,7 @@
 import { Col, Container, Row, ListGroup } from "reactstrap";
 import NavHeader from "../components/NavHeader";
 import Footer from "../components/Footer";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useData } from "../../contexts/DataContext";
 import { useParams } from "react-router-dom";
 import {
@@ -24,23 +24,35 @@ const BringProperty = () => {
   const [internalChars, setInternalChars] = useState([]);
   const [externalChars, setExternalChars] = useState([]);
 
-  const { getOneActive, activo } = useData();
+  const idActivo = params.id;
+
+  const { getOneActive, activo, setActivo } = useData();
+
 
   useEffect(() => {
     const loadActivo = async () => {
-      if (params.id) {
-        await getOneActive(params.id);
+      if (idActivo) {
+        await getOneActive(idActivo);
       }
     };
-    loadActivo();
 
+    loadActivo();
     window.scrollTo(0, 0);
-  }, []);
+
+    return () => {
+      setActivo("");
+    }
+
+  }, [idActivo]);
+
+  const prevActivoRef = useRef();
 
   useEffect(() => {
-    if (activo) {
-      setInternalChars(activo.Caracteristicas_Internas.split(","));
-      setExternalChars(activo.Caracteristicas_Externas.split(","));
+    // Comprobar si activo ha cambiado desde la última renderización
+    if (prevActivoRef.current !== activo) {
+      setInternalChars(activo?.Caracteristicas_Internas?.split(",") || []);
+      setExternalChars(activo?.Caracteristicas_Externas?.split(",") || []);
+      prevActivoRef.current = activo;
     }
   }, [activo]);
 
@@ -74,7 +86,7 @@ const BringProperty = () => {
                     <p className="mini-text">
                       Precio{" "}
                       {activo.Nombre_Tipo_De_Negocio === "Venta"
-                        ? "de"
+                        ? "de "
                         : "del "}
                       {activo.Nombre_Tipo_De_Negocio}
                     </p>
@@ -258,7 +270,9 @@ const BringProperty = () => {
               </Col>
             </Row>
             <Row className="features my-4">
-              <h2 className="section-detalle my-5 text-center">Características</h2>
+              <h2 className="section-detalle my-5 text-center">
+                Características
+              </h2>
               <Col>
                 <h2 className="section-detalle mb-3">
                   Caracteristicas Internas
@@ -290,7 +304,7 @@ const BringProperty = () => {
                 </ListGroup>
               </Col>
               <Col>
-              <h2 className="section-detalle mb-3">
+                <h2 className="section-detalle mb-3">
                   Caracteristicas Externas
                 </h2>
                 <ListGroup>
