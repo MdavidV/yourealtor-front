@@ -163,31 +163,36 @@ export const getActivoById = async (req, res) => {
     GROUP_CONCAT(DISTINCT CI.Nombre_Caracteristica SEPARATOR ', ') AS internalChars,
     GROUP_CONCAT(DISTINCT CE.Nombre_Caracteristica SEPARATOR ', ') AS externalChars,
     T.Nombre_Tipo_Activo,
-    TN.Nombre_Tipo_De_Negocio
-  FROM 
+    TN.Nombre_Tipo_De_Negocio,
+    COALESCE(GROUP_CONCAT(DISTINCT Doc.enlace_s3 SEPARATOR ', '), 'No Documents') AS Documentos_S3
+FROM 
     Activo A
-  JOIN 
+JOIN 
     Propietarios P ON A.Propietarios_idPropietarios = P.idPropietarios
-  JOIN 
+JOIN 
     Detalle_Activos DA ON A.idActivo = DA.Activo_idActivo
-  LEFT JOIN 
+LEFT JOIN 
     Caracteristicas_Internas_Detalle_Activos CID ON DA.idDetalle_Activos = CID.Detalle_Activos_idDetalle_Activos
-  LEFT JOIN 
+LEFT JOIN 
     Caracteristicas_Internas CI ON CID.Caracteristicas_Internas_idCaracteristicas_Internas = CI.idCaracteristicas_Internas
-  LEFT JOIN 
+LEFT JOIN 
     Caracteristicas_Externas_Detalle_Activos CED ON DA.idDetalle_Activos = CED.Detalle_Activos_idDetalle_Activos
-  LEFT JOIN 
+LEFT JOIN 
     Caracteristicas_Externas CE ON CED.Caracteristicas_Externas_idCaracteristicas_Externas = CE.idCaracteristicas_Externas
-  JOIN 
+JOIN 
     Tipo_Activo T ON DA.Tipo_Activo_idTipo_Activo = T.idTipo_Activo
-  JOIN 
+JOIN 
     Tipo_De_Negocio_Detalle_Activo TNDA ON DA.idDetalle_Activos = TNDA.Detalle_Activos_idDetalle_Activos
-  JOIN 
+JOIN 
     Tipo_De_Negocio TN ON TNDA.Tipo_De_Negocio_idTipo_De_Negocio = TN.idTipo_De_Negocio
-  WHERE 
+LEFT JOIN 
+    Documentos_Activos Doc ON A.idActivo = Doc.id_activo
+WHERE 
     A.idActivo = ?
-  GROUP BY
-    A.idActivo;`;
+GROUP BY
+    A.idActivo;
+
+`;
 
     const [results] = await pool.query(query, [idActivo]);
 
@@ -196,6 +201,8 @@ export const getActivoById = async (req, res) => {
     }
 
     const activo = formatActivoData(results[0]);
+
+    console.log(activo);
 
     res.json(activo);
   } catch (error) {

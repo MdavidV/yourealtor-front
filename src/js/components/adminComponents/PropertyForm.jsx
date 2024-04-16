@@ -34,6 +34,7 @@ const PropertyForm = ({ editMode }) => {
         setImages(data.images.split(",")); // Asegúrate de que esto se maneje correctamente como un array
         setInternalChars(data.internalChars.split(", ")); // Convierte la cadena a un array
         setExternalChars(data.externalChars.split(", "));
+        setDocuments(data.documents)
       };
       loadActivoInfo();
     }

@@ -30,25 +30,31 @@ const DocumentsForm = ({
 
   const removeExistingDocument = (urlToRemove) => {
     setDocumentsToRemove((prevUrls) => [...prevUrls, urlToRemove]);
-    setDocuments((prevDocuments) =>
-      prevDocuments.filter((document) => document !== urlToRemove)
-    );
+    setDocuments((prevDocuments) => {
+      // Asegurar que prevDocuments es un arreglo antes de intentar filtrarlo
+      const safePrevDocuments = Array.isArray(prevDocuments) ? prevDocuments : [];
+      return safePrevDocuments.filter((document) => document !== urlToRemove);
+    });
   };
 
-  const filteredExistingDocuments = existingDocuments.filter(
+  // Asegurarse de que existingDocuments sea un array
+  const safeExistingDocuments = Array.isArray(existingDocuments) ? existingDocuments : [existingDocuments];
+
+  const filteredExistingDocuments = safeExistingDocuments.filter(
     (url) => !documentsToRemove.includes(url)
   );
+
   return (
     <div>
-      {existingDocuments.length > 0 && <h2>Documentos Existentes</h2>}
+      {safeExistingDocuments.length > 0 && <h2>Documentos Existentes</h2>}
       <div className="row flex-wrap">
         {filteredExistingDocuments.map((url, index) => (
           <div
             key={`existing-doc-${index}`}
-            className="col-xl-2 col-12 d-flex flex-column m-2 position-relative"
+            className="col-xl-2 col-12 d-flex flex-column m-2 position-relative justify-content-between align-items-center"
           >
             <a href={url} target="_blank" rel="noopener noreferrer">
-              <FaFilePdf size={50} />
+              <FaFilePdf size={150} />
             </a>
             <button
               type="button"
@@ -76,7 +82,7 @@ const DocumentsForm = ({
           >
             <a href={fileObj.file} target="_blank" rel="noopener noreferrer">
               <FaFilePdf size={150} />
-              <p className="text-center my-2">{fileObj.file.name}</p> {/* Muestra el nombre del archivo */}
+              <p className="text-center my-2">{fileObj.file.name}</p>
             </a>
             <button
               type="button"
