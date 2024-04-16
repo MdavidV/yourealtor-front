@@ -73,11 +73,11 @@ export const getActivo = async (req, res) => {
     DA.Direccion,
     DA.Descripcion,
     DA.Imagenes,
-    DA.Documentos,
     GROUP_CONCAT(DISTINCT CE.Nombre_Caracteristica SEPARATOR ', ') AS Caracteristicas_Externas,
     GROUP_CONCAT(DISTINCT CI.Nombre_Caracteristica SEPARATOR ', ') AS Caracteristicas_Internas,
     TN.Nombre_Tipo_De_Negocio,
-    T.Nombre_Tipo_Activo
+    T.Nombre_Tipo_Activo,
+    GROUP_CONCAT(DISTINCT Doc.enlace_s3 SEPARATOR ', ') AS Documentos
 FROM 
     Detalle_Activos DA
 JOIN 
@@ -94,10 +94,13 @@ JOIN
     Tipo_De_Negocio TN ON TNDA.Tipo_De_Negocio_idTipo_De_Negocio = TN.idTipo_De_Negocio
 JOIN 
     Tipo_Activo T ON DA.Tipo_Activo_idTipo_Activo = T.idTipo_Activo
+LEFT JOIN 
+    Documentos_Activos Doc ON DA.Activo_idActivo = Doc.id_activo
 WHERE 
     DA.Activo_idActivo = ?
 GROUP BY 
     DA.idDetalle_Activos;
+
 
         `,
       [idDetalleActivos]
@@ -376,20 +379,20 @@ export const updateActivo = async (req, res) => {
 
       if (req.body.documentsToRemove && req.body.documentsToRemove.length > 0) {
         await connection.query(
-          "DELETE FROM Documentos_Activo WHERE urlDocumento = ? AND Activo_idActivo = ?",
+          "DELETE FROM Documentos_Activos WHERE enlace_s3 = ? AND id_activo = ?",
           [req.body.documentsToRemove, activoId]
         );
       }
 
       // Inserción de nuevos documentos
       const newDocumentInserts = req.body.urls.docs.map((url) => ({
-        Activo_idActivo: activoId,
-        urlDocumento: url,
-        fechaSubida: new Date(),
+        id_activo: activoId,
+        enlace_s3: url,
+        fecha_carga: new Date(),
       }));
 
       for (const doc of newDocumentInserts) {
-        await connection.query("INSERT INTO Documentos_Activo SET ?", [doc]);
+        await connection.query("INSERT INTO Documentos_Activos SET ?", [doc]);
       }
 
       // Verificar si imagesToRemove e images están presentes en el req.body
@@ -664,9 +667,9 @@ export const createActivo = async (req, res) => {
 
       if (urls.docs && urls.docs.length > 0) {
         const documentInserts = urls.docs.map((docUrl) => ({
-          Activo_idActivo: activoResult.insertId, // ID del activo recién creado
-          urlDocumento: docUrl, // URL del documento subido
-          fechaSubida: new Date(), // Fecha de subida del documento
+          id_activo: activoResult.insertId, // ID del activo recién creado
+          enlace_s3: docUrl, // URL del documento subido
+          fecha_carga: new Date(), // Fecha de subida del documento
         }));
 
         for (let doc of documentInserts) {

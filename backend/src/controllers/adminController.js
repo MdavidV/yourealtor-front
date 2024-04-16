@@ -6,7 +6,9 @@ import { getTemplate, sendEmail } from "../libs/sendEmail.js";
 
 export const getAsesors = async (req, res) => {
   try {
-    const asesors = await User.find({ role: "Asesor" });
+    const asesors = await User.find({
+      $or: [{ role: "Asesor" }, { role: "Admin" }],
+    });
     res.status(200).json(asesors);
   } catch (error) {
     console.error("Error al traer asesores: ", error);
@@ -86,7 +88,7 @@ export const deleteAsesor = async (req, res) => {
 export const updateAvailabilityAsesor = async (req, res) => {
   try {
     const { id } = req.params;
-    const {availability} = req.body;
+    const { availability } = req.body;
 
     console.log(req.body);
 
