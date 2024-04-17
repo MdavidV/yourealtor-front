@@ -53,6 +53,8 @@ export const login = async (req, res) => {
   try {
     const userFound = await User.findOne({ email });
 
+
+
     if (!userFound) return res.status(400).json({ messaage: "User Not found" });
 
     const isMatch = await bcrypt.compare(password, userFound.password);
@@ -65,6 +67,7 @@ export const login = async (req, res) => {
     const token = await createAccesToken({ id: userFound._id });
     const userObject = userFound.toObject();
     res.cookie("token", token);
+
     res.json({
       id: userFound._id,
       username: userFound.firstName,

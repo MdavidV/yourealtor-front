@@ -238,7 +238,6 @@ export const updateActivo = async (req, res) => {
   } = req.body;
   const { id } = req.params;
 
-  console.log(basicInfo);
   const activoId = id; // Asegúrate de que estos datos se extraen correctamente
 
   // Continuar solo si activoId y basicInfo están definidos
@@ -389,26 +388,28 @@ export const updateActivo = async (req, res) => {
           "DELETE FROM Documentos_Activos WHERE enlace_s3 = ? AND id_activo = ?",
           [req.body.documentsToRemove, activoId]
         );
+
+        const newDocumentInserts = req.body.urls.docs.map((url) => ({
+          id_activo: activoId,
+          enlace_s3: url,
+          fecha_carga: new Date(),
+        }));
+
+        for (const doc of newDocumentInserts) {
+          await connection.query("INSERT INTO Documentos_Activos SET ?", [doc]);
+        }
       }
 
       // Inserción de nuevos documentos
-      const newDocumentInserts = req.body.urls.docs.map((url) => ({
-        id_activo: activoId,
-        enlace_s3: url,
-        fecha_carga: new Date(),
-      }));
-
-      for (const doc of newDocumentInserts) {
-        await connection.query("INSERT INTO Documentos_Activos SET ?", [doc]);
-      }
 
       // Verificar si imagesToRemove e images están presentes en el req.body
+      const urls = req.body.urls && typeof req.body.urls === 'object' ? req.body.urls : {};
+      const images = Array.isArray(urls.imgs) ? urls.imgs : [];
+      
       const imagesToRemove = Array.isArray(req.body.imagesToRemove)
-        ? req.body.imagesToRemove
-        : [];
-      const images = Array.isArray(req.body.urls.imgs)
-        ? req.body.urls.imgs
-        : [];
+          ? req.body.imagesToRemove
+          : [];
+      
 
       // Continúa si hay imágenes para eliminar o agregar
       if (imagesToRemove.length > 0 || images.length > 0) {
@@ -915,6 +916,15 @@ const getClients = async (req, res) => {
   }
 };
 
+const getClientsType = async (req, res) => {
+  try {
+    const getTableResult = await pool.query("SELECT * FROM tipo_cliente");
+    return getTableResult[0];
+  } catch (error) {
+    return res.status(400).json({ message: error.message });
+  }
+};
+
 export const loadData = async (req, res) => {
   try {
     const cities = await getCities();
@@ -925,6 +935,7 @@ export const loadData = async (req, res) => {
     const ext = await getExt();
     const businessType = await getBusinessType();
     const clients = await getClients();
+    const clientsType = await getClientsType();
 
     res.json({
       cities,
@@ -935,6 +946,7 @@ export const loadData = async (req, res) => {
       ext,
       businessType,
       clients,
+      clientsType,
     });
   } catch (error) {
     res.status(400).json({ message: error.message });

@@ -30,6 +30,8 @@ export const DataProvider = ({ children }) => {
   const [activo, setActivo] = useState("");
   const [activosAdmin, setActivosAdmin] = useState([]);
   const [owners, setOwners] = useState([]);
+  const [clients, setClients] = useState([]);
+  const [clientsType, setClientsType] = useState([]);
   const [isDataLoaded, setDataLoaded] = useState(false);
 
   const loadData = async () => {
@@ -43,7 +45,8 @@ export const DataProvider = ({ children }) => {
         setExtData(response.data.ext);
         setDataPeriodicity(response.data.periodicity);
         setOwners(response.data.owners);
-
+        setClients(response.data.clients);
+        setClientsType(response.data.clientsType);
       }
     } catch (error) {
       console.error(error);
@@ -143,7 +146,9 @@ export const DataProvider = ({ children }) => {
         owners,
         loadData,
         isDataLoaded,
-        setActivo
+        setActivo,
+        clients,
+        clientsType,
       }}
     >
       {children}
