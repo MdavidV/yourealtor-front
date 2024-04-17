@@ -9,7 +9,8 @@ import {
    createActivo,
    getActivoByAdmin,
    getActivoById,
-   loadData
+   loadData,
+   createClient
 } from '../controllers/sqlController.js';
 import { uploadPropertyFileToS3 } from '../middlewares/uploadFile.js';
 
@@ -28,8 +29,9 @@ router.get('/get-tables', loadData);
 router.delete('/delete-field/:tableName/:idField', deleteField);
 router.post('/create-field', createField);
 
-router.post('/create-property', uploadPropertyFileToS3, createActivo );
 
+router.post('/create-property', uploadPropertyFileToS3, createActivo );
+router.post('/create-client', createClient);
 
 
 export default router;

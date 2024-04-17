@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Card, CardBody, CardHeader, Collapse, Alert } from "reactstrap";
+import { Card, CardBody, CardHeader, Collapse, Alert, Modal, ModalBody, Spinner } from "reactstrap";
 import InternalCharsForm from "./SubComponents/InternalCharsForm";
 import ExternalCharsForm from "./SubComponents/ExternalCharsForm";
 import PropertyInfoForm from "./SubComponents/PropertyInfoForm";
@@ -62,6 +62,7 @@ const PropertyForm = ({ editMode }) => {
   const [documents, setDocuments] = useState([]);
   const [documentsToRemove, setDocumentsToRemove] = useState([]);
   const [newDocuments, setNewDocuments] = useState([]);
+  const [loading, setLoading] = useState(false);
 
 
   const navigate = useNavigate();
@@ -106,8 +107,8 @@ const PropertyForm = ({ editMode }) => {
   };
 
   const handleSubmit = async () => {
+    setLoading(true);
     const formData = new FormData();
-
     // Adjunta objetos y arreglos como strings usando JSON.stringify
     formData.append("ownerInfo", JSON.stringify(ownerInfo));
     formData.append("basicInfo", JSON.stringify(basicInfo));
@@ -142,9 +143,14 @@ const PropertyForm = ({ editMode }) => {
 
       if (response.status === 200) {
         showMessage();
+        window.scrollTo(0, 0)
+      } else {
+        alert('Ocurrio un error, porfavor revise los datos!');
       }
     } catch (error) {
       console.error(error);
+    } finally{
+      setLoading(false);
     }
   };
 
@@ -276,6 +282,16 @@ const PropertyForm = ({ editMode }) => {
           </CardBody>
         </Collapse>
       </Card>
+
+      <Modal isOpen={loading} centered>
+        <ModalBody>
+          <div className="text-center">
+            <Spinner type="grow" color="primary" /> {/* Puedes personalizar el Spinner como prefieras */}
+            <p>Cargando...</p>
+          </div>
+        </ModalBody>
+      </Modal>
+
 
       <button onClick={handleSubmit} className="btn btn-success m-3 py-2 px-5">
         <IoCreateOutline className="mx-2" />

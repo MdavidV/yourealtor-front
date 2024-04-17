@@ -22,21 +22,20 @@ function SidebarItem({ title, dropdownItems, isOpen, onClick }) {
 
 function Sidebar({ isProfile }) {
   const { logout, user } = useAuth();
-  const [userRole, setUserRole] = useState('')
+  const [userRole, setUserRole] = useState("");
   const navigate = useNavigate();
   const [activeIndex, setActiveIndex] = useState(-1);
-  
 
-  useEffect( () => {
+  useEffect(() => {
     console.log(user);
-  }, [])
+  }, []);
 
   useEffect(() => {
     if (user && user.role) {
       setUserRole(user.role);
     }
   }, [user]);
-  
+
   console.log(userRole);
 
   const sidebarItemsProfile = [
@@ -47,9 +46,12 @@ function Sidebar({ isProfile }) {
       ],
     },
     {
-      title: userRole === "Admin" || userRole === 'Asesor' ? "Panel de Administrador" : "Propiedades Guardadas",
+      title:
+        userRole === "Admin" || userRole === "Asesor"
+          ? "Panel de Administrador"
+          : "Propiedades Guardadas",
       dropdownItems:
-      userRole === "Admin" || userRole === 'Asesor'
+        userRole === "Admin" || userRole === "Asesor"
           ? [{ title: "Panel de Administrador", to: "/admin-properties" }]
           : [
               {
@@ -60,7 +62,7 @@ function Sidebar({ isProfile }) {
     },
   ];
 
-  if (userRole === "Admin" || userRole === 'Asesor') {
+  if (userRole === "Admin" || userRole === "Asesor") {
     sidebarItemsProfile.push({
       title: "Blogs",
       dropdownItems: [
@@ -121,18 +123,31 @@ function Sidebar({ isProfile }) {
           to: "/admin-properties/tipos-de-negocio",
         },
         {
-          title: "Clientes",
-          to: "/admin-properties/clientes",
+          title: "Tipos de Clientes",
+          to: "/admin-properties/clients-type",
         },
         {
           title: "Propietarios",
           to: "/admin-properties/propietarios",
         },
-
-
-      ]
+      ],
     },
     {
+      title: "Clientes",
+      dropdownItems: [
+        {
+          title: "Clientes registrados",
+          to: "/admin-properties/clientes",
+        },
+        {
+          title: 'Nuevo Cliente',
+          to: "/admin-properties/nuevo-cliente"
+        }
+      ],
+    },
+  ];
+  if (userRole === "Admin") {
+    adminPropiertiesSidebarItems.push({
       title: "Asesores",
       dropdownItems: [
         {
@@ -143,9 +158,9 @@ function Sidebar({ isProfile }) {
           title: "Crear Asesor",
           to: "/admin-properties/registro-asesor",
         },
-      ]
-    }
-  ];
+      ],
+    });
+  }
 
   const sidebarItemsToUse = isProfile
     ? sidebarItemsProfile

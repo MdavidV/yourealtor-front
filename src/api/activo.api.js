@@ -12,6 +12,10 @@ export const getActivoByIdRequest = async (idActivo) =>{
     return await axios.get(`http://localhost:4000/activo-byId/${idActivo}`);
 }
 
+export const createClientRequest = async (data) => {
+    return await axios.post('http://localhost:4000/create-client', data);
+}
+
 
 
 export const getActivoRequest = async(id)=>{

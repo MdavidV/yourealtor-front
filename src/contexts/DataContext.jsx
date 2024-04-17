@@ -33,6 +33,7 @@ export const DataProvider = ({ children }) => {
   const [clients, setClients] = useState([]);
   const [clientsType, setClientsType] = useState([]);
   const [isDataLoaded, setDataLoaded] = useState(false);
+  const [clientToEdit, setClientToEdit] = useState(null);
 
   const loadData = async () => {
     try {
@@ -149,6 +150,8 @@ export const DataProvider = ({ children }) => {
         setActivo,
         clients,
         clientsType,
+        clientToEdit,
+        setClientToEdit
       }}
     >
       {children}

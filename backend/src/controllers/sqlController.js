@@ -403,13 +403,13 @@ export const updateActivo = async (req, res) => {
       // Inserción de nuevos documentos
 
       // Verificar si imagesToRemove e images están presentes en el req.body
-      const urls = req.body.urls && typeof req.body.urls === 'object' ? req.body.urls : {};
+      const urls =
+        req.body.urls && typeof req.body.urls === "object" ? req.body.urls : {};
       const images = Array.isArray(urls.imgs) ? urls.imgs : [];
-      
+
       const imagesToRemove = Array.isArray(req.body.imagesToRemove)
-          ? req.body.imagesToRemove
-          : [];
-      
+        ? req.body.imagesToRemove
+        : [];
 
       // Continúa si hay imágenes para eliminar o agregar
       if (imagesToRemove.length > 0 || images.length > 0) {
@@ -801,6 +801,9 @@ export const createField = async (req, res) => {
     Tipo_Activo: {
       fieldName: "Nombre_Tipo_Activo",
     },
+    tipo_cliente: {
+      fieldName: "Nombre_Tipo_Cliente",
+    },
   };
 
   const { tableName, data } = req.body.data;
@@ -824,6 +827,88 @@ export const createField = async (req, res) => {
   }
 };
 
+export const createClient = async (req, res) => {
+  // Comenzamos obteniendo los datos del cuerpo de la solicitud
+  const {
+    Encargado_Del_Cliente,
+    Estado_Del_Cliente,
+    Nombre,
+    Apellidos,
+    Telefono,
+    N_identificacion,
+    Fecha_Nacimiento,
+    Tipo_Cliente,
+    idActivo,
+  } = req.body;
+
+  // Obtén una conexión del pool
+  const connection = await pool.getConnection();
+
+  try {
+    // Inicia una nueva transacción
+    await connection.beginTransaction();
+
+    // Inserta un nuevo cliente en la tabla 'Clientes'
+    const [clientResult] = await connection.query(
+      `
+      INSERT INTO Clientes (Encargado_Del_Cliente, Estado_Del_Cliente, Nombre, Apellidos, Telefono, N_identificacion, Fecha_Nacimiento)
+      VALUES (?, ?, ?, ?, ?, ?, ?)
+    `,
+      [
+        Encargado_Del_Cliente,
+        Estado_Del_Cliente,
+        Nombre,
+        Apellidos,
+        Telefono,
+        N_identificacion,
+        new Date(Fecha_Nacimiento),
+      ]
+    );
+
+    // Obtiene el id del nuevo cliente
+    const newClientId = clientResult.insertId;
+
+    await connection.query(
+      `
+  INSERT INTO Tipo_Cliente_has_Clientes (Tipo_Cliente_idTipo_Cliente, Clientes_idClientes)
+  VALUES (?, ?)
+`,
+      [Tipo_Cliente, newClientId]
+    );
+
+    // Si hay un idActivo, enlaza el nuevo cliente con el activo en la tabla 'Clientes_has_Activo'
+    if (idActivo) {
+      await connection.query(
+        `
+        INSERT INTO Clientes_has_Activo (Clientes_idClientes, Activo_idActivo)
+        VALUES (?, ?)
+      `,
+        [newClientId, idActivo]
+      );
+    }
+
+    // Si todo va bien, confirma la transacción
+    await connection.commit();
+
+    // Cierra la conexión
+    connection.release();
+
+    // Envía una respuesta de éxito
+    res
+      .status(201)
+      .json({ message: "Cliente creado con éxito", clientId: newClientId });
+  } catch (error) {
+    // Si algo va mal, revierte la transacción
+    await connection.rollback();
+
+    // Cierra la conexión
+    connection.release();
+
+    // Registra el error y envía una respuesta de error
+    console.error("Error al crear el cliente: ", error);
+    res.status(500).json({ message: "Error al crear el cliente" });
+  }
+};
 // LLAMADO A CADA UNA DE LAS TABLAS PARA TRAER SUS VALORES EN UNA UNICA CALL A LA API
 
 const getCities = async (req, res) => {

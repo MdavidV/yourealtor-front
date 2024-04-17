@@ -3,7 +3,7 @@ import { useData } from "../../../contexts/DataContext";
 import TableSql from "./SubComponents/TableSql";
 
 const GetClientsType = () => {
-  const tableName = "Tipo_Cliente";
+  const tableName = "tipo_cliente";
   const { clientsType, loadData } = useData();
   const [data, setData] = useState([]);
 
