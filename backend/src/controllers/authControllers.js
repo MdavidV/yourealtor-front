@@ -53,6 +53,8 @@ export const login = async (req, res) => {
   try {
     const userFound = await User.findOne({ email });
 
+
+
     if (!userFound) return res.status(400).json({ messaage: "User Not found" });
 
     const isMatch = await bcrypt.compare(password, userFound.password);
@@ -64,6 +66,9 @@ export const login = async (req, res) => {
 
     const token = await createAccesToken({ id: userFound._id });
     res.cookie("token", token);
+
+    const userObject = userFound.toObject();
+
     res.json({
       id: userFound._id,
       username: userFound.firstName,
@@ -71,6 +76,7 @@ export const login = async (req, res) => {
       email: userFound.email,
       role: userFound.role,
       created: userFound.createdAt,
+      code: userObject.code,
     });
   } catch (error) {
     res.status(550).json({ message: error.message });
@@ -92,6 +98,7 @@ export const verifyToken = async (req, res) => {
       username: userFound.firstName,
       email: userFound.email,
       role: userFound.role,
+      code: userFound.code,
     });
   });
 };
@@ -105,6 +112,8 @@ export const profile = async (req, res) => {
   const userFound = await User.findById(req.user.id);
   if (!userFound) return res.status(400).json({ message: "User not found" });
 
+
+
   res.json({
     id: userFound._id,
     username: userFound.firstName,
@@ -112,6 +121,7 @@ export const profile = async (req, res) => {
     email: userFound.email,
     role: userFound.role,
     created: userFound.createdAt,
+    code: userFound.code,
   });
 };
 

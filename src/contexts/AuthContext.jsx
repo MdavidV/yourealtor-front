@@ -48,6 +48,7 @@ export const AuthProvider = ({ children }) => {
         email: res.data.email,
         role: res.data.role,
         created: res.data.created,
+        code: res.data.code,
       });
       setIsAuthenticated(true);
     } catch (error) {
@@ -63,7 +64,7 @@ export const AuthProvider = ({ children }) => {
   const profile = async () => {
     try {
       const res = await profileRequest();
-      console.log(res);
+      console.log(res.data);
       setUser(res.data);
     } catch (error) {
       console.log(error);
