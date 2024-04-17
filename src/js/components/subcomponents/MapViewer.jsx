@@ -25,8 +25,8 @@ function MapViewer( {direccion, ciudad}) {
             <Row>
                 <Col>
                     <iframe 
-                        width="820" 
-                        height="560" 
+                        width="820"
+                        height="560"
                         id="gmap_canvas"
                         src={urlMapa}>
                     </iframe>

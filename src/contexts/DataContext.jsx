@@ -107,7 +107,7 @@ export const DataProvider = ({ children }) => {
   const getActivoByAdmin = async () => {
     try {
       const response = await getActivosByAdminRequest();
-      console.log(response);
+
       setActivosAdmin(response.data);
     } catch (error) {
       console.error(error);
@@ -136,6 +136,7 @@ export const DataProvider = ({ children }) => {
         dataFiltered,
         filteringData,
         activo,
+        setActivosAdmin,
         getOneActive,
         getActivoByAdmin,
         activosAdmin,

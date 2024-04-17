@@ -61,8 +61,9 @@ export const login = async (req, res) => {
 
     if (userFound.status !== "VERIFIED")
       return res.status(400).json({ message: "El usuario no está verificado" });
-
+    
     const token = await createAccesToken({ id: userFound._id });
+    const userObject = userFound.toObject();
     res.cookie("token", token);
     res.json({
       id: userFound._id,
@@ -71,6 +72,7 @@ export const login = async (req, res) => {
       email: userFound.email,
       role: userFound.role,
       created: userFound.createdAt,
+      code: userObject.code
     });
   } catch (error) {
     res.status(550).json({ message: error.message });
@@ -86,12 +88,13 @@ export const verifyToken = async (req, res) => {
 
     const userFound = await User.findById(user.id);
     if (!userFound) return res.status(401).json({ message: "Unauthorized" });
-
+    const userObject = userFound.toObject();
     return res.json({
       id: userFound._id,
       username: userFound.firstName,
       email: userFound.email,
       role: userFound.role,
+      code: userObject.code
     });
   });
 };
@@ -104,7 +107,7 @@ export const logout = (req, res) => {
 export const profile = async (req, res) => {
   const userFound = await User.findById(req.user.id);
   if (!userFound) return res.status(400).json({ message: "User not found" });
-
+  const userObject = userFound.toObject();
   res.json({
     id: userFound._id,
     username: userFound.firstName,
@@ -112,6 +115,7 @@ export const profile = async (req, res) => {
     email: userFound.email,
     role: userFound.role,
     created: userFound.createdAt,
+    code: userObject.code
   });
 };
 

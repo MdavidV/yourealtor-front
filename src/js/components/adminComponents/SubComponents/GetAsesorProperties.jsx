@@ -7,20 +7,31 @@ import { FaDollarSign, FaEdit, FaInfo, FaBuilding } from "react-icons/fa";
 
 const GetAsesorProperties = () => {
   const { user } = useAuth();
-  const { getActivoByAdmin, activosAdmin } = useData();
+  const { getActivoByAdmin, activosAdmin, setActivosAdmin } = useData();
 
-  
   const navigate = useNavigate();
-
-
 
   useEffect(() => {
     if (user && user.role) {
-      if (user.role === "Admin") {
-        getActivoByAdmin();
+      if (user.role === "Asesor") {
+        const codigo = user.code;
+  
+        const activosFiltrados = activosAdmin.filter((activo) => 
+          activo.Encargado_Del_Activo === codigo
+        );
+  
+        // Verificar si activosFiltrados es diferente de activosAdmin antes de actualizar el estado
+        if (JSON.stringify(activosFiltrados) !== JSON.stringify(activosAdmin)) {
+          setActivosAdmin(activosFiltrados);
+        }
       }
     }
-  }, []);
+    // Remover activosAdmin de las dependencias para evitar bucles
+  }, [user, activosAdmin]);
+
+  useEffect(()=>{
+    getActivoByAdmin();
+  },[])
 
 
   const renderFirstImage = (imageString) => {
