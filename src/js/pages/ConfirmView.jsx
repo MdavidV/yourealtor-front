@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from "react";
-import { confirmRequest } from "../api/auth.jsx";
+import { confirmRequest } from "../../api/auth.js";
 import { useParams } from "react-router-dom";
-import Bg from "../assets/Bg_Form_View.jpg";
-import CheckVideo from "../assets/system-regular-31-check.webp";
-import CrossVideo from "../assets/system-solid-29-cross.webp";
+import Bg from "../../assets/Bg_Form_View.jpg";
+import CheckVideo from "../../assets/system-regular-31-check.webp";
+import CrossVideo from "../../assets/system-solid-29-cross.webp";
 import { Col, Container, Row, Spinner } from "reactstrap";
 
 const ConfirmView = () => {

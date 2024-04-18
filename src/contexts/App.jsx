@@ -2,7 +2,7 @@ import Home from "../js/pages/Home.jsx";
 import Login from "../js/pages/Login.jsx";
 import Signup from "../js/pages/Signup.jsx";
 import Profile from "../js/pages/Profile.jsx";
-import ConfirmView from "./ConfirmView.jsx";
+import ConfirmView from "../js/pages/ConfirmView.jsx";
 
 import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
 import { AuthProvider } from "./AuthContext.jsx";
