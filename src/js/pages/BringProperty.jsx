@@ -17,7 +17,7 @@ import {
 } from "react-icons/io5";
 import { FaBath } from "react-icons/fa";
 import SlickBig from "../components/subcomponents/slickBig.jsx";
-import SideContact from "../components/subcomponents/sideContact.jsx";
+import SideContact from "../components/subcomponents/SideContact.jsx";
 import MapViewer from "../components/subcomponents/MapViewer.jsx";
 
 const BringProperty = () => {
