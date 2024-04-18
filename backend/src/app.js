@@ -12,17 +12,19 @@ import blogRoutes from "./routes/blogRoutes.js";
 import fileUpload from "express-fileupload";
 
 import cors from "cors";
+
+import { FRONTEND_URL } from "./config.js";
+
 const app = express();
 
 app.use(express.urlencoded({ extended: false }));
 
 app.use(
   cors({
-    origin: "https://yourealtor-front.onrender.com",
+    origin: FRONTEND_URL,
     credentials: true,
   })
 );
-
 
 app.use(
   fileUpload({
