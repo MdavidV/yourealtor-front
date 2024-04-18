@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
-import { useAuth } from "../../../../contexts/AuthContext";
-import { useData } from "../../../../contexts/DataContext";
+import { useAuth } from "../../../../contexts/AuthContext.jsx";
+import { useData } from "../../../../contexts/DataContext.jsx";
 import { useNavigate } from "react-router-dom";
 import { Table, Button, Badge } from "reactstrap";
 import { FaDollarSign, FaEdit, FaInfo, FaBuilding } from "react-icons/fa";

@@ -15,7 +15,7 @@ import {
   NavLink,
 } from "reactstrap";
 import { InlineShareButtons } from "sharethis-reactjs";
-import { useData } from "../../../contexts/DataContext";
+import { useData } from "../../../contexts/DataContext.jsx";
 import { useNavigate } from "react-router-dom";
 
 const SideContact = () => {

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { confirmRequest } from "../api/auth";
+import { confirmRequest } from "../api/auth.jsx";
 import { useParams } from "react-router-dom";
 import Bg from "../assets/Bg_Form_View.jpg";
 import CheckVideo from "../assets/system-regular-31-check.webp";

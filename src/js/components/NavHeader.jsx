@@ -16,7 +16,7 @@ import {
   Col,
 } from "reactstrap";
 import { Link } from "react-router-dom";
-import { useAuth } from "../../contexts/AuthContext";
+import { useAuth } from "../../contexts/AuthContext.jsx";
 import PropTypes from 'prop-types';
 
 const NavHeader = ({ isHome }) => {

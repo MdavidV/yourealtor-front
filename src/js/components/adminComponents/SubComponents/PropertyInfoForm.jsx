@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
-import { useData } from "../../../../contexts/DataContext";
+import { useData } from "../../../../contexts/DataContext.jsx";
 const PropertyInfoForm = ({ setBasicInfo, initialData }) => {
   const {
     getAsesors,

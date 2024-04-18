@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
-import { useData } from "../../../../contexts/DataContext";
+import { useData } from "../../../../contexts/DataContext.jsx";
 import {
   Button,
   Modal,
@@ -11,7 +11,7 @@ import {
   Badge,
 } from "reactstrap";
 import { FaBuilding, FaDollarSign, FaEdit } from "react-icons/fa";
-import { createClientRequest } from "../../../../api/activo.api";
+import { createClientRequest } from "../../../../api/activo.api.js";
 import Swal from "sweetalert2";
 import { useNavigate } from "react-router-dom";
 

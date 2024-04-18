@@ -1,11 +1,10 @@
-import React, { useEffect, useState } from "react";
-import { useData } from "../../../contexts/DataContext";
-import TableSql from "./SubComponents/TableSql";
+import React, { useEffect} from "react";
+import { useData } from "../../../contexts/DataContext.jsx";
+import TableSql from "./SubComponents/TableSql.jsx";
 
 const GetClientsType = () => {
   const tableName = "tipo_cliente";
   const { clientsType, loadData } = useData();
-  const [data, setData] = useState([]);
 
   useEffect(() => {
     loadData();

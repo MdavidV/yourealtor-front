@@ -1,7 +1,7 @@
 import React, { useState, useRef, useEffect } from "react";
-import { createBlogRequest } from "../../../api/blog";
+import { createBlogRequest } from "../../../api/blog.js";
 import { Button, Container, Form, FormGroup, Input, Label } from "reactstrap";
-import { useAuth } from "../../../contexts/AuthContext";
+import { useAuth } from "../../../contexts/AuthContext.jsx";
 import { useNavigate } from "react-router-dom";
 
 const CreateBlog = () => {

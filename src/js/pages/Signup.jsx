@@ -4,7 +4,7 @@ import Logo from "../../assets/Logo.png";
 import Bg from "../../assets/Bg_Form_View.jpg";
 import { Col, Container, Row } from "reactstrap";
 import { Link, useNavigate } from "react-router-dom";
-import { useAuth } from "../../contexts/AuthContext";
+import { useAuth } from "../../contexts/AuthContext.jsx";
 import Swal from "sweetalert2";
 
 const Signup = () => {

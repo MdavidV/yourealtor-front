@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
-import NavHeader from "../components/NavHeader";
-import Banner from "../components/Banner";
-import Footer from "../components/Footer";
+import NavHeader from "../components/NavHeader.jsx";
+import Footer from "../components/Footer.jsx";
 import {
   Col,
   Container,
@@ -21,7 +20,7 @@ import Img5 from "../../assets/certificacion-3.png";
 import CountUp from "react-countup";
 import { PiHandshakeFill } from "react-icons/pi";
 import { PopupWidget } from "react-calendly";
-import ModelService from "../components/subcomponents/ModelService";
+import ModelService from "../components/subcomponents/ModelService.jsx";
 
 const AboutUsView = () => {
   const [activeTab, setActiveTab] = useState("1");

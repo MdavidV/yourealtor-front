@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
-import NavHeader from "../components/NavHeader";
-import Footer from "../components/Footer";
-import ContactUs from "../components/ContactUs";
+import NavHeader from "../components/NavHeader.jsx";
+import Footer from "../components/Footer.jsx";
+import ContactUs from "../components/ContactUs.jsx";
 import { PopupModal } from "react-calendly";
 
 const OfferView = () => {

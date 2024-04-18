@@ -5,9 +5,9 @@ import {
   verifyTokenRequest,
   profileRequest,
   changePasswordRequest,
-} from "../api/auth";
+} from "../api/auth.js";
 import Cookies from "js-cookie";
-import { sendMailRequest } from "../api/email.api";
+
 
 export const AuthContext = createContext();
 

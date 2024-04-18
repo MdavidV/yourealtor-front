@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Navigate, useLocation, useNavigate } from "react-router-dom";
 import { Button, Container, Form, Input } from "reactstrap";
-import { updateBlogRequest } from "../../../api/blog";
+import { updateBlogRequest } from "../../../api/blog.js";
 
 const ModifyBlog = () => {
   const location = useLocation();

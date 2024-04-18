@@ -11,7 +11,7 @@ import {
     Dropdown, DropdownToggle, DropdownMenu, DropdownItem
 } from 'reactstrap';
 import PropTypes from 'prop-types';
-import { useData } from "../../contexts/DataContext";
+import { useData } from "../../contexts/DataContext.jsx";
 
 const Filter = ({ isHome })=> {
     const navigate = useNavigate();

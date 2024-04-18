@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import bg from "../../assets/Banner_bg.jpg";
 import { Link, useNavigate } from "react-router-dom";
 import { Col, Container, Row } from "reactstrap";
-import { useData } from "../../contexts/DataContext";
+import { useData } from "../../contexts/DataContext.jsx";
 
 const Banner = () => {
   

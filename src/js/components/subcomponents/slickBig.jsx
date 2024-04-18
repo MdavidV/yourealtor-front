@@ -1,12 +1,8 @@
 import Slider from "react-slick";
-import imagen from "../../../assets/Logo_Allys.png"
 import { 
-    Col, 
-    Container, 
-    Row, 
     Modal,
     ModalBody} from "reactstrap";
-import { useEffect, useRef, useState } from "react";
+import { useEffect,  useState } from "react";
 import PropTypes from 'prop-types';
 
 const NextArrow = (props)=> {

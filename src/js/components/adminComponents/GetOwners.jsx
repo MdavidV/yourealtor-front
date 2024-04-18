@@ -1,10 +1,6 @@
 import React, { useEffect, useState } from "react";
-import { FaEdit, FaTrashAlt } from "react-icons/fa";
-import { Alert, Button, Table } from "reactstrap";
-import { useNavigate } from "react-router-dom";
-import Swal from "sweetalert2";
-import { useData } from "../../../contexts/DataContext";
-import OwnerDetailsModal from "./SubComponents/OwnerDetailsModal";
+import { useData } from "../../../contexts/DataContext.jsx";
+import OwnerDetailsModal from "./SubComponents/OwnerDetailsModal.jsx";
 
 const GetOwners = () => {
   const [data, setData] = useState([]);

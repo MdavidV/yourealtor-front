@@ -1,10 +1,9 @@
 import React, { useEffect, useState } from "react";
-import { getTableRequest } from "../../../api/activo.api";
-import TableSql from "./SubComponents/TableSql";
-import { useData } from "../../../contexts/DataContext";
+import TableSql from "./SubComponents/TableSql.jsx";
+import { useData } from "../../../contexts/DataContext.jsx";
 
 const GetPerodicity = () => {
-  const tableName = "Periodizidad";
+  const tableName = "Periodicidad";
   const { dataPeriodicity, loadData } = useData();
   const [data, setData] = useState([]);
 

@@ -4,8 +4,8 @@ import {
   getActivosByAdminRequest,
   getActivosRequest,
   getTableRequest,
-} from "../api/activo.api";
-import { getAsesorsRequest } from "../api/admin";
+} from "../api/activo.api.js";
+import { getAsesorsRequest } from "../api/admin.js";
 
 export const DataContext = createContext();
 

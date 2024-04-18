@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
-import NavHeader from "../components/NavHeader";
-import Footer from "../components/Footer";
+import NavHeader from "../components/NavHeader.jsx";
+import Footer from "../components/Footer.jsx";
 import {
   Button,
   Card,
@@ -12,7 +12,7 @@ import {
   Container,
   Row,
 } from "reactstrap";
-import SideContact from "../components/subcomponents/sideContact";
+import SideContact from "../components/subcomponents/sideContact.jsx";
 import { getBlogsRequest } from "../../api/blog";
 import { useNavigate } from "react-router-dom";
 

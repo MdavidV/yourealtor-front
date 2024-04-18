@@ -7,8 +7,8 @@ import { Alert, Button, Col, Container, Input, Row } from "reactstrap";
 import { format, isValid } from "date-fns";
 import { BsFillPencilFill, BsSaveFill } from "react-icons/bs";
 import { FaTrashAlt } from "react-icons/fa";
-import AsesorFilter from "./SubComponents/AsesorFilter";
-import { useData } from "../../../contexts/DataContext";
+import AsesorFilter from "./SubComponents/AsesorFilter.jsx";
+import { useData } from "../../../contexts/DataContext.jsx";
 
 const GetAsesors = () => {
   const { asesors, getAsesors } = useData();

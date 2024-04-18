@@ -1,9 +1,9 @@
 import { Col, Container, Row } from "reactstrap";
 import { useLocation } from 'react-router-dom';
-import NavHeader from "../components/NavHeader";
-import Filter from "../components/Filter";
-import Footer from "../components/Footer";
-import CardActivo from "../components/subcomponents/CardActivo";
+import NavHeader from "../components/NavHeader.jsx";
+import Filter from "../components/Filter.jsx";
+import Footer from "../components/Footer.jsx";
+import CardActivo from "../components/subcomponents/CardActivo.jsx";
 import { useEffect } from "react";
 
 const BringProperties = ()=>{

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Button, Col, Form, FormGroup, Input } from "reactstrap";
-import { sendMailRequest } from "../../../api/email.api";
+import { sendMailRequest } from "../../../api/email.api.js";
 import Swal from "sweetalert2";
 // Importaciones necesarias...
 

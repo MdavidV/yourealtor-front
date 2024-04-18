@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react";
-import CardActivo from "./subcomponents/CardActivo";
+import CardActivo from "./subcomponents/CardActivo.jsx";
 import { useNavigate } from "react-router-dom";
 import { Col, Container, Row } from "reactstrap";
-import { useData } from "../../contexts/DataContext";
-import { getActivosRequest } from "../../api/activo.api";
+import { useData } from "../../contexts/DataContext.jsx";
+import { getActivosRequest } from "../../api/activo.api.js";
 
 const CardsActivos = () => {
   const [activos, setActivos] = useState([]);

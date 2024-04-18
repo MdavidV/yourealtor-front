@@ -1,15 +1,15 @@
 import React, { useEffect } from "react";
 import { useAuth } from "../../contexts/AuthContext";
 import { Route, Routes } from "react-router-dom";
-import Navbar from "../components/profileComponents/Navbar";
+import Navbar from "../components/profileComponents/Navbar.jsx";
 import BgProfileView from "../../assets/Bg_Profile_view.jpg";
-import Sidebar from "../components/profileComponents/Sidebar";
-import ProfileInfo from "../components/profileComponents/ProfileInfo";
-import Meetings from "../components/profileComponents/Meetings";
-import Liked from "../components/profileComponents/Liked";
-import CreateBlog from "../components/profileComponents/CreateBlog";
-import GetBlogById from "../components/profileComponents/GetBlogById";
-import ModifyBlog from "../components/profileComponents/ModifyBlog";
+import Sidebar from "../components/profileComponents/Sidebar.jsx";
+import ProfileInfo from "../components/profileComponents/ProfileInfo.jsx";
+import Meetings from "../components/profileComponents/Meetings.jsx";
+import Liked from "../components/profileComponents/Liked.jsx";
+import CreateBlog from "../components/profileComponents/CreateBlog.jsx";
+import GetBlogById from "../components/profileComponents/GetBlogById.jsx";
+import ModifyBlog from "../components/profileComponents/ModifyBlog.jsx";
 
 const Profile = () => {
   const { user, isAuthenticated, profile } = useAuth();

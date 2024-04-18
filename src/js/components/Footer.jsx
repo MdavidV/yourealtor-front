@@ -1,6 +1,6 @@
 import { Col, Container, Row } from "reactstrap";
 import Logo from "../../assets/Logo.png";
-import WhatsappApi from "../components/subcomponents/whatsappIcon";
+import WhatsappApi from "../components/subcomponents/whatsappIcon.jsx";
 
 import { Link } from "react-router-dom";
 

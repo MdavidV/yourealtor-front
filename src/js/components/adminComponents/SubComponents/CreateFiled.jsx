@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { useLocation, useNavigate } from 'react-router-dom'
 import { Alert, Button, Form, FormGroup, Input, Label } from 'reactstrap'
-import { createFieldRequest } from '../../../../api/activo.api';
+import { createFieldRequest } from '../../../../api/activo.api.js';
 
 const CreateFiled = () => {
     const location = useLocation();

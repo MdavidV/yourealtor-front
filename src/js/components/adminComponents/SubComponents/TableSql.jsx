@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { FaTrashAlt } from "react-icons/fa";
 import { Alert, Button, Table } from "reactstrap";
-import { deleteFieldRequest } from "../../../../api/activo.api";
+import { deleteFieldRequest } from "../../../../api/activo.api.js";
 import { useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 

@@ -1,22 +1,22 @@
 import React, { useEffect, useState } from "react";
 import { Card, CardBody, CardHeader, Collapse, Alert, Modal, ModalBody, Spinner } from "reactstrap";
-import InternalCharsForm from "./SubComponents/InternalCharsForm";
-import ExternalCharsForm from "./SubComponents/ExternalCharsForm";
-import PropertyInfoForm from "./SubComponents/PropertyInfoForm";
-import DescriptionPropertyForm from "./SubComponents/DescriptionPropertyForm";
-import ImgProperty from "./SubComponents/ImgProperty";
-import PropertyLocation from "./SubComponents/PropertyLocation";
+import InternalCharsForm from "./SubComponents/InternalCharsForm.jsx";
+import ExternalCharsForm from "./SubComponents/ExternalCharsForm.jsx";
+import PropertyInfoForm from "./SubComponents/PropertyInfoForm.jsx";
+import DescriptionPropertyForm from "./SubComponents/DescriptionPropertyForm.jsx";
+import ImgProperty from "./SubComponents/ImgProperty.jsx";
+import PropertyLocation from "./SubComponents/PropertyLocation.jsx";
 import {
   createPropertyRequest,
   getActivoByIdRequest,
   updatePropertyRequest,
-} from "../../../api/activo.api";
+} from "../../../api/activo.api.js";
 import { IoCreateOutline } from "react-icons/io5";
-import OwnerProperty from "./SubComponents/OwnerProperty";
+import OwnerProperty from "./SubComponents/OwnerProperty.jsx";
 import { useParams } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
-import DocumentsForm from "./SubComponents/DocumentsForm";
+import DocumentsForm from "./SubComponents/DocumentsForm.jsx";
 
 const PropertyForm = ({ editMode }) => {
   const { activoId } = useParams();

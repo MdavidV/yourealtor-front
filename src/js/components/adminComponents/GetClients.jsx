@@ -1,6 +1,4 @@
 import React, { useEffect, useState } from "react";
-import { getTableRequest } from "../../../api/activo.api";
-import TableSql from "./SubComponents/TableSql";
 import { useData } from "../../../contexts/DataContext";
 import { Button, Table } from "reactstrap";
 import { useNavigate } from "react-router-dom";

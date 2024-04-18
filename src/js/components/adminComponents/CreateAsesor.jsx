@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useForm } from "react-hook-form";
-import { signupAsesorRequest } from "../../../api/admin";
+import { signupAsesorRequest } from "../../../api/admin.js";
 import { useNavigate } from "react-router-dom";
 import { Alert, Button, Modal, ModalFooter, ModalHeader } from "reactstrap";
 

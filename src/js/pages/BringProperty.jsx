@@ -1,8 +1,8 @@
 import { Col, Container, Row, ListGroup } from "reactstrap";
-import NavHeader from "../components/NavHeader";
-import Footer from "../components/Footer";
+import NavHeader from "../components/NavHeader.jsx";
+import Footer from "../components/Footer.jsx";
 import { useEffect, useRef, useState } from "react";
-import { useData } from "../../contexts/DataContext";
+import { useData } from "../../contexts/DataContext.jsx";
 import { useParams } from "react-router-dom";
 import {
   IoExpandOutline,
@@ -16,9 +16,9 @@ import {
   IoCheckmark,
 } from "react-icons/io5";
 import { FaBath } from "react-icons/fa";
-import SlickBig from "../components/subcomponents/slickBig";
-import SideContact from "../components/subcomponents/sideContact";
-import MapViewer from "../components/subcomponents/MapViewer";
+import SlickBig from "../components/subcomponents/slickBig.jsx";
+import SideContact from "../components/subcomponents/sideContact.jsx";
+import MapViewer from "../components/subcomponents/MapViewer.jsx";
 
 const BringProperty = () => {
   const params = useParams();

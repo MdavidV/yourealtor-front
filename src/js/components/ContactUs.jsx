@@ -5,7 +5,7 @@ import {
   ListGroup,
   ListGroupItem,
 } from "reactstrap";
-import ContactForm from "./subcomponents/ContactForm";
+import ContactForm from "./subcomponents/ContactForm.jsx";
 
 const ContactUs = () => {
   return (

@@ -1,6 +1,4 @@
 import React from "react";
-import Logo from "../../assets/Allys-1.png";
-import { Link } from "react-router-dom";
 import image1 from "../../assets/pngwing.com.png";
 import image2 from "../../assets/libertadorLogo.png";
 

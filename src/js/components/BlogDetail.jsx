@@ -1,13 +1,13 @@
 import React, { useEffect, useState } from "react";
-import NavHeader from "../components/NavHeader";
-import Footer from "../components/Footer";
+import NavHeader from "../components/NavHeader.jsx";
+import Footer from "../components/Footer.jsx";
 import { useParams } from "react-router-dom";
-import { getBlogBySlugRequest } from "../../api/blog";
+import { getBlogBySlugRequest } from "../../api/blog.js";
 import { Col, Row } from "reactstrap";
-import SideContact from "./subcomponents/sideContact";
+import SideContact from "./subcomponents/sideContact.jsx";
 import { format, isValid } from "date-fns";
-import OurServices from "./OurServicesSection";
-import Banner from "./Banner";
+import OurServices from "./OurServicesSection.jsx";
+import Banner from "./Banner.jsx";
 
 const BlogDetail = () => {
   const { slug } = useParams();

@@ -1,14 +1,14 @@
-import NavHeader from "../components/NavHeader";
-import Banner from "../components/Banner";
-import ContactUs from "../components/ContactUs";
-import AboutUs from "../components/AboutUs";
-import OurTeam from "../components/OurTeam";
-import MapSection from "../components/MapSection";
-import Footer from "../components/Footer";
-import CardsActivo from "../components/CardsActivos";
-import Filter from "../components/Filter";
-import OurAllys from "../components/OurAllys";
-import OurServicesSection from "../components/OurServicesSection";
+import NavHeader from "../components/NavHeader.jsx";
+import Banner from "../components/Banner.jsx";
+import ContactUs from "../components/ContactUs.jsx";
+import AboutUs from "../components/AboutUs.jsx";
+import OurTeam from "../components/OurTeam.jsx";
+import MapSection from "../components/MapSection.jsx";
+import Footer from "../components/Footer.jsx";
+import CardsActivo from "../components/CardsActivos.jsx";
+import Filter from "../components/Filter.jsx";
+import OurAllys from "../components/OurAllys.jsx";
+import OurServicesSection from "../components/OurServicesSection.jsx";
 import { useEffect } from "react";
 
 const Home = () => {

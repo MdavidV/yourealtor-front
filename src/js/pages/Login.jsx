@@ -4,7 +4,7 @@ import Bg from "../../assets/Bg_Form_View.jpg";
 import { Col, Container, Form, FormGroup, Input, Label, Row } from "reactstrap";
 import { Link, useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
-import { useAuth } from "../../contexts/AuthContext";
+import { useAuth } from "../../contexts/AuthContext.jsx";
 
 const Login = () => {
   const {

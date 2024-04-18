@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
-import TableSql from "./SubComponents/TableSql";
-import { useData } from "../../../contexts/DataContext";
+import TableSql from "./SubComponents/TableSql.jsx";
+import { useData } from "../../../contexts/DataContext.jsx";
 
 const ExternalChars = () => {
   const tableName = "Caracteristicas_Externas";

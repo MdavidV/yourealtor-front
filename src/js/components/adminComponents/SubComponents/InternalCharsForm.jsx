@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import Select from "react-select";
 import { Button } from "reactstrap";
-import { useData } from "../../../../contexts/DataContext";
+import { useData } from "../../../../contexts/DataContext.jsx";
 
 const InternalCharsForm = ({ setInternalChars, initialData = [] }) => {
   const { intData } = useData(); // Datos de las características internas

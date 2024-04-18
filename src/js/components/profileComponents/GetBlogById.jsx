@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
-import { deleteBlogRequest, getBlogsByIdRequest } from "../../../api/blog";
-import { useAuth } from "../../../contexts/AuthContext";
+import { deleteBlogRequest, getBlogsByIdRequest } from "../../../api/blog.js";
+import { useAuth } from "../../../contexts/AuthContext.jsx";
 import { Button, Col, Row } from "reactstrap";
 import { format, isValid } from "date-fns";
 import { useNavigate } from "react-router-dom";

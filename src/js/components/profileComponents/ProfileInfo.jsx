@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
-import { useAuth } from "../../../contexts/AuthContext";
-import ChangePassword from "./ChangePassword";
-import ProfileInfoFields from "./ProfileInfoFields";
+import { useAuth } from "../../../contexts/AuthContext.jsx";
+import ChangePassword from "./ChangePassword.jsx";
+import ProfileInfoFields from "./ProfileInfoFields.jsx";
 
 const ProfileInfo = () => {
   const [isChangePasswordOpen, setIsChangePasswordOpen] = useState(false);
