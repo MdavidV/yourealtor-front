@@ -121,7 +121,7 @@ const NavHeader = ({ isHome }) => {
                   </>
                 ) : (
                   <>
-                    <Link href="/Login">
+                    <Link to="/Login">
                       <p>Ingresa</p>
                     </Link>
                   </>
