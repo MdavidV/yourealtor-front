@@ -32,13 +32,30 @@ const NewClient = ({ initialData }) => {
 
 
     useEffect(() => {
-        if (clientToEdit) {
-            const formattedClientData = {
-              ...clientToEdit,
-              Fecha_Nacimiento: formatDate(clientToEdit.Fecha_Nacimiento),
-            };
-            reset(formattedClientData);
-          }
+      if (clientToEdit) {
+        const formattedClientData = {
+          ...clientToEdit,
+          Fecha_Nacimiento: formatDate(clientToEdit.Fecha_Nacimiento),
+        };
+        reset(formattedClientData);
+      } else {
+        reset({
+          Encargado_Del_Cliente: "",
+          Tipo_Cliente: "",
+          Estado_Del_Cliente: "",
+          Nombre: "",
+          Apellidos: "",
+          Telefono: "",
+          N_identificacion: "",
+          Fecha_Nacimiento: "",
+        });
+      }
+    }, [clientToEdit, reset]);
+
+    useEffect(() => {
+      if (!clientToEdit) {
+        setSelectedActivo(null);
+      }
     }, [clientToEdit]);
 
   useEffect(() => {

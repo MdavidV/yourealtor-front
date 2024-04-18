@@ -46,8 +46,25 @@ const PropertyForm = ({ editMode }) => {
         title: "Importante!",
         text: "Recuerda guardar la informacion basica del activo para evitar errores!",
       });
-    }
+    } 
   }, [activoId]);
+
+  useEffect(() => {
+    if (!editMode) {
+      setOwnerInfo([]);
+      setBasicInfo({});
+      setDescription("");
+      setLocation({});
+      setImages([]);
+      setInternalChars([]);
+      setExternalChars([]);
+      setDocuments([]);
+      setImagesToRemove([]);
+      setDocumentsToRemove([]);
+      setNewImages([]);
+      setNewDocuments([]);
+    }
+  }, [editMode]);
 
   const [basicInfo, setBasicInfo] = useState({});
   const [description, setDescription] = useState("");

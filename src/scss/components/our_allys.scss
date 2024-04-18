@@ -3,10 +3,22 @@
     padding: 45px;
     height: 650px;
     margin-top: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     // width: 100%;
 
-    .logo-cont{
+    .ally-container{
         margin: 40px;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        img{
+            width: 250px;
+            height: 250px;
+        }
     }
 
 }

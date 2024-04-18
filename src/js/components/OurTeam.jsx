@@ -49,8 +49,8 @@ const OurTeam = () => {
             <img src={Assesor1} />
             <div className="overlay  ">
               <div className="overlay-text  text-center">
-                <p className="assesor-card-text my-2">CEO</p>
-                <h2 className="assesor-card-title">Orlando Camacho</h2>
+                <p className="assesor-card-text my-2">Asesor</p>
+                <h2 className="assesor-card-title">Pepito Perez</h2>
                 <Link to="/contact" className="primary-button-sm">
                   Agendar Cita
                 </Link>
