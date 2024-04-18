@@ -64,9 +64,9 @@ const NavHeader = ({ isHome }) => {
           <Collapse isOpen={isOpen} navbar className="mobile_collapse">
             <Nav className="ml-auto mynavbarItems" navbar>
               <NavItem>
-                <NavLink href="/our-services">
+                <Link to="/our-services">
                   <p>Servicios</p>
-                </NavLink>
+                </Link>
               </NavItem>
               <NavItem>
                 <Link to="/about-us">
