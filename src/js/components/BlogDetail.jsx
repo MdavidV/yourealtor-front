@@ -4,7 +4,7 @@ import Footer from "../components/Footer.jsx";
 import { useParams } from "react-router-dom";
 import { getBlogBySlugRequest } from "../../api/blog.js";
 import { Col, Row } from "reactstrap";
-import SideContact from "./subcomponents/sideContact.jsx";
+import SideContact from "./subcomponents/SideContact.jsx";
 import { format, isValid } from "date-fns";
 import OurServices from "./OurServicesSection.jsx";
 import Banner from "./Banner.jsx";

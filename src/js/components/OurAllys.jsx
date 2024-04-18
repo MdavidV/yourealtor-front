@@ -14,8 +14,8 @@ const OurAllys = () => {
           </h1>
         </Col>
 
-        <Col md="6" className="d-flex justify-content-center">
-          <div className="ally-container">
+        <Col md="12" lg={6} className="d-flex justify-content-center allys-ally-cont">
+          <Col className="ally-container">
             <img src={image1} alt="" />
             <a
               href="https://www.segurossura.com.co/paginas/hogar/inicio.aspx"
@@ -24,8 +24,8 @@ const OurAllys = () => {
             >
               Descubrelo Aqui!
             </a>
-          </div>
-          <div className="ally-container">
+          </Col>
+          <Col className="ally-container">
             <img src={image2} alt="" />
             <a
               href="https://www.ellibertador.co/"
@@ -33,7 +33,7 @@ const OurAllys = () => {
             >
               Descubrelo Aqui!
             </a>
-          </div>
+          </Col>
         </Col>
       </Row>
     </div>

@@ -1,15 +1,16 @@
 .our-allys-cont{
     background-color: $base-color;
     padding: 45px;
-    height: 650px;
+    min-height: 650px;
     margin-top: 30px;
     display: flex;
     justify-content: center;
     align-items: center;
     // width: 100%;
 
+    
+
     .ally-container{
-        margin: 40px;
         width: 100%;
         display: flex;
         justify-content: center;
@@ -20,5 +21,14 @@
             height: 250px;
         }
     }
+@media (max-width: $Medium) {
+    .our-allys-cont{
+        flex-direction: column;
+        height: auto;
+    }
 
+    .allys-ally-cont{
+        flex-direction: column;
+    }
+}
 }

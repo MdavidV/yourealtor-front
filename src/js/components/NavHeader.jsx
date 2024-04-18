@@ -69,24 +69,24 @@ const NavHeader = ({ isHome }) => {
                 </NavLink>
               </NavItem>
               <NavItem>
-                <NavLink href="/about-us">
+                <Link to="/about-us">
                   <p>Quienes Somos?</p>
-                </NavLink>
+                </Link>
               </NavItem>
               <NavItem>
-                <NavLink href="/offer">
+                <Link to="/offer">
                   <p>Oferta tu Inmueble</p>
-                </NavLink>
+                </Link>
               </NavItem>
               <NavItem>
-                <NavLink href="/blogs">
+                <Link to="/blogs">
                   <p>Blog</p>
-                </NavLink>
+                </Link>
               </NavItem>
               <NavItem>
-                <NavLink href="#contactanos">
+                <Link to="#contactanos">
                   <p>Contactanos</p>
-                </NavLink>
+                </Link>
               </NavItem>
               <NavItem
                 onMouseEnter={toggleDropDown}
@@ -121,9 +121,9 @@ const NavHeader = ({ isHome }) => {
                   </>
                 ) : (
                   <>
-                    <NavLink href="/Login">
+                    <Link href="/Login">
                       <p>Ingresa</p>
-                    </NavLink>
+                    </Link>
                   </>
                 )}
                 </NavItem>
