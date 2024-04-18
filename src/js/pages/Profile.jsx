@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import { useAuth } from "../../contexts/AuthContext";
 import { Route, Routes } from "react-router-dom";
 import Navbar from "../components/profileComponents/Navbar";
-import Bg from "../../assets/Bg_Profile_View.jpg";
+import BgProfileView from "./Bg_Profile_View.jpg";
 import Sidebar from "../components/profileComponents/Sidebar";
 import ProfileInfo from "../components/profileComponents/ProfileInfo";
 import Meetings from "../components/profileComponents/Meetings";
@@ -21,10 +21,14 @@ const Profile = () => {
   }, [isAuthenticated, user]); 
   
 
+//asdasdasdasdasd
+
+
   return (
     <>
       <div className="profile-bg">
-        <img src={Bg} alt="Background" />
+        <img src={BgProfileView} alt="Background" />
+        
       </div>
 
       <Navbar username={user.username} />
