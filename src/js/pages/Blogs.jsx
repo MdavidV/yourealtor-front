@@ -12,7 +12,7 @@ import {
   Container,
   Row,
 } from "reactstrap";
-import SideContact from "../components/subcomponents/sideContact.jsx";
+import SideContact from "../components/subcomponents/SideContact.jsx";
 import { getBlogsRequest } from "../../api/blog";
 import { useNavigate } from "react-router-dom";
 
