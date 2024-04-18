@@ -7,5 +7,5 @@ export default defineConfig({
   buid: {
     outDir: 'dist',
   },
-  base: ''
+  base: './'
 })

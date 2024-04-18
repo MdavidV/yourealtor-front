@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import { useAuth } from "../../contexts/AuthContext";
 import { Route, Routes } from "react-router-dom";
 import Navbar from "../components/profileComponents/Navbar";
-import BgProfileView from "./Bg_Profile_View.jpg";
+import BgProfileView from "../../assets/Bg_Profile_view.jpg";
 import Sidebar from "../components/profileComponents/Sidebar";
 import ProfileInfo from "../components/profileComponents/ProfileInfo";
 import Meetings from "../components/profileComponents/Meetings";
