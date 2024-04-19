@@ -39,7 +39,7 @@ const ServicesCard = () => {
     {
       frontIcon: <i className="bi bi-buildings"></i>,
       frontTitle: "Property",
-      backTexts: ["Administracion", "Operacion", "Auditorias Externas"],
+      backTexts: ["Administración", "Operación", "Auditorias Externas"],
       to: '/our-services/property-info'
       
     },
@@ -52,7 +52,7 @@ const ServicesCard = () => {
     {
       frontIcon: <i className="bi bi-clipboard-data"></i>,
       frontTitle: "Back Office",
-      backTexts: ["BPO", "Gestion documental Inmobiliaria"],
+      backTexts: ["BPO", "Gestión documental Inmobiliaria"],
       to: '/our-services/back-office-info'
 
     },

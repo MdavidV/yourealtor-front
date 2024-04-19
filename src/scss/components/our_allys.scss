@@ -8,6 +8,9 @@
     align-items: center;
     // width: 100%;
 
+    h1{
+        color: $white;
+    }
     
 
     .ally-container{
@@ -16,9 +19,11 @@
         justify-content: center;
         align-items: center;
         flex-direction: column;
+        margin: 50px;
         img{
-            width: 250px;
-            height: 250px;
+            width: 400px;
+            min-height: 155px;
+            height: auto;
         }
     }
 @media (max-width: $Medium) {

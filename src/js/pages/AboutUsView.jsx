@@ -79,11 +79,11 @@ const AboutUsView = () => {
                 <p>
                   En YOUREALTOR, líderes del sector inmobiliario colombiano, nos
                   dedicamos a superar las expectativas de nuestros clientes con
-                  soluciones personalizadas y servicio de primera, guiados por
-                  nuestro experto Héctor Gallego. Aseguramos una experiencia
-                  confiable con nuestro respaldo certificado. Contáctanos para
-                  una asesoría de excelencia en tu camino hacia el éxito
-                  inmobiliario.
+                  soluciones personalizadas y servicio de primera, Guiados por
+                  un equipo experto de profesionales “Realtors“ donde
+                  aseguramosuna experiencia confiable con nuestro respaldo
+                  certificado. Contáctanos para una asesoría de excelencia en tu
+                  camino hacia el éxito inmobiliario.
                 </p>
               </Col>
             </Row>
@@ -278,7 +278,7 @@ const AboutUsView = () => {
                     <PiHandshakeFill />
                   </div>
                   <div className="range-text-container">
-                    <h3>Consultamos y evaluamos tu nmueble</h3>
+                    <h3>Consultamos y evaluamos tu Inmueble</h3>
                   </div>
                 </div>
               </Col>

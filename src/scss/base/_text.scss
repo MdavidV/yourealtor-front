@@ -62,6 +62,10 @@
   @include texts($semantic-weight, $semantic-text-color, $semantic-size);
 }
 
+.form_info_list_item{
+  @include texts($paragraph-weight, $white, $semantic-small-size);
+}
+
 
 // SECTIONS TEXTS
 

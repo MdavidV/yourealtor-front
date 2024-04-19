@@ -1,13 +1,9 @@
-import {
-  Col,
-  Container,
-  Row,
-  ListGroup,
-  ListGroupItem,
-} from "reactstrap";
+import { Col, Container, Row, ListGroup, ListGroupItem } from "reactstrap";
 import ContactForm from "./subcomponents/ContactForm.jsx";
 
 const ContactUs = () => {
+  const addressLink =
+    "https://www.google.com/maps/place/Cra.+7+%2332-93,+Bogot%C3%A1/@4.6204523,-74.0700878,17z/data=!4m6!3m5!1s0x8e3f9985b17fd2f1:0xd2b04330d5ca16f8!8m2!3d4.6200085!4d-74.0680171!16s%2Fg%2F11c26sbvd2?entry=ttu";
   return (
     <div id="contactanos">
       <Container className="my-5">
@@ -33,11 +29,11 @@ const ContactUs = () => {
               </ListGroupItem>
               <ListGroupItem className="form_info_list_item">
                 <i className="bi bi-buildings"></i>
-                <p>Cra 7 NO 32-93 Piso 7</p>
+                <a href={addressLink}>Cra 7 NO 32-93 Piso 7</a>
               </ListGroupItem>
               <ListGroupItem className="form_info_list_item">
                 <i className="bi bi-clock"></i>
-                <p>7:00 AM - 6:00 PM</p>
+                <a href="#">7:00 AM - 6:00 PM</a>
               </ListGroupItem>
             </ListGroup>
           </Col>

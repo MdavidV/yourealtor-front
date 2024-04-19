@@ -68,6 +68,7 @@ const ContactForm = () => {
             name="userName"
             id="userName"
             placeholder="Nombre Completo:"
+            required
           />
         </FormGroup>
         <FormGroup>
@@ -79,6 +80,7 @@ const ContactForm = () => {
             name="telefono"
             id="telefono"
             placeholder="Teléfono:"
+            required
           />
         </FormGroup>
         <FormGroup className="mb-3">
@@ -90,6 +92,7 @@ const ContactForm = () => {
             name="email"
             id="correoElectronico"
             placeholder="Correo electrónico"
+            required
           />
         </FormGroup>
         <FormGroup className="mb-3">
@@ -101,6 +104,7 @@ const ContactForm = () => {
             name="mensaje"
             id="mensaje"
             placeholder="Mensaje"
+            required
           />
         </FormGroup>
 

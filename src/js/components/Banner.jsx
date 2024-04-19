@@ -69,22 +69,24 @@ useEffect(()=>{
         <Container className="banner_content" fluid>
           <Row className="fixed-position-banner ">
             <Col xxl={5} lg={8} xs={12}className="d-flex flex-column align-items-center justify-content-center fixed-position-banner-cont">
-              <div className="title-container m-3">
+              <div className="title-container mx-4">
                 <h1 className="banner-tittle">
                   {" "}
                   ¡Un mundo de soluciones <br /> inmobiliarias!
                 </h1>
               </div>
-              <div className="buttons-container  mx-5 my-3" >
+              <div className="buttons-container mx-5 my-3" >
                 <button
                   onClick={handleChangeArriendo}
-                  className="primary-button-xl mx-3"
+                  className="primary-button-xl me-3"
                 >
                   Arrienda
                 </button>
-                <button onClick={handleChanges} className="primary-button-xl mx-3">
+                <button onClick={handleChanges} className="primary-button-xl me-3">
                   Compra
                 </button>
+
+                <button onClick={() => {navigate('/offer')}} className="primary-button-xl me-3">Vende</button>
               </div>
             </Col>
           </Row>
