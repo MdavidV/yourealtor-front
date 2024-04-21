@@ -12,7 +12,7 @@ import {
   TabPane,
 } from "reactstrap";
 
-import Img1 from "../../assets/About_Us3.png";
+import Img1 from "../../assets/about_Us3.png";
 import Img2 from "../../assets/About_us4.png";
 import Img3 from "../../assets/certificacion-1.png";
 import Img4 from "../../assets/certificacion-2.png";
